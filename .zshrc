@@ -122,14 +122,19 @@ alias zshconfig="nvim ~/.zshrc"
 alias so="source ~/.zshrc"
 alias fzf='fzf --preview "bat --color=always {}" | xargs nvim'
 alias ls="eza --color=always --icons=always --long --no-user --no-time --git --no-permissions" 
-alias del="rm -rf"
+alias del="trash-put"
 alias pacman"_ pacman"
 alias get="$HOME/branch.sh"
 alias ginit="$HOME/init.sh"
 alias Git="lazygit"
+alias pacman="_ pacman"
+alias list="trash-list"
+alias empty="trash-empty"
+alias restore="trash-restore"
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 source /usr/share/fzf/completion.zsh
 source $HOME/.oh-my-zsh/custom/plugins/fzf-tab
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
