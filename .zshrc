@@ -1,10 +1,12 @@
 # If you come from bash you might have to change your $PATH.
+# echo
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 fastfetch
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/bin/lazygit:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -124,6 +126,7 @@ alias del="rm -rf"
 alias pacman"_ pacman"
 alias get="$HOME/branch.sh"
 alias ginit="$HOME/init.sh"
+alias Git="lazygit"
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
