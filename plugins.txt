@@ -15,7 +15,7 @@ appstream-qt 1.0.3-1
 archlinux-appstream-data 20240526-1
 aria2 1.37.0-1
 aribb24 1.0.3-4
-atac 0.16.0-1
+atac 0.17.0-1
 atkmm 2.28.4-1
 attica 6.5.0-1
 atuin 18.3.0-1
@@ -60,7 +60,7 @@ discord 0.0.64-1
 discount 3.0.0.d-1
 discover 6.1.4-1
 dmidecode 3.6-1
-docker 1:27.1.1-1
+docker 1:27.1.2-1
 docker-compose 2.29.2-1
 dolphin 24.05.2-1
 dosfstools 4.2-4
@@ -73,7 +73,7 @@ ebook-tools 0.2.2-8
 editorconfig-core-c 0.12.9-1
 edk2-ovmf 202311-1
 efibootmgr 18-3
-electron30 30.3.1-1
+electron30 30.4.0-1
 elementary-icon-theme 8.0.0-1
 exfat-utils 1.4.0-3
 exo 4.18.0-2
@@ -81,7 +81,7 @@ extra-cmake-modules 6.5.0-1
 eza 0.19.0-1
 faad2 2.11.1-1
 fastfetch 2.21.3-1
-ffmpeg 2:7.0.1-2
+ffmpeg 2:7.0.2-1
 ffmpeg4.4 4.4.4-6
 flameshot 12.1.0-3
 flatpak 1:1.15.10-1
@@ -337,8 +337,8 @@ libzmf 0.0.2-16
 lilv 0.24.24-2
 linux 6.10.5.arch1-1
 linux-firmware 20240809.59460076-1
-linux-lts 6.6.46-1
-linux-lts-headers 6.6.46-1
+linux-lts 6.6.47-1
+linux-lts-headers 6.6.47-1
 lpsolve 5.5.2.11-3
 lsof 4.99.3-2
 lua51 5.1.5-12
@@ -346,7 +346,7 @@ lua53 5.3.6-3
 luarocks 3.11.1-1
 lv2 1.18.10-1
 lxappearance 0.6.3-5
-mariadb 11.4.3-1
+mariadb 11.5.2-1
 mbedtls 3.6.0-1
 mbedtls2 2.28.8-3
 media-player-info 24-4
@@ -429,6 +429,7 @@ polkit-kde-agent 6.1.4-1
 polkit-qt6 0.200.0-1
 poppler 24.08.0-1
 poppler-qt6 24.08.0-1
+portal-bin 1.2.3-1
 portaudio 1:19.7.0-3
 postgresql 16.3-3
 postman-bin 11.7.0-1

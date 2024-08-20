@@ -131,6 +131,7 @@ alias pacman="_ pacman"
 alias list="trash-list"
 alias empty="trash-empty"
 alias restore="trash-restore"
+alias anime="ani-cli"
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"

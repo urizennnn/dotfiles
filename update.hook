@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Update plugins.txt with explicitly installed packages...
+When = PostTransaction
+Exec = /bin/sh -c 'pacman -Qe > /home/urizen/dotfiles/plugins.txt'
+
