@@ -207,11 +207,13 @@ require(***REMOVED***lazy***REMOVED***).setup({
 		dependencies = { ***REMOVED***nvim-treesitter/nvim-treesitter***REMOVED*** },
 		con***REMOVED***g = function()
 			require(***REMOVED***treesitter-context***REMOVED***).setup({
-				enable = true, -- Enable this plugin
-				max_lines = 3, -- Maximum lines to display for the context
-				trim_scope = ***REMOVED***outer***REMOVED***, -- Remove outer context if max_lines is exceeded
-				mode = ***REMOVED***topline***REMOVED***, -- Line used to calculate context ('cursor' or 'topline')
-				separator = nil, -- Separator between context and rest of the ***REMOVED***le (can be a string)
+				enable = true,
+				max_lines = 3,
+				trim_scope = ***REMOVED***outer***REMOVED***,
+				mode = ***REMOVED***cursor***REMOVED***,
+				line_numbers = true,
+				multiwindow = true,
+				separator = nil,
 			})
 		end,
 	},
