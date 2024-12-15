@@ -1,0 +1,11 @@
+[user]
+	email = igamerryt@gmail.com
+	name = urizennnn
+[credential ***REMOVED***https://github.com***REMOVED***]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential ***REMOVED***https://gist.github.com***REMOVED***]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[http]
+	postBuffer = 1048576000

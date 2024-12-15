@@ -1,0 +1,108 @@
+/* De***REMOVED***ne colors with transparency */
+@de***REMOVED***ne-color	rosewater  rgba(245, 224, 220, 0.9);
+@de***REMOVED***ne-color	flamingo  rgba(242, 205, 205, 0.9);
+@de***REMOVED***ne-color	pink  rgba(245, 194, 231, 0.9);
+@de***REMOVED***ne-color	mauve  rgba(203, 166, 247, 0.9);
+@de***REMOVED***ne-color	red  rgba(243, 139, 168, 0.9);
+@de***REMOVED***ne-color	maroon  rgba(235, 160, 172, 0.9);
+@de***REMOVED***ne-color	peach  rgba(250, 179, 135, 0.9);
+@de***REMOVED***ne-color	yellow  rgba(249, 226, 175, 0.9);
+@de***REMOVED***ne-color	green  rgba(166, 227, 161, 0.9);
+@de***REMOVED***ne-color	teal  rgba(148, 226, 213, 0.9);
+@de***REMOVED***ne-color	sky  rgba(137, 220, 235, 0.9);
+@de***REMOVED***ne-color	sapphire  rgba(116, 199, 236, 0.9);
+@de***REMOVED***ne-color	blue  rgba(137, 180, 250, 0.9);
+@de***REMOVED***ne-color	lavender  rgba(180, 190, 254, 0.9);
+@de***REMOVED***ne-color	text  rgba(205, 214, 244, 0.9);
+@de***REMOVED***ne-color	subtext1  rgba(186, 194, 222, 0.9);
+@de***REMOVED***ne-color	subtext0  rgba(166, 173, 200, 0.9);
+@de***REMOVED***ne-color	overlay2  rgba(147, 153, 178, 0.9);
+@de***REMOVED***ne-color	overlay1  rgba(127, 132, 156, 0.9);
+@de***REMOVED***ne-color	overlay0  rgba(108, 112, 134, 0.9);
+@de***REMOVED***ne-color	surface2  rgba(88, 91, 112, 0.9);
+@de***REMOVED***ne-color	surface1  rgba(69, 71, 90, 0.9);
+@de***REMOVED***ne-color	surface0  rgba(49, 50, 68, 0.9);
+@de***REMOVED***ne-color	base  rgba(30, 30, 46, 0.75);
+@de***REMOVED***ne-color	mantle  rgba(24, 24, 37, 0.75);
+@de***REMOVED***ne-color	crust  rgba(17, 17, 27, 0.75);
+
+* {
+    font-family: 'CaskaydiaCove Nerd Font', monospace;
+    font-size: 12px;
+}
+
+window {
+    margin: 0px;
+    padding: 4px;
+    border: 2px solid @lavender;
+    border-radius: 8px;
+    background-color: @base;
+    opacity: 0.9;
+}
+
+#inner-box {
+    margin: 3px;
+    padding: 4px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 3px;
+    padding: 4px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    padding: 4px;
+    border: none;
+    background-color: transparent;
+}
+
+#input {
+    margin: 3px 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 0.1em;
+    color: @text;
+    background-color: @mantle;
+}
+
+#input image {
+    border: none;
+    color: @red;
+}
+
+#input * {
+    outline: 4px solid @red!important;
+}
+
+#text {
+    margin: 3px;
+    border: none;
+    color: @text;
+}
+
+#entry {
+    background-color: transparent;
+}
+
+#entry arrow {
+    border: none;
+    color: @lavender;
+}
+
+#entry:selected {
+    border: 0.11em solid @lavender;
+    background-color: @mantle;
+}
+
+#entry:selected #text {
+    color: @mauve;
+}
+
+#entry:drop(active) {
+    background-color: @lavender!important;
+}
