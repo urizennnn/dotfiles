@@ -137,3 +137,6 @@ keymap(***REMOVED***v***REMOVED***, ***REMOVED***p***REMOVED***, '***REMOVED***_
 keymap(***REMOVED***v***REMOVED***, ***REMOVED***<leader>yl***REMOVED***, function()
 	vim.fn.setreg(***REMOVED***+***REMOVED***, string.lower(vim.fn.getreg('***REMOVED***')))
 end, { desc = ***REMOVED***Yank to clipboard and lowercase***REMOVED*** })
+keymap(***REMOVED***n***REMOVED***, ***REMOVED***[c***REMOVED***, function()
+	require(***REMOVED***treesitter-context***REMOVED***).go_to_context(vim.v.count1)
+end, { silent = true })

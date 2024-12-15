@@ -40,6 +40,7 @@
   ***REMOVED***nvim-surround***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***main***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***9f0cb495f25bff32c936062d85046fbda0c43517***REMOVED*** },
   ***REMOVED***nvim-tree.lua***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***375e38673b5c61debd8074ced01cfd4f3b7ce1e9***REMOVED*** },
   ***REMOVED***nvim-treesitter***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***33d27173876499a0f037cb9edff90d583711b6ae***REMOVED*** },
+  ***REMOVED***nvim-treesitter-context***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***8fd989b6b457a448606b4a2e51f9161700f609a7***REMOVED*** },
   ***REMOVED***nvim-web-devicons***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***203da76ecfbb4b192cf830665b03eb651b635c94***REMOVED*** },
   ***REMOVED***octo.nvim***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***dfb292d81fe844d85199bb041c55981899c95fde***REMOVED*** },
   ***REMOVED***playground***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***ba48c6a62a280eefb7c85725b0915e021a1a0749***REMOVED*** },

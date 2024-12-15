@@ -163,7 +163,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	},
 	{ ***REMOVED***nvim-treesitter/playground***REMOVED***, cmd = ***REMOVED***TSHighlightCapturesUnderCursor***REMOVED*** },
 	{ ***REMOVED***rebelot/kanagawa.nvim***REMOVED*** },
-	{ ***REMOVED***catppuccin/nvim***REMOVED***,            name = ***REMOVED***catppuccin***REMOVED***,                   priority = 1000, lazy = false },
+	{ ***REMOVED***catppuccin/nvim***REMOVED***, name = ***REMOVED***catppuccin***REMOVED***, priority = 1000, lazy = false },
 	{
 		***REMOVED***folke/snacks.nvim***REMOVED***,
 		priority = 1000,
@@ -199,6 +199,19 @@ require(***REMOVED***lazy***REMOVED***).setup({
 						:map(***REMOVED***<leader>ub***REMOVED***)
 					Snacks.toggle.inlay_hints():map(***REMOVED***<leader>uh***REMOVED***)
 				end,
+			})
+		end,
+	},
+	{
+		***REMOVED***nvim-treesitter/nvim-treesitter-context***REMOVED***,
+		dependencies = { ***REMOVED***nvim-treesitter/nvim-treesitter***REMOVED*** },
+		con***REMOVED***g = function()
+			require(***REMOVED***treesitter-context***REMOVED***).setup({
+				enable = true, -- Enable this plugin
+				max_lines = 3, -- Maximum lines to display for the context
+				trim_scope = ***REMOVED***outer***REMOVED***, -- Remove outer context if max_lines is exceeded
+				mode = ***REMOVED***topline***REMOVED***, -- Line used to calculate context ('cursor' or 'topline')
+				separator = nil, -- Separator between context and rest of the ***REMOVED***le (can be a string)
 			})
 		end,
 	},
@@ -247,7 +260,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	{
 		***REMOVED***kristijanhusak/vim-dadbod-ui***REMOVED***,
 		dependencies = {
-			{ ***REMOVED***tpope/vim-dadbod***REMOVED***,                     lazy = true },
+			{ ***REMOVED***tpope/vim-dadbod***REMOVED***, lazy = true },
 			{ ***REMOVED***kristijanhusak/vim-dadbod-completion***REMOVED***, ft = { ***REMOVED***sql***REMOVED***, ***REMOVED***mysql***REMOVED***, ***REMOVED***psql***REMOVED***, ***REMOVED***mongodb***REMOVED*** } }, -- Optional
 		},
 		cmd = {
@@ -272,7 +285,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 			vim.g.db_ui_disable_progress_bar = 1
 		end,
 	},
-	{ ***REMOVED***rmagatti/auto-session***REMOVED***,   con***REMOVED***g = true },
+	{ ***REMOVED***rmagatti/auto-session***REMOVED***, con***REMOVED***g = true },
 	{ ***REMOVED***akinsho/toggleterm.nvim***REMOVED***, version = ***REMOVED*******REMOVED***, con***REMOVED***g = true },
 	-- { ***REMOVED***mistricky/codesnap.nvim***REMOVED***, build = ***REMOVED***make***REMOVED*** },
 	{
@@ -286,7 +299,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 		dependencies = { ***REMOVED***nvim-lua/plenary.nvim***REMOVED*** },
 	},
 	-- ***REMOVED***gc***REMOVED*** to comment visual regions/lines
-	{ ***REMOVED***numToStr/Comment.nvim***REMOVED***,  opts = {} },
+	{ ***REMOVED***numToStr/Comment.nvim***REMOVED***, opts = {} },
 	{
 		***REMOVED***barrett-ruth/live-server.nvim***REMOVED***,
 		build = ***REMOVED***pnpm add -g live-server***REMOVED***,
@@ -313,7 +326,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 		requires = {
 			***REMOVED***nvim-lua/plenary.nvim***REMOVED***,
 			***REMOVED***nvim-telescope/telescope.nvim***REMOVED***,
-			'ibhagwan/fzf-lua',
+			***REMOVED***ibhagwan/fzf-lua***REMOVED***,
 			***REMOVED***nvim-tree/nvim-web-devicons***REMOVED***,
 		},
 	},
@@ -450,7 +463,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 			{ ***REMOVED***nvim-telescope/telescope-ui-select.nvim***REMOVED*** },
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
-			{ ***REMOVED***nvim-tree/nvim-web-devicons***REMOVED***,            enabled = vim.g.have_nerd_font },
+			{ ***REMOVED***nvim-tree/nvim-web-devicons***REMOVED***, enabled = vim.g.have_nerd_font },
 		},
 		con***REMOVED***g = function()
 			--
@@ -700,7 +713,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 		version = ***REMOVED***^4***REMOVED***, -- Recommended
 		lazy = false, -- This plugin is already lazy
 	},
-	{             -- Autocompletion
+	{ -- Autocompletion
 		***REMOVED***hrsh7th/nvim-cmp***REMOVED***,
 		event = ***REMOVED***InsertEnter***REMOVED***,
 		dependencies = {
