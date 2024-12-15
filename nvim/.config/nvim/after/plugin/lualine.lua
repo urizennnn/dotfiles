@@ -1,0 +1,40 @@
+require(***REMOVED***lualine***REMOVED***).setup({
+	theme = ***REMOVED***tokyonight***REMOVED***,
+	options = {
+		icons_enabled = true,
+		component_separators = ***REMOVED******REMOVED***,
+		section_separators = { left = ***REMOVED******REMOVED***, right = ***REMOVED******REMOVED*** },
+		disabled_***REMOVED***letypes = {
+			statusline = {},
+			winbar = {},
+		},
+		ignore_focus = {},
+		always_divide_middle = true,
+		globalstatus = false,
+		refresh = {
+			statusline = 1000,
+			tabline = 1000,
+			winbar = 1000,
+		},
+	},
+	sections = {
+		lualine_a = { ***REMOVED***mode***REMOVED*** },
+		lualine_b = { ***REMOVED***branch***REMOVED***, ***REMOVED***diff***REMOVED***, ***REMOVED***diagnostics***REMOVED*** },
+		lualine_c = { ***REMOVED******REMOVED***lename***REMOVED*** },
+		lualine_x = { ***REMOVED***encoding***REMOVED***, ***REMOVED******REMOVED***leformat***REMOVED***, ***REMOVED******REMOVED***letype***REMOVED*** },
+		lualine_y = { ***REMOVED***progress***REMOVED*** },
+		lualine_z = { ***REMOVED***location***REMOVED*** },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { ***REMOVED******REMOVED***lename***REMOVED*** },
+		lualine_x = { ***REMOVED***location***REMOVED*** },
+		lualine_y = {},
+		lualine_z = {},
+	},
+	tabline = {},
+	winbar = {},
+	inactive_winbar = {},
+	extensions = {},
+})
