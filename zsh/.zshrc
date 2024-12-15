@@ -54,7 +54,7 @@ alias zshcon***REMOVED***g=***REMOVED***nvim $HOME/.zshrc***REMOVED***
 alias pacman=***REMOVED***sudo pacman --nocon***REMOVED***rm***REMOVED***
 ***REMOVED***
 alias yay=***REMOVED***yay --nocon***REMOVED***rm***REMOVED***
-alias fzf='fzf --preview ***REMOVED***bat --color=always {}***REMOVED*** | xargs nvim'
+***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
