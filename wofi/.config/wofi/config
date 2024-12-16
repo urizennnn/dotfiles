@@ -1,7 +1,7 @@
 allow_images=true
 insensitive=true
 matching=fuzzy
-term=foot
+term=wezterm
 width=400
 height=300
 location=center
