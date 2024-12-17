@@ -87,3 +87,7 @@ plugins=(git zoxide fzf archlinux gh history zsh-interactive-cd zsh-syntax-highl
 
 alias ls=***REMOVED***eza  --long --no-***REMOVED***lesize --icons=always --no-time --no-permissions --no-user***REMOVED***
 eval ***REMOVED***$(atuin init zsh)***REMOVED***
+***REMOVED***
+export NVM_DIR=***REMOVED***$HOME/.nvm***REMOVED***
+[ -s ***REMOVED***$NVM_DIR/nvm.sh***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/nvm.sh***REMOVED***  # This loads nvm
+[ -s ***REMOVED***$NVM_DIR/bash_completion***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/bash_completion***REMOVED***  # This loads nvm bash_completion
