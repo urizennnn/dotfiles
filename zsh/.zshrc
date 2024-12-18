@@ -49,7 +49,7 @@ ZSH_THEME=***REMOVED***robbyrussell***REMOVED***
 
 ***REMOVED***
 ***REMOVED***
-alias zshcon***REMOVED***g=***REMOVED***nvim $HOME/.zshrc***REMOVED***
+***REMOVED***
 ***REMOVED***
 alias pacman=***REMOVED***sudo pacman --nocon***REMOVED***rm***REMOVED***
 ***REMOVED***
