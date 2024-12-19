@@ -18,10 +18,6 @@ local function create_floating_terminal(opts)
 	***REMOVED***
 		buf = vim.api.nvim_create_buf(false, true)
 		state.floating.buf = buf
-
-		-- Set the buffer as unlisted and hidden
-		vim.bo[buf].bufhidden = ***REMOVED***wipe***REMOVED***
-		vim.bo[buf].buflisted = false
 	end
 
 	local win = vim.api.nvim_open_win(buf, true, {
