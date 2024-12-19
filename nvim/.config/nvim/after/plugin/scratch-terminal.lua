@@ -7,8 +7,8 @@ local state = {
 
 local function create_floating_terminal(opts)
 	opts = opts or {}
-	local width = opts.width or math.floor(vim.o.columns * 0.8)
-	local height = opts.height or math.floor(vim.o.lines * 0.8)
+	local width = opts.width or math.floor(vim.o.columns * 0.7)
+	local height = opts.height or math.floor(vim.o.lines * 0.7)
 	local col = opts.col or math.floor((vim.o.columns - width) / 2)
 	local row = opts.row or math.floor((vim.o.lines - height) / 2)
 
@@ -48,4 +48,4 @@ local function toggle_tem()
 end
 
 vim.api.nvim_create_user_command(***REMOVED***ScratchTerminal***REMOVED***, toggle_tem, {})
-vim.keymap.set({ ***REMOVED***n***REMOVED***, ***REMOVED***t***REMOVED*** }, ***REMOVED***<leader>tt***REMOVED***, toggle_tem, { noremap = true, silent = true })
+vim.keymap.set({ ***REMOVED***n***REMOVED***, ***REMOVED***t***REMOVED*** }, ***REMOVED***<leader>sc***REMOVED***, toggle_tem, { noremap = true, silent = true })
