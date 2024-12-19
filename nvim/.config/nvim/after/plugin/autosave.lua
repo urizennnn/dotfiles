@@ -36,7 +36,7 @@ end
 
 load_settings()
 
-vim.api.nvim_create_autocmd(***REMOVED***DirChanged***REMOVED***, {
+vim.api.nvim_create_autocmd({ ***REMOVED***DirChanged***REMOVED***, ***REMOVED***TextChanged***REMOVED*** }, {
 	group = vim.api.nvim_create_augroup(***REMOVED***ReloadCwdSettings***REMOVED***, { clear = true }),
 	callback = function()
 		vim.notify(***REMOVED***Con***REMOVED***g reloaded***REMOVED***, vim.log.levels.INFO)
