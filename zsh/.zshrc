@@ -58,6 +58,7 @@ alias pacman=***REMOVED***sudo pacman --nocon***REMOVED***rm***REMOVED***
 alias yay=***REMOVED***yay --nocon***REMOVED***rm***REMOVED***
 ***REMOVED***
 ***REMOVED***
+alias clear-ram=***REMOVED***$HOME/scripts/clear-ram.sh***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
