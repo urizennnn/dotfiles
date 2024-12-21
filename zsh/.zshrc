@@ -58,7 +58,7 @@ alias pacman=***REMOVED***sudo pacman --nocon***REMOVED***rm***REMOVED***
 alias yay=***REMOVED***yay --nocon***REMOVED***rm***REMOVED***
 ***REMOVED***
 ***REMOVED***
-alias clear-ram=***REMOVED***$HOME/scripts/clear-ram.sh***REMOVED***
+***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
@@ -66,6 +66,7 @@ alias clear-ram=***REMOVED***$HOME/scripts/clear-ram.sh***REMOVED***
 alias Git=***REMOVED***lazygit***REMOVED***
 alias ginit=***REMOVED***$HOME/scripts/init.sh***REMOVED***
 alias del=***REMOVED***trash-put***REMOVED***
+alias cht=***REMOVED***$HOME/scripts/cht.sh***REMOVED***
 alias restore=***REMOVED***trash-restore***REMOVED***
 alias list=***REMOVED***trash-list***REMOVED***
 alias venv=***REMOVED***$HOME/scripts/venv.sh***REMOVED***
