@@ -26,8 +26,8 @@ if [[ -z ***REMOVED***$topic***REMOVED*** ]]; then
 sheet=$(curl -s cht.sh/$topic/:list | fzf)
 
 if [[ -z ***REMOVED***$sheet***REMOVED*** ]]; then
-  curl -s cht.sh/$topic?style=rrt | less -R
+  curl -s cht.sh/$topic?style=rrt | bat 
   exit 0
 ***REMOVED***
 
-curl -s cht.sh/$topic/$sheet?style=rrt  | less -R
+curl -s cht.sh/$topic/$sheet?style=rrt  | bat 
