@@ -1,0 +1,266 @@
+ls
+cht
+z ***REMOVED***g
+cd ..
+cd ../..
+cd .con***REMOVED***g
+cd nushell/
+.
+nvim ..
+nvim .
+ls
+.
+nvim .
+so
+source con***REMOVED***g.nu
+cls
+clear
+source con***REMOVED***g.nu
+cls
+clear
+source con***REMOVED***g.nu
+atuin 
+clear
+source con***REMOVED***g.nu
+source env.nu
+clear
+source con***REMOVED***g.nu
+ls | api
+ls | grep api
+z
+cd ../..
+clear
+ls | grep api
+ls 
+z
+clear
+cd .con***REMOVED***g
+cd nushell/
+source con***REMOVED***g.nu
+cd .con***REMOVED***g
+ls
+cls
+clearl
+clear
+ls | grep nu
+ls | grep nushell
+ls | grep nushel | where name = nusheel
+ls | grep nushel | where name = nushell
+ls | grep nushel | where name = ***REMOVED***nushel***REMOVED***
+ls where name =***REMOVED***nusheel***REMOVED***
+z ***REMOVED***g
+cls
+clear
+cd nushell/
+.
+cd .con***REMOVED***g
+source env.nu
+cls
+source env.nu
+cls
+$env.PATH
+zoxide
+cd $HOME
+cd $env.HOME
+cls
+nvim .zshrc
+zoxide init | save --to ~/.con***REMOVED***g/nushell/init.nu<\n>
+zoxide init
+zoxide init nu
+zoxide init nushell
+source ~/.zoxide.nu
+zoxide init nushell | save -f ~/.con***REMOVED***g/nushell/zoxide.nu<\n>
+cd .con***REMOVED***g
+cls
+cd nushell/
+ls
+source zoxide.nu
+z
+fzf init
+fzf
+atuin init
+atuin init nushell
+atuin init nu
+atuin init nu | save -f ~/.con***REMOVED***g/nushell/atuin.nu
+pwd
+z .***REMOVED***g
+z .con***REMOVED***g
+cls
+z nushell/
+source atuin.nu
+pwd
+z
+cls
+z
+nvim .zshrc
+n
+cls
+clear
+cd .con***REMOVED***g
+cd nushell/
+clear
+ls
+source fzf-tab.nu
+cl
+cls
+cht
+cht-script
+$env.HOME
+cls
+cht-script
+$env.HOME/scripts
+cht-script
+clear-ram
+cht
+restore
+cls
+zo
+cht
+source env.nu
+cht
+z
+cls
+z scripts
+./cht.sh
+z
+cls
+z
+source $nu.con***REMOVED***g-path
+$nu.con***REMOVED***g-path
+$nu.con***REMOVED***g-path .
+$nu.con***REMOVED***g-path ..
+cls
+z ***REMOVED***g
+z nu
+cls
+source atuin.nu
+cls
+cht
+$env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED***
+nvim ($env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED***)
+$env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED*** | run 
+($env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED***) | run 
+($env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED***) | start
+cht
+cheat
+clear
+anime
+b
+b atuin.nu
+Git
+del
+restore
+zo
+convert
+chea
+cheat
+chea
+cheat
+chmod +x $env.HOME/scripts/cht.sh<\n>
+chmod +x $env.HOME| path join ***REMOVED***/scripts/cht.sh***REMOVED***<\n>
+chmod +x ($env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED***) 
+cls;nu
+cheat
+cht
+ch
+zo
+convert
+zo
+clear
+cls;nu
+cls
+cls;nu
+zoi
+cls
+b
+z
+cls
+shutdown now
+cls
+cclear
+clear
+cls
+ch
+convert 
+zo
+cls
+zo
+nu con***REMOVED***g.nu
+z
+$nu.con***REMOVED***g-path ..
+$nu.con***REMOVED***g-path 
+cls
+z
+z nu
+source atuin.nu
+ls
+ps
+ps where pid > 5000
+ps| where pid > 5000
+ps| where pid == 5000
+ps| where pid == 113
+ps| where # == 113
+ps| where ppid == 2 
+ps| where name == kworker/2:0
+cls
+cls;echo1
+cls;echo 1
+ls
+zo
+pwd
+z
+pwd
+z
+source env.nu
+z
+source zoxide.nu
+z
+nushell 
+nu --version 
+cls
+z
+z init 
+z init nushell
+z
+cls
+z
+z --version 
+zoxide query 
+zoxide query z
+pwd
+source atuin.nu
+source zoxide.nu
+z
+cls
+z
+z ***REMOVED***g
+z nu
+cls
+git 
+cl
+cls
+Git
+cls
+clear
+so
+list
+b
+b zoxide.nu
+cls
+so
+source atuin.nu
+so
+sc
+zc
+cls
+zc
+so
+zoi
+clear
+cls
+Git
+z dot
+mkdir nushell/.con***REMOVED***g/
+stow --target=/home/urizen nushell/
+cl
+cls
