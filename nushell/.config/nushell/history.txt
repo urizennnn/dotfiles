@@ -685,3 +685,112 @@ z
 z nu
 z
 z dot
+Git
+v
+z
+cls
+z eth
+cls
+curl localhost:4000
+z zi
+cls
+z
+z zi
+exit
+z dae
+yay
+exit
+yarn start:dev
+cls
+v
+z
+cls
+psql 
+psql -U postgres
+ps 
+ps | where name | str contains ***REMOVED***postgres***REMOVED***
+pacman -S postgres
+pacman -S pgsql
+yarn dev
+git commit -m ***REMOVED***updates***REMOVED*** --no-verify
+git push 
+sudo systemctl status postgres 
+sudo systemctl start postgres
+pacman -S postgresql
+sudo -u postgres initdb --locale $LANG -D /var/lib/postgres/data
+sudo passwd postgres<\n>
+sudo systemctl start postgres
+pg_ctl -D /var/lib/postgres/data -l log***REMOVED***le start
+sudo pg_ctl -D /var/lib/postgres/data -l log***REMOVED***le start
+su pg_ctl -D /var/lib/postgres/data -l log***REMOVED***le start
+su pg_ctl -D /var/lib/postgres/data -l log***REMOVED***l
+su    pg_ctl -D /var/lib/postgres/data -l log***REMOVED***le start
+sudo  pg_ctl -D /var/lib/postgres/data -l log***REMOVED***le start
+visudo
+sudo visduo
+_ visudo
+sudo visudo
+sudo nvim visudo
+sudo mkdir -p /run/postgresql<\n>sudo chown postgres:postgres /run/postgresql<\n>
+sudo su - postgres<\n>
+postgres://postgres:password@localhost:5432/your_
+psql -U urizen
+psql -U postgres
+cls
+exit
+nu
+exit
+nu
+exit
+z eth
+cls
+yarn dev
+yarn start:dev
+sudo systemctl start postgres
+psql -U postgres
+$env.LANG
+cls
+git
+Git
+exit
+sudo systemctl list-units --type=service | grep postgresql<\n>
+sudo -u postgres initdb --locale $env.LANG -D /var/lib/postgres/data<\n>
+ps aux | grep postgres<\n>
+ps aux | grep postgres
+ps | grep postgres
+ps | where name | str contains ***REMOVED***postgres***REMOVED***
+sudo rm -rf /var/lib/postgres/data<\n>sudo -u postgres initdb --locale $env.LANG -D /var/lib/postgres/data<\n>
+psql
+sudo mkdir -p /run/postgresql<\n>sudo chown postgres:postgres /run/postgresql<\n>
+psql
+ps
+ps | where name | str contains ***REMOVED***postgres***REMOVED***
+psql
+sudo systemctl enable postgresql<\n>
+sudo systemctl start postgresql
+sudo systemctl status postgresql
+sudo su - postgres
+cls
+yarn start:dev
+v
+ps | where name | str contains ***REMOVED***postgres***REMOVED***
+ps | where name
+ps | aelect  name
+ps | select  name
+shutdown now
+tmux
+z nu
+v
+tmux new -s 1
+z nu
+v
+z
+nvim .tmux.conf
+nvim .wezterm.lua
+printf ***REMOVED***\e[38;2;255;100;0mTRUECOLOR\e[0m\n***REMOVED***<\n>
+nvim .tmux.conf
+tmux
+tmux kill-server
+cls
+nvim .wezterm.lua
+z dot
