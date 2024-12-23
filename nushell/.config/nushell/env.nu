@@ -28,8 +28,8 @@ alias cls = clear
 alias zoi = zoxide-fzf-search
 alias zc = zoxide-query-complete
 alias z = zoxide
-alias . = nvim .
-alias pacman = sudo pacman --nocon***REMOVED***rm
+alias v = nvim .
+ alias pacman = sudo pacman --nocon***REMOVED***rm
 alias anime = ani-cli
 alias ch = my-script
 alias yay = yay --nocon***REMOVED***rm
@@ -74,7 +74,7 @@ def empty-trash [] {
 }
 # Custom prompt and environment settings
 def create_left_prompt [] {
-    let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
+    let dir = match (do --ignore-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
         '' => '~'
         $relative_pwd => ([~ $relative_pwd] | path join)

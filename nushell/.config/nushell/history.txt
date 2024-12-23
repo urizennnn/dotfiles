@@ -264,3 +264,335 @@ mkdir nushell/.con***REMOVED***g/
 stow --target=/home/urizen nushell/
 cl
 cls
+Git
+sudo nvim /etc/shells
+chsh -s /usr/bin/nu
+cls
+z nu
+.
+nvim.
+nvim .
+cls
+.
+nv
+.
+fastfetch
+cls
+.
+open=dot
+cls
+clear
+.
+..
+......
+z nu
+cls
+.
+nvim .
+v
+tmux
+tmux kill-server
+cls
+z
+cls
+tmux
+eza --tree --level=2 --long --icons --git
+cls
+z nu
+v
+z dae
+open package.json 
+open package.json  | name
+open package.json  | select name
+cls
+open package.json  | select scripts
+open package.json  | select scripts.start
+ls
+z nu
+v
+z dot
+z nu
+v
+cls
+open 
+open package.json | select dependencies 
+z dae
+cls
+open package.json | select dependencies
+z nu 
+v
+cls
+z dae
+open package.json | select dependencies
+open package.json | select dependencies.name
+open package.json | select dependencies.winston
+cls
+ls 
+open docker-compose-dev.yml
+z eth
+v
+z state
+z .loc
+z
+zi
+zo
+z eth
+cls
+.
+z zi
+.
+v
+src
+apps
+cls
+ls
+z apps
+l
+ls
+admin
+cls
+ls
+z admin 
+ls
+open package.json | select dependencies
+..
+l
+ls
+pwd
+z apps
+cls
+ls
+z customer 
+ls
+open package.json | select dependencies
+....
+z zi
+cls
+rg express
+yarn add express @types/express @nestjs/swagger class-transformer class-validator @nestjs/jwt 
+cargo run 
+open Cargo.lock
+open Cargo.toml
+chmod +x init.sh
+./init.sh
+z dae
+npm install @nestjs/typeorm typeorm pg
+git remote get-url origin 
+chmod +x delete.sh
+./delete.sh
+./init.sh
+ls
+chmod +x init.sh
+ls
+cls
+./
+./init.sh
+ls
+opem  .gitignore
+open .gitignore
+cls
+z nu
+source atuin.nu
+z eth
+z nu
+v
+cls
+z
+z eth
+cls
+open .gitignore |fzf
+cls
+ls -a
+chmod +x replace.sh
+cls
+./replace.sh
+mv node_modules/ ..
+ls
+cls
+tree
+mv ../node_modules/ .
+cl
+cls
+ls
+ls  | grep node
+ls  | where name =***REMOVED***node_modules***REMOVED***
+ls  | where name == ***REMOVED***node_modules***REMOVED***
+cls
+git status
+rm  -rf .git
+cls
+git init
+git remote add origin https://github.com/cyril-egbobiani/ETHRON.git
+git status
+cls
+chmod +x create.sh
+./create.sh
+rm node_modules/
+rm -rf node_modules
+nest start
+yarn start
+yarn 
+yarn start
+cls
+yarn add @nestjs/common @nestjs/core rxjs reflect-metadata
+yarn add typescript@latest --save-dev
+rm -rf package-lock.json
+cls
+yarn 
+yarn build
+ls 
+ls dist
+cls
+yarn start
+tsc 
+yarn start
+yarn build
+ls dist
+cls
+yarn build
+yarn start
+ls
+ls dist
+ls dist/modules/
+ls dist/modules/ | where name == ***REMOVED***main.ts***REMOVED***
+ls dist/modules/ | where name == ***REMOVED***main.js***REMOVED***
+yarn build
+yar start
+curl localhost:3000
+yarn start
+z dae
+.
+yarn add @nest/con***REMOVED***g
+yarn add @nest/con***REMOVED***g ; yarn add --save-dev @types/node
+yarn add @nestjs/con***REMOVED***g<\n>
+tmuc 
+z nu
+v
+cls
+cls
+yarn 
+jounrnalctl 
+cls
+cls
+.
+journalctl -p err<\n>
+sudo systemctl stop skdump 
+sudo systemctl stop kdump
+z nu
+cls
+source atuin.nu
+z
+cls
+yarn build
+yarn start
+yay
+yarn build
+cls
+yarn build
+yarn start
+cls
+yarn build
+yarn start:dev
+yarn add morgan helmet
+yarn add @types/morgan
+cls
+yarn add @types/morgan
+yay
+yarn start:dev
+yarn add @nestjs/il8n
+yarn add @nestjs/il8n
+yarn add nestjs/il8n
+cls
+yarn add nestjs/il8n
+yarn add @nestjs/i18n<\n>
+z app
+z zi
+cls
+ls
+z apps
+ls
+z admin 
+cls
+open package.json | select dependencies
+yarn add nestjs-i18n<\n>
+cls
+yarn start:dev
+cls
+...
+yarn add dotenv
+rg dotenv
+yarn start:dev
+ls
+z modules/
+cls
+ls
+ls ../ | where name == ***REMOVED***.env***REMOVED***
+ls ../ 
+ls ../.
+open ../.env
+..
+yarn start:dev
+cls
+z modules/
+ls -l ../.env
+.
+..
+yarn start:dev
+z dae
+curl localhost:3000
+curl localhost:4000
+cls
+cl
+anime -d 
+yay
+yarn start:dev
+cls
+yarn build
+yarn start
+cls
+yarn start:
+z dae
+yarn start:dev
+cls
+yarn add winston winston-daily-rotate-***REMOVED***le
+yarn start:dev
+yarn start:dev
+yarn add @types/winston 
+yarn add sprintf-js
+yarn add @types/sprintf-js
+yarn add chalk @types/chalk
+journalctl -p err<\n>
+cls
+cls
+.
+v
+cls
+journalctl -p err<\n>
+cls
+s
+ls
+ls | where name == ***REMOVED***zine-core-api***REMOVED***
+cls
+ps 
+ps | where ppid == 366
+cls
+z dae
+cls
+open package.json | to csv 
+open package.json 
+open package.json | select packageManager
+open package.json | select name and lint-staged
+open package.json | select name  lint-staged
+cls
+reboot
+cls
+z nu
+v
+cls
+tmux
+tmux new -s 1
+tmux kill-server
+z
+z nu
+Git
+z dot
