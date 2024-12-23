@@ -824,3 +824,5 @@ $env.con***REMOVED***g = {
         }
     ]
 }
+source ./env.nu
+source ./zoxide.nu

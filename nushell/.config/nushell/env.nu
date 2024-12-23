@@ -22,9 +22,13 @@ def zoxide-search-script [] {
 def zoxide-query-complete [] {
     zoxide query -ls | fzf --height=20 --reverse
 }
+def open-zshcon***REMOVED***g [] {
+    nvim ($env.HOME | path join ***REMOVED***.zshrc***REMOVED***)
+}
 
 ***REMOVED***
 alias cls = clear
+alias cfz = open-zshcon***REMOVED***g
 alias zoi = zoxide-fzf-search
 alias zc = zoxide-query-complete
 alias z = zoxide
@@ -92,7 +96,7 @@ $env.PROMPT_INDICATOR = {|| ***REMOVED***> ***REMOVED*** }
 $env.PROMPT_INDICATOR_VI_INSERT = {|| ***REMOVED***: ***REMOVED*** }
 $env.PROMPT_INDICATOR_VI_NORMAL = {|| ***REMOVED***> ***REMOVED*** }
 $env.PROMPT_MULTILINE_INDICATOR = {|| ***REMOVED***::: ***REMOVED*** }
+use std ***REMOVED***path add***REMOVED***
 
-source ./zoxide.nu
-# source ./fzf-tab.nu
+
 source ./atuin.nu

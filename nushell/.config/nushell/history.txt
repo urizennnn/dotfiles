@@ -596,3 +596,92 @@ z
 z nu
 Git
 z dot
+Git
+journalctl -b -1 -p err<\n>
+journalctl -b -2 -p err<\n>
+z
+cls
+tmux 
+z eth
+rm -rf .git
+curl localhost:4000
+z dae
+ls
+open package.json | select scripts
+yarn dev
+yarn
+nvm 
+node --version 
+z nu
+z
+ls | where name == ***REMOVED***nvm***REMOVED***
+ls | grep nvm
+ls  -a
+ls  -a | grep nvm
+$env.Home
+ls .nvm/
+ls .nvm/ | grep  bin
+open .zshrc
+sh $env.home/.nvm/nvm.sh
+v .nvm
+pacman -S nodejs@18.18.0
+yarn start:dev
+yarn dev
+cls
+yarn dev
+cls
+yarn dev
+cls
+yarn dev
+cls
+yarn dev
+cls
+yarn dev
+cls
+yarn dev
+cls
+git commit -m ***REMOVED***chore:kudi service complete***REMOVED*** --no-verify
+git push 
+git commit -m ***REMOVED***chore:kudi service complete***REMOVED*** --no-verify
+git push
+yarn start:dev
+shutdown now
+z nu
+cd .con***REMOVED***g
+cd nushell/
+cls
+z
+z nu
+rci
+exit
+cfz
+cls
+clear
+z
+reboot
+tmux
+nvim /.local/share/atuin/init.nu
+ls .local/share/atuin
+v
+z share
+z loc
+z .local
+z sh
+z lov
+z loc
+z 
+cls
+z .local/share/atuin/
+ls
+v
+z nu
+z
+cls
+z
+cls
+z
+cls
+z
+z nu
+z
+z dot
