@@ -1129,3 +1129,14 @@ cls
 v
 cls
 z dot
+Git
+ls
+cls
+mkdir startship/.con***REMOVED***g/
+z ***REMOVED***g
+z starship/
+cls
+..
+mv starship/ ../dot***REMOVED***les/startship/.con***REMOVED***g/
+stow --target=/home/urizen startship/
+ls | where name == ***REMOVED***starship***REMOVED***
