@@ -101,7 +101,7 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| ***REMOVED***::: ***REMOVED*** }
 use std ***REMOVED***path add***REMOVED***
 
 
-# $env.STARSHIP_CONFIG = /home/urizen/.con***REMOVED***g/starship/con***REMOVED***g.toml
+$env.STARSHIP_CONFIG = ***REMOVED***/home/urizen/.con***REMOVED***g/starship/con***REMOVED***g.toml***REMOVED***
 
 path add /usr/bin/golangci-lint
 mkdir ~/.cache/starship
