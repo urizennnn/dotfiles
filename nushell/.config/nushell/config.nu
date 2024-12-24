@@ -826,3 +826,7 @@ $env.con***REMOVED***g = {
 }
 source ./env.nu
 source ./zoxide.nu
+source ./atuin.nu
+
+
+use ~/.cache/starship/init.nu

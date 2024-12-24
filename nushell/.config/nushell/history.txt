@@ -794,3 +794,330 @@ tmux kill-server
 cls
 nvim .wezterm.lua
 z dot
+Git
+_ tcpdump
+sudo tcpdump
+z
+cls
+z
+cl
+cls
+go
+mkdir instashop
+z instashop/
+go mod init
+gh repo clone https://github.com/StudySync-0/Study-Sync-Backend.git
+go mod init github.com/urizennnn/instashop
+z study-Sync/
+ls
+z
+z Study-Sync-Backend/
+ls
+z
+rm -rf Study-Sync-Backend/
+cls
+exit
+open app.env
+cls
+ls
+go get -u github.com/gin-gonic/gin
+Git
+z
+mkdir git
+mv .git/ ../git/
+cp -r . ../instashop/
+ls
+cls
+ls
+ls study-Sync/
+z study-Sync/
+cp -r . ..
+cp -r . ../
+cp -r . ../../study-Sync/
+z
+z study-Sync/
+ls
+..
+ls
+ls study-Sync/
+rm  -rf study-Sync/
+cp -r  * ../instashop/
+ls
+ls
+z
+mv git/.git/ study-Sync/
+cls
+exit
+git init
+go run main.go
+cls
+ls
+z eth
+cls
+z nu
+z
+z nu
+z
+cls
+z
+z nu
+source atuin.nu
+v
+cls
+z
+cls
+exit
+psql
+cls
+ls
+go run main.go
+cls
+$PATH
+v
+z eth
+curl localhost:4000
+yarn start:dev
+exit
+nu
+exit
+v
+tmux new -s 1
+shutdown now
+cls
+ls
+ls study-Sync/
+rm -rf study-Sync/
+cls
+ls
+open main.go
+cls
+ls -a |where name | stc contains ***REMOVED***go***REMOVED***
+ls -a |where name | str contains ***REMOVED***go***REMOVED***
+ls -a 
+ls -a reverse
+ls -a| reverse
+which golangci-lint<\n>
+pacman -S golangci-lint
+z zy
+yay -S golangci-lint-bin<\n>
+which golangci-lint<\n>
+xclip
+which golangci-lint | select path | xclip -selection clipboard
+which golangci-lint | select path
+z nu
+v
+go build main.go
+./main
+exit
+yarn start:dev
+go build main.go
+./main
+pacman -S redis-server
+pacman -S redis
+& redis-server
+&redis-server
+redis-server &
+sudo systemctl status redis
+sudo systemctl enable redis
+sudo systemctl start redis
+redis-server &
+psql -U postgres
+redis-server 
+./main
+go mod init github.com/urizennnn/instashop
+go run main.go
+v
+v
+go run main.go
+cls
+z
+shutdown now
+tmux
+z in
+z
+z inst
+go run main.go
+psql -U postgres
+go run main.go
+exit
+go run main.go
+cls
+redis-server 
+ps
+ps aux
+cls
+netstat -tuln 
+sudo nvim /etc/redis/redis.conf
+exit
+redis-server 
+sudo systemctl restart redis<\n>
+cls
+go run main.go
+shutdown now
+cls
+exit
+go run main.go
+cls
+go run main.go
+pacman -S docker
+docker
+sudo systemctl enable docker
+sudo systemctl start docker
+docker
+ps
+ps | select name| str contains ***REMOVED***docker***REMOVED***
+ps | where name == ***REMOVED***docker***REMOVED***
+ps | select name | grep docker
+cls
+docker compose up
+lzd
+lazydocker
+z nu
+v
+z inst
+cls
+lzd
+pacman -S docker-compose-plugin
+$DOCKER_CONFIG
+open /etc/docker/daemon.json
+b /lib/systemd/system/docker.service<\n>
+yay -S docker-compose<\n>
+docker compose up
+sudo usermod -aG docker $USER<\n>
+sudo usermod -aG docker $env.USER<\n>
+docker-compose up
+cls
+docker-compose up
+sudo systemctl status docker
+docker-compose up
+cls
+docker info
+lzd
+redis-server 
+sudo lzd
+lzd
+sudo lzd
+lzd
+z nu
+v
+cls
+z inst
+ls
+vlc `Bleach Sennen Kessenhen Soukokutan Episode 12.mp4`
+cls
+lzd
+psql -U postgres
+cls
+_ docker-compose up
+cls
+_ docker-compose up
+s
+curl localhost:8019
+lzd
+cls
+docker-compose up
+cls
+docker-compose up
+open docker-compose.yml
+cls
+lzd
+docker-compose up
+cls
+docker-compose up
+cls
+psql -U postgres
+go run main.go
+docker-compose up
+cls
+docker-compose up
+cls
+go run main.go
+lzd
+cls
+go run main.go
+ping 127.0.0.1:1234
+curl 127.0.0.1:1234
+cls
+go run main.go
+cls
+ginit 
+z nu
+v
+z inst
+cls
+ginit
+cls
+ginit
+ginit https://github.com/urizennnn/instashop.git
+ginit ***REMOVED***https://github.com/urizennnn/instashop.git***REMOVED***
+z
+cls
+mkdir .google/.id.txt
+v .google/.id.txt/
+cls
+git push -u origin main 
+git push -u origin master
+rm -rf .git
+git init 
+cls
+git remote add origin https://github.com/urizennnn/instashop.git
+git add .
+Git
+pacman -S starship
+z nu
+v
+starship
+starship init
+starship init nushell
+v
+nvim .
+v
+z
+z .cache
+ls 
+ls | where name == ***REMOVED***starship***REMOVED***
+v starship/
+z starship/
+v
+z nu
+cls
+v
+cls
+z ***REMOVED***g
+ls | where name == ***REMOVED***starship***REMOVED***
+mkdir startship
+z starship/
+mv startship/ starship
+cls
+z starship
+cls
+touch con***REMOVED***g.toml
+v
+z nu
+v
+cls
+$env.STARSHIP_CONFIG
+nvim .
+cls
+$env.STARSHIP_CONFIG
+cls
+v
+z
+cls
+z
+z nu
+cls
+v
+cls
+z
+z nu
+v
+cls
+z
+z nu
+v
+z
+z nu
+z ***REMOVED***g
+cls
+z dot

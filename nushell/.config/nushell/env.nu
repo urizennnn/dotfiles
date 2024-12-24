@@ -42,11 +42,13 @@ alias clear-ram = clear-ram
 alias tmuxconf = tmuxconf
 alias Git = lazygit
 alias ginit = ginit 
+alias _ = sudo
 alias del = trash-put
 alias restore = trash-restore
 alias list = trash-list
 alias empty = trash-empty
 alias convert = convert-audio-script
+alias lzd = lazydocker
 alias zo = zoxide-search-script
 
 def clear-ram [] {
@@ -58,7 +60,7 @@ def tmuxconf [] {
 }
 
 def ginit [] {
-    ($env.HOME | path join ***REMOVED***scripts/init.sh***REMOVED***)
+sh    ($env.HOME | path join ***REMOVED***scripts/init.sh***REMOVED***)
 }
 
 def del-trash [] {
@@ -99,4 +101,9 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| ***REMOVED***::: ***REMOVED*** }
 use std ***REMOVED***path add***REMOVED***
 
 
-source ./atuin.nu
+# $env.STARSHIP_CONFIG = /home/urizen/.con***REMOVED***g/starship/con***REMOVED***g.toml
+
+path add /usr/bin/golangci-lint
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+zoxide init nushell | save -f ./zoxide.nu
