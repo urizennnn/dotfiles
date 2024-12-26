@@ -827,6 +827,7 @@ $env.con***REMOVED***g = {
 source ./env.nu
 source ./zoxide.nu
 source ./atuin.nu
+$env.PROMPT_MULTILINE_INDICATOR = {|| ***REMOVED***::: ***REMOVED*** }
 
 
 use ~/.cache/starship/init.nu

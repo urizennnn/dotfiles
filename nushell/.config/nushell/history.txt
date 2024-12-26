@@ -1140,3 +1140,642 @@ cls
 mv starship/ ../dot***REMOVED***les/startship/.con***REMOVED***g/
 stow --target=/home/urizen startship/
 ls | where name == ***REMOVED***starship***REMOVED***
+Git
+cls
+z zy
+z inst
+cls
+fastfetch
+cls
+z eth
+docker-compose up
+lzd
+cls
+exit
+cls
+l\d
+docker-compose up
+cls
+open app.env
+docker-compose up
+cls
+lzd
+cls
+ping 127.0.0.1:1234
+ping 127.0.0.1:5432
+curl 127.0.0.1:5432
+ps
+ps | select name | grep postgres
+ps | select name status | grep postgres
+ps | select name status | where name == ***REMOVED***postgres***REMOVED***
+cls
+ps | select name status | where name == ***REMOVED***postgres***REMOVED***
+ps |  where name == ***REMOVED***postgres***REMOVED***
+sudo systemctl restart postgres
+sudo systemctl restart postgresql
+ps |  where name == ***REMOVED***postgres***REMOVED***
+cls
+sudo systemctl status postgresql
+z eth
+cls
+zycls
+cls
+cargo run 
+docker-compose up
+opem docker-compose.yml
+open docker-compose.yml
+cls
+docker-compose up
+cls
+docker-compose up
+cls
+docker-compose up
+lcs
+cls
+docker-compose up
+cls
+docker-compose up
+cls
+docker-compose up
+cls
+docker-compose up
+cls
+exit
+docker-compose up
+cls
+fzf --init
+fzf init
+fzf
+con***REMOVED***g reload
+cls
+con***REMOVED***g
+con***REMOVED***g env
+z nu
+v
+nvim .
+cls
+con***REMOVED***g env
+con***REMOVED***g con***REMOVED***g#
+con***REMOVED***g con***REMOVED***g
+con***REMOVED***g
+con***REMOVED***g flatten
+cls
+exit
+nu
+exit
+nu
+exit
+docker-compose up
+cls
+ls
+cls
+exit
+con***REMOVED***g nu
+z nu
+v
+cls
+exit
+nu
+exit
+cls
+pacman -S doctl 
+doctl
+doctl serverless connect
+doctl auth init
+doctl serverless connect
+doctl serverless install
+doctl serverless connect
+doctl serverless deploy
+doctl serverless deploy .
+touch project.yml
+doctl serverless deploy .
+doctl serverless deploy . --path .
+doctl serverless deploy . --project .
+z
+doctl serverless deploy ./instashop/
+z inst
+cls
+doctl serverless deploy .
+doctl serverless deploy instashop --remote-build<\n>
+doctl serverless deploy . --remote-build
+z
+doctl serverless init --language go testing
+z testing
+ls
+open project.yml
+doctl serverless deploy . --remote-build
+doctl serverless functions list<\n>
+https://cloud.digitalocean.com/account/api/tokens
+doctl serverless deploy . --remote-build
+cls
+v
+z
+cls
+mv instashop/project.yml study-Sync/
+z stu
+cls
+doctl serverless deploy . --remote-build
+doctl serverless deploy . --remote-build --env .env
+doctl serverless deploy . --remote-build --env app.env
+exit
+nu
+go get github.com/dgrijalva/jwt-go
+v
+docker-compose up
+go run main.go
+export ENV = true
+$env.ENV = ***REMOVED***true***REMOVED***<\n>
+$env.ENV
+go run main.go
+cls
+exit
+clear-ram
+go run main.go
+cls
+go run main.go
+cls
+go run main.go
+cls
+go run main.go
+cls
+go run main.go
+cls
+go run main.go
+cls
+go run main.go
+cls
+tmux
+ssh-keygen
+open .ssh/id_ed25519.pub
+ssh@root:159.223.183.217
+cls
+ping 159.223.183.217
+ssh root@159.223.183.217
+ssh urizen@159.223.183.217
+open .ssh/id_ed25519.pub
+ssh-copy-id urizen@159.223.183.217
+ssh urizen@159.223.183.217
+ssh -p 2222 urizen@159.223.183.217
+ssh -p 2222 urizen@159.223.183.217 -v
+ssh urizen@159.223.183.217 -v
+ssh root@159.223.183.217
+ssh root@159.223.183.217 -v
+exit
+ssh-copy-id -f urizen@159.223.183.217
+ssh root@159.223.183.217 -v
+cls
+ssh root@159.223.183.217 
+ssh root@159.223.183.217
+z .ssh
+v
+z
+ssh root@159.223.183.217
+z .ssh
+rm -rf known_hosts
+rm -rf known_hosts.old
+z
+ssh root@159.223.183.217
+exit
+go version
+ls study-Sync/
+z study-Sync/
+cls
+open app.env
+docker-compose up
+z inst
+v
+docker-compose up
+v
+exit
+v
+cls
+z
+ssh root@159.223.183.217
+ssh root@159.223.183.217 -p 2222
+ssh root@159.223.183.217 -p 2222
+cls
+ssh root@159.223.183.217 -p 2222
+ssh urizen@159.223.183.217 -p 2222
+ssh urizen@159.223.183.217 
+ssh-copy-id -f urizen@159.223.183.217
+z .ssh
+rm -rf known_hosts.old
+rm -rf known_hosts
+z
+cls
+ssh urizen@159.223.183.217  -p 2222
+z .ssh
+rm -rf known_hosts
+rm -rf known_hosts.old
+z
+cls
+ssh urizen@159.223.183.217  -p 2222
+ssh root@159.223.183.217  -p 2222
+ssh urizen@159.223.183.217  -p 2222
+ssh root@159.223.183.217  -p 2222
+ssh-copy-id -i ~/.ssh/id_ed25519.pub urizen@159.223.183.217 -p 2222<\n>
+ssh-copy-id -i ~/.ssh/id_ed25519.pub urizen@159.223.183.217 -p 2222
+ssh-copy-id urizen@159.223.183.217 -p 2222
+cat .ssh/id_ed25519.pub
+ssh root@159.223.183.217  -p 2222
+cls
+ssh urizen@159.223.183.217  -p 2222
+ssh root@159.223.183.217  -p 2222
+exit
+cls
+ssh root@159.223.183.217  -p 2222
+cat study-Sync/app.env
+v
+z stu
+z inst
+ssh root@159.223.183.217  
+shutdown now
+tmux
+ssh root@159.223.183.217  
+cls
+ssh root@159.223.183.217  
+ssh root@159.223.183.217 -p 2222
+ssh urizen@159.223.183.217 -p 2222
+z .ssh
+rm -rf known_hosts.
+rm -rf known_hosts
+rm -rf known_hosts.old
+z
+cls
+ssh urizen@159.223.183.217 -p 2222
+ssh root@159.223.183.217 -p 2222
+wl-cpo
+wl-copy
+wl-copy --version
+ssh root@159.223.183.217 
+ssh-copy-id urizen@159.223.183.217 
+ssh-copy-id urizen@159.223.183.217 
+exit
+ssh-copy-id urizen@159.223.183.217
+cat .ssh/id_ed25519.pub
+cat .ssh/id_ed25519.pub | wl-copy
+ssh root@159.223.183.217 
+cls
+ssh urizen@159.223.183.217 
+ssh root@159.223.183.217 
+ssh urizen@159.223.183.217 
+ssh urizen@159.223.183.217
+con***REMOVED***g env
+vps
+ssh urizen@159.223.183.217
+con***REMOVED***g env
+clear-ram
+cls
+open study-Sync/app.env
+open study-Sync/app.env | wl-copy
+con***REMOVED***g env
+exit
+ssh urizen@159.223.183.217
+cls
+cat .ssh/id_ed25519.pub | wl-copy
+ssh urizen@138.197.128.225
+con***REMOVED***g env
+ssh root@138.197.128.225
+cls
+open study-Sync/app.env | wl-copy
+ssh root@138.197.128.225
+vps
+cls
+tmux help
+tmuc --help
+tmux --help
+tmux attach
+vps
+tmux
+vps
+docker-compose --versin
+docker-compose --version
+shutdown now
+cls
+vps
+z eth
+rm -rf .git
+git init
+git remote add origin https://github.com/Ethron-Payment/ethron-backend.git
+git push -u origin main
+exit
+cls
+z stu
+Git
+vps
+shutdown now
+tmux
+tmux new -s ssh
+exit
+z stu
+Git
+docker-compose up
+z inst
+go get github.com/dgrijalva/jwt-go
+exit
+v
+docker tag urizen/study-sync-backend-study_sync:prod
+docker tag urizen/study-sync-backend-study_sync:prod urizen/study-sync-backend-study_sync:prod
+docker push urizen/study-sync-backend-study_sync:prod
+git push
+vps
+z inst
+go run main.go
+curl 127.0.0.1:8019
+v
+docker-compose up
+tmux
+vps
+cls
+z stu
+cls
+exit
+v
+c
+docker-compose up
+docker ps
+curl 127.0.0.1:8019
+cls
+docker compose up
+docker compose up --remove-orphans
+go run main.go
+docker compose up --remove-orphans
+v
+cls
+lzd
+docker compose up 
+docker compose up
+cls
+docker compose up
+cls
+docker compose up
+curl 127.0.0.1:8019
+exit
+docker compose up
+cls
+docker compose up
+vps
+cls
+docker compose up
+clear-ram
+journalctl -err
+cls
+cls
+z ..
+cls
+vps
+cls
+docker compose up
+docker-compose down --remove-orphans
+docker-compose up --build
+v
+yay
+docker-compose up --build
+tmux
+shutdown now
+tmux
+z inst
+cls
+docker-compose up --build
+exit
+tmuxconf
+exit
+tmuxconf
+exit
+tmux new -s instashop
+tmux kill-server
+cls
+cls
+docker-compose up 
+docker-compose up --remove-orphans 
+docker-compose up
+lzd
+cls
+redis-server &
+redis
+go export $env.ENV = true
+$env.ENV
+go run main.go
+printenv
+printenv| grep ENV
+atac
+cls
+atac
+cls
+go run main.go
+cls
+con***REMOVED***g env
+cls
+atac
+cls
+docker-compose up --build
+pacman -S cpupower
+pacman -Rns cpupower;pacman -S powertop
+sudo powertop<\n>
+sudo cp /usr/lib/systemd/system/powertop.service /etc/systemd/system/<\n>sudo systemctl enable powertop --now<\n>
+sudo pacman -S cpupower<\n>
+sudo cpupower frequency-set -g powersave<\n>
+yay -S auto-cpufreq<\n>
+sudo systemctl enable auto-cpufreq --now<\n>
+sudo auto-cpufreq --force-battery<\n>
+sudo auto-cpufreq --force
+sudo auto-cpufreq 
+sudo auto-cpufreq --force powersave
+reload
+sudo systemctl daemon-reload
+docker-compose up --build
+v
+docker-compose up --build
+cls
+psql -U postgres
+cls
+sudo powertop
+sudo systemctl daemon-reload
+pacman -Rns powertop
+sudo systemctl daemon-reload
+docker-compose up --build
+cls
+lzd
+lsusb
+tmux new -s instashop
+shutdown now
+cls
+exit
+cls
+lzd
+docker-compose up 
+yay
+docker-compose up
+v
+docker-compose up
+cls
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' instashop
+lzd
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' instashop-instashop-1
+pign 172.18.0.4
+ping 172.18.0.4
+docker-compose up
+lzd
+# Get container IP<\n>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name<\n><\n># Add to /etc/hosts<\n>sudo echo ***REMOVED***172.18.0.4 postgres***REMOVED*** >> /etc/hosts
+# Get container IP<\n>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' instashop-instashop-1<\n><\n># Add to /etc/hosts<\n>sudo echo ***REMOVED***172.18.0.4 postgres***REMOVED*** >> /etc/hosts
+sds\
+ls \
+cls
+z nu
+$ENV
+$editor
+cls
+\
+echo ***REMOVED***jresre<\n>raejferl<\n>gekrjlge<\n>jelrk<\n>***REMOVED***
+cls
+z
+v
+z
+cls
+z nu
+$nv.PROMPT_MULTILINE_INDICATOR
+$env.PROMPT_MULTILINE_INDICATOR
+v
+$env.PROMPT_MULTILINE_INDICATOR
+pacman -Syu
+zig
+openvnpn
+pacman -S openvnpn
+pacman -S openvpn
+z do
+z doc
+cls
+openvpn vp.ovpn
+pacman -S zig
+z doc
+gh repo clone https://github.com/ghostty-org/ghostty.git
+git con***REMOVED***g --global http.postBuffer 5242880000
+gh repo clone https://github.com/ghostty-org/ghostty.git
+ls
+unzip ghostty-main.zip -d ghostyy
+z ghostyy/
+cls
+ls
+z ghostty-main/
+ls
+zig build -p $HOME/.local -Doptimize=ReleaseFast<\n>
+zig build -p $env.HOME/.local -Doptimize=ReleaseFast
+cls
+z
+rm -rf ghostty-main.zip ghostyy/
+unzip ghostty-1.0.0.zip -d ghostty
+z ghostty/ghostty-1.0.0/
+cls
+touch PKGBUILD
+v
+makepg -si
+makepkg -si
+z tmux
+z
+tmux
+tmuxconf
+exit
+Icls
+rm -rf ghostty/ ghostty-1.0.0.zip ghostty-pkg/
+exit
+yay -S ghostty
+cd
+cls
+zig
+cls
+exit
+yay -S ghostty
+exit
+ghostty --version
+z doc
+cls
+z
+cl
+cls
+z do
+z doc
+ls
+pacman -Rns foot 
+z
+cls
+ghostty +list-fonts
+ghostty +list-fonts | ***REMOVED***ra
+ghostty +list-fonts | grep ***REMOVED***ra
+open ghostty +list-fonts
+cls
+ghostty +list-fonts 
+ghostty +list-themes
+cls
+z ***REMOVED***g
+mkdir ghostty
+z ghostty/
+cls
+touch con***REMOVED***g
+v
+ghostty +list-themes
+tmux
+exit
+cls
+cls
+con***REMOVED***g env
+cls
+tmux
+exit
+cls
+con***REMOVED***g env
+z nu
+cls
+v 
+cls
+exit
+nu
+exit
+tmux
+exit
+cls
+cls
+z ghostty/
+z ghostty
+v
+exit
+z ghot
+z ghost
+cls
+v
+exi
+exit
+tmux
+exit
+cls
+cls
+cls
+v
+del con***REMOVED***g
+touch con***REMOVED***g
+z dot
+cls
+mkdir ghostty/.con***REMOVED***g/
+mv ../.con***REMOVED***g/ghostty/ ghostty/
+v
+\
+z
+cd
+cls
+z ghost
+stow --target=/home/urizen ghostty/
+z ghost
+z ***REMOVED***g
+cls
+mv ghostty/ghostty/ ../.con***REMOVED***g/
+z ghostty/
+z
+cls
+ls ghostty/
+ls -a ghostty/.con***REMOVED***g/
+ls -a ghostty/
+cls
+mv ../.con***REMOVED***g/ghostty/ ghostty/.con***REMOVED***g/
+stow --target=/home/urizen ghostty/
+z ghostty
+ls
+ls -la con***REMOVED***g

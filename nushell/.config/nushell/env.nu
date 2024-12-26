@@ -26,8 +26,18 @@ def open-zshcon***REMOVED***g [] {
     nvim ($env.HOME | path join ***REMOVED***.zshrc***REMOVED***)
 }
 
+def switch_shell [] {
+    /usr/bin/zsh
+}
+
+def vps [] {
+    ssh urizen@138.197.128.225
+}
+
 ***REMOVED***
 alias cls = clear
+alias vps = vps
+alias switch = switch_shell
 alias cfz = open-zshcon***REMOVED***g
 alias zoi = zoxide-fzf-search
 alias zc = zoxide-query-complete
@@ -102,8 +112,10 @@ use std ***REMOVED***path add***REMOVED***
 
 
 $env.STARSHIP_CONFIG = ***REMOVED***/home/urizen/.con***REMOVED***g/starship/con***REMOVED***g.toml***REMOVED***
+$env.EDITOR = ***REMOVED***nvim***REMOVED***
+
 
 path add /usr/bin/golangci-lint
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
-zoxide init nushell | save -f ./zoxide.nu
+zoxide init nushell | save -f ~/.con***REMOVED***g/nushell/zoxide.nu
