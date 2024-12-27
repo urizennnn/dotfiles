@@ -1,117 +1,203 @@
-// Inspired by Catnap
 {
-    ***REMOVED***$schema***REMOVED***: ***REMOVED***https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json***REMOVED***,
-    ***REMOVED***logo***REMOVED***: {
-        ***REMOVED***padding***REMOVED***: {
-            ***REMOVED***top***REMOVED***: 2,
-            ***REMOVED***left***REMOVED***: 2
-        }
+  ***REMOVED***$schema***REMOVED***: ***REMOVED***https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json***REMOVED***,
+  ***REMOVED***logo***REMOVED***: {
+    ***REMOVED***type***REMOVED***: ***REMOVED***kitty***REMOVED***,
+    ***REMOVED***source***REMOVED***: ***REMOVED***/home/sametaor/.con***REMOVED***g/fastfetch/logos/Fastfetcharch.png***REMOVED***,
+    ***REMOVED***width***REMOVED***: 40,
+    ***REMOVED***padding***REMOVED***: {
+      ***REMOVED***left***REMOVED***: 1,
+      ***REMOVED***right***REMOVED***: 1
+    }
+  },
+  ***REMOVED***general***REMOVED***: {
+    ***REMOVED***thread***REMOVED***: true,
+    ***REMOVED***playerName***REMOVED***: ***REMOVED***mpv***REMOVED***
+  },
+  ***REMOVED***display***REMOVED***: {
+    ***REMOVED***disableLinewrap***REMOVED***: false,
+    ***REMOVED***separator***REMOVED***: ***REMOVED*** ❯ ***REMOVED***,
+    ***REMOVED***color***REMOVED***: {
+      ***REMOVED***separator***REMOVED***: ***REMOVED***cyan***REMOVED***
     },
-    ***REMOVED***display***REMOVED***: {
-        ***REMOVED***separator***REMOVED***: ***REMOVED*** ***REMOVED***
+    ***REMOVED***constants***REMOVED***: [
+      ***REMOVED***━━━━━━━━━━━━━━━━━━━━━━━***REMOVED***,
+      ***REMOVED***╽\u001b[51C╽\u001b[50D***REMOVED***,
+      ***REMOVED***┃\u001b[51C┃\u001b[52D***REMOVED***,
+      ***REMOVED***╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌***REMOVED***,
+      ***REMOVED***╿\u001b[51C╿\u001b[52D***REMOVED***
+    ],
+    ***REMOVED***temp***REMOVED***: {
+      ***REMOVED***unit***REMOVED***: ***REMOVED***C***REMOVED***,
+      ***REMOVED***ndigits***REMOVED***: 1
     },
-    ***REMOVED***modules***REMOVED***: [
-        ***REMOVED***break***REMOVED***,
-        {
-          ***REMOVED***type***REMOVED***: ***REMOVED***title***REMOVED***,
-          ***REMOVED***format***REMOVED***: ***REMOVED***{6}{7}{8}***REMOVED***
-        },
-        ***REMOVED***break***REMOVED***,
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***╭───────────╮***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#31}󰌢 Machine {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***host***REMOVED***,
-            ***REMOVED***format***REMOVED***: ***REMOVED***{1}***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#34} Distro  {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***os***REMOVED***,
-            ***REMOVED***format***REMOVED***: ***REMOVED***{2} {8}***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#34} Kernel  {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***kernel***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#34} OS Age  {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***command***REMOVED***,
-            ***REMOVED***text***REMOVED***: ***REMOVED***birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#36} WM      {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***wm***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#33}󰅐 Uptime  {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***uptime***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#33}󰏖 Pkgs    {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***packages***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#32} Shell   {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***shell***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#32} Term    {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***terminal***REMOVED***
-        },
-        {
-          ***REMOVED***key***REMOVED***: ***REMOVED***│ {#32} Font    {#keys}│***REMOVED***,
-          ***REMOVED***type***REMOVED***: ***REMOVED***terminalfont***REMOVED***
-        },
-        {
-          ***REMOVED***key***REMOVED***: ***REMOVED***│ {#31} Display {#keys}│***REMOVED***,
-          ***REMOVED***type***REMOVED***: ***REMOVED***display***REMOVED***,
-          ***REMOVED***format***REMOVED***: ***REMOVED***{1}x{2} {3}Hz [{6}]***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#35}󰍛 CPU     {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***cpu***REMOVED***,
-            ***REMOVED***format***REMOVED***: ***REMOVED***{1}***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#35}󰢮 GPU     {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***gpu***REMOVED***,
-            ***REMOVED***format***REMOVED***: ***REMOVED***{1} {2} [{6}]***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#35}󰑭 Memory  {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***memory***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#34}󰉉 Disk    {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***disk***REMOVED***,
-            ***REMOVED***folders***REMOVED***: ***REMOVED***/***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#34}󰉉 Disk    {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***disk***REMOVED***,
-            ***REMOVED***folders***REMOVED***: ***REMOVED***/home***REMOVED***
-        },
-        // {
-        //     ***REMOVED***key***REMOVED***: ***REMOVED***│ {#36}󰩟 network {#keys}│***REMOVED***,
-        //     ***REMOVED***type***REMOVED***: ***REMOVED***localip***REMOVED***,
-        //     ***REMOVED***format***REMOVED***: ***REMOVED***{ipv4} ({ifname})***REMOVED***
-        // },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***├───────────┤***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***│ {#39} colors  {#keys}│***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***colors***REMOVED***,
-            ***REMOVED***symbol***REMOVED***: ***REMOVED***circle***REMOVED***
-        },
-        {
-            ***REMOVED***key***REMOVED***: ***REMOVED***╰───────────╯***REMOVED***,
-            ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***
-        },
-        ***REMOVED***break***REMOVED***,
-        ***REMOVED***break***REMOVED***
-    ]
+    ***REMOVED***bar***REMOVED***: {
+      ***REMOVED***charElapsed***REMOVED***: ***REMOVED***█***REMOVED***,
+      ***REMOVED***charTotal***REMOVED***: ***REMOVED***▒***REMOVED***,
+      ***REMOVED***borderLeft***REMOVED***: ***REMOVED******REMOVED***,
+      ***REMOVED***borderRight***REMOVED***: ***REMOVED******REMOVED***,
+      ***REMOVED***width***REMOVED***: 10
+    },
+    ***REMOVED***freq***REMOVED***: {
+      ***REMOVED***ndigits***REMOVED***: 1
+    },
+    ***REMOVED***percent***REMOVED***: {
+      ***REMOVED***type***REMOVED***: 9,
+      ***REMOVED***ndigits***REMOVED***: 1,
+      ***REMOVED***color***REMOVED***: {
+        ***REMOVED***green***REMOVED***: ***REMOVED***green***REMOVED***,
+        ***REMOVED***red***REMOVED***: ***REMOVED***red***REMOVED***,
+        ***REMOVED***yellow***REMOVED***: ***REMOVED***yellow***REMOVED***
+      }
+    }
+  },
+  ***REMOVED***modules***REMOVED***: [
+    {
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#34}╭╼{$1} 󰫃 {$1}╾╮***REMOVED***
+    },
+    {
+      ***REMOVED***type***REMOVED***: ***REMOVED***title***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#1}{#keys}{$2}{6} {7} {8}***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***italic_***REMOVED***
+    },
+    {
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#1}{#keys}┠╌{$4} 󰫄 {$4}╌┨***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#34}󰨇 Distro***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***os***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{3} {12}***REMOVED***
+    },
+    {
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***,
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#32}󰾰 Device***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***host***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{5} {2} {3}***REMOVED***
+    },
+    {
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***,
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#31}󰒓 Kernel***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***kernel***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1} {2} ({4})***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#33}󱦟 Uptime***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***uptime***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}d, {2}:{3}hrs***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#35} Shell ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***shell***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{6} {4}***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#36}󰏖 Pkgs  ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***packages***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}***REMOVED***
+    },
+    {
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#1}{#keys}┠╌{$4} 󰫅 {$4}╌┨***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#34}󱎴 Res   ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***display***REMOVED***,
+      ***REMOVED***compactType***REMOVED***: ***REMOVED***original-with-refresh-rate***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#32} WM    ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***wm***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{2} ({3})***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#31}󰍂 LM    ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***lm***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#33}󰔎 Theme ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***theme***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#35} Icons ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***icons***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#36} Term  ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***terminal***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#38}󰛖 Fonts ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***font***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}, {2}***REMOVED***
+    },
+    {
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#1}{#keys}┠╌{$4} 󰫆 {$4}╌┨***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#34} CPU   ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***cpu***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}({5})***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#32}󰍛 GPU   ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***gpu***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1} {2}({6})***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#31} Mem   ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***memory***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}/{2} {4}***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#33} Disk  ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***disk***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1}/{2} {13}***REMOVED***,
+      ***REMOVED***outputColor***REMOVED***: ***REMOVED***bright_***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#35} Files ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***disk***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{4}/{5} {14}***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#36}󱊣 Batt  ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***battery***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{1} ({4}) {10}***REMOVED***
+    },
+    {
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#1}{#keys}┠╌{$4} 󰫇 {$4}╌┨***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#32} Wttr  ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***command***REMOVED***,
+      ***REMOVED***shell***REMOVED***: ***REMOVED***/bin/sh***REMOVED***,
+      ***REMOVED***text***REMOVED***: ***REMOVED***curl 'wttr.in/Noida?format=%C+%t'***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$3}{#35}󰦖 Time  ***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***command***REMOVED***,
+      ***REMOVED***shell***REMOVED***: ***REMOVED***/bin/sh***REMOVED***,
+      ***REMOVED***text***REMOVED***: ***REMOVED***date '+%H:%M 󰛡 %d-%m-%Y'***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED***{$5}{#31} Colors***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED*** {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39} ***REMOVED***
+    },
+    {
+      ***REMOVED***key***REMOVED***: ***REMOVED*** ***REMOVED***,
+      ***REMOVED***format***REMOVED***: ***REMOVED***{#34}╰╼{$1} 󰫈 {$1}╾╯***REMOVED***,
+      ***REMOVED***type***REMOVED***: ***REMOVED***custom***REMOVED***
+    }
+  ]
 }

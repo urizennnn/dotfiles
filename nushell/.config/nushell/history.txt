@@ -1779,3 +1779,49 @@ stow --target=/home/urizen ghostty/
 z ghostty
 ls
 ls -la con***REMOVED***g
+Git
+z
+gh repo clone https://github.com/sametaor/sametaor_CLIcon***REMOVED***g.git
+zi
+zoi
+cls
+z sametaor_CLIcon***REMOVED***g/
+cls
+ls
+z linux
+cls
+ls
+ls -a
+z .con***REMOVED***g
+ls
+mv fastfetch/ ~/.con***REMOVED***g/fastfetch/
+z ***REMOVED***g
+z fastfetch/
+cls
+ls
+rm con***REMOVED***g.jsonc
+z fastfetch/
+cls
+ls
+mv * ..
+..
+ls
+ls fastfetch/
+rm fastfetch/
+cls
+fastfetch
+cls
+fastfetch
+z
+cls
+z***REMOVED***g
+cls
+z fastfetch/
+cls
+s
+ls
+l
+ls
+cls
+ls logos/
+lc
