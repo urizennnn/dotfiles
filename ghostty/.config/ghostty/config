@@ -1,0 +1,23 @@
+# Pending when ghostty supports this
+# font_family***REMOVED***Iosevka***REMOVED***
+
+font-size = 5.5
+
+cursor-style = block
+cursor-style-blink = false
+
+# GTK not supporting this atm for ghostty
+# background-opacity = 0.7
+# background-blur-radius = 5
+# unfocused-split-opacity = 1
+
+
+window-inherit-font-size = true
+window-decoration = false
+window-theme = ghostty
+window-save-state = always
+
+
+auto-update =download
+desktop-noti***REMOVED***cations = true
+gtk-wide-tabs = false

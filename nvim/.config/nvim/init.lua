@@ -202,36 +202,15 @@ require(***REMOVED***lazy***REMOVED***).setup({
 			})
 		end,
 	},
-	-- {
-	-- 	{
-	-- 		***REMOVED***vhyrro/luarocks.nvim***REMOVED***,
-	-- 		priority = 1001, -- this plugin needs to run before anything ***REMOVED***
-	-- 		opts = {
-	-- 			rocks = { ***REMOVED***magick***REMOVED*** },
-	-- 		},
-	-- 	},
-	-- 	{
-	-- 		***REMOVED***3rd/image.nvim***REMOVED***,
-	-- 		dependencies = { ***REMOVED***luarocks.nvim***REMOVED*** },
-	-- 		con***REMOVED***g = function()
-	-- 			require(***REMOVED***image***REMOVED***).setup({
-	-- 				integrations = {
-	--
-	-- 					markdown = {
-	-- 						only_render_image_at_cursor = true,
-	-- 						***REMOVED***letypes = { ***REMOVED***markdown***REMOVED*** },
-	-- 					},
-	-- 				},
-	-- 				max_width_window_percentage = nil,
-	-- 				max_height_window_percentage = 50,
-	-- 				window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
-	-- 				window_overlap_clear_ft_ignore = { ***REMOVED***cmp_menu***REMOVED***, ***REMOVED***cmp_docs***REMOVED***, ***REMOVED******REMOVED*** },
-	-- 				editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
-	-- 				tmux_show_only_in_active_window = true, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
-	-- 			})
-	-- 		end,
-	-- 	},
-	-- },
+	{
+		***REMOVED***iamcco/markdown-preview.nvim***REMOVED***,
+		cmd = { ***REMOVED***MarkdownPreviewToggle***REMOVED***, ***REMOVED***MarkdownPreview***REMOVED***, ***REMOVED***MarkdownPreviewStop***REMOVED*** },
+		build = ***REMOVED***cd app && yarn install***REMOVED***,
+		init = function()
+			vim.g.mkdp_***REMOVED***letypes = { ***REMOVED***markdown***REMOVED*** }
+		end,
+		ft = { ***REMOVED***markdown***REMOVED*** },
+	},
 	{
 		***REMOVED***nvim-treesitter/nvim-treesitter-context***REMOVED***,
 		dependencies = { ***REMOVED***nvim-treesitter/nvim-treesitter***REMOVED*** },

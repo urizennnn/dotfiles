@@ -42,3 +42,4 @@ vendor/
 # Ignore venv
 myenv/
 venv/
+nushell/.con***REMOVED***g/nushell/history.txt
