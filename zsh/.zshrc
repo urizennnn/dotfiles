@@ -89,6 +89,7 @@ plugins=(git zoxide fzf archlinux gh history zsh-interactive-cd zsh-syntax-highl
 ***REMOVED***
 ***REMOVED***
 
+eval ***REMOVED***$(starship init zsh)***REMOVED***
 alias ls=***REMOVED***eza  --long --no-***REMOVED***lesize --icons=always --no-time --no-permissions --no-user***REMOVED***
 eval ***REMOVED***$(atuin init zsh)***REMOVED***
 ***REMOVED***
