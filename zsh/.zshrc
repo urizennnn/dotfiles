@@ -1,9 +1,6 @@
 # Fastfetch
 # fastfetch
 
-# Set Zsh theme
-ZSH_THEME=***REMOVED***robbyrussell***REMOVED***
-
 # Path to your Oh My Zsh installation.
 ***REMOVED***
 ***REMOVED***
