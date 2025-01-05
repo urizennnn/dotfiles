@@ -140,3 +140,11 @@ end, { desc = ***REMOVED***Yank to clipboard and lowercase***REMOVED*** })
 keymap(***REMOVED***n***REMOVED***, ***REMOVED***[c***REMOVED***, function()
 	require(***REMOVED***treesitter-context***REMOVED***).go_to_context(vim.v.count1)
 end, { silent = true })
+
+-- Disable PgUp and PgDn in Normal Mode
+keymap(***REMOVED***n***REMOVED***, ***REMOVED***<PageUp>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
+keymap(***REMOVED***n***REMOVED***, ***REMOVED***<PageDown>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
+keymap(***REMOVED***i***REMOVED***, ***REMOVED***<PageUp>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
+keymap(***REMOVED***i***REMOVED***, ***REMOVED***<PageDown>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
+keymap(***REMOVED***v***REMOVED***, ***REMOVED***<PageUp>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
+keymap(***REMOVED***v***REMOVED***, ***REMOVED***<PageDown>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })

@@ -298,7 +298,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	},
 	{ ***REMOVED***rmagatti/auto-session***REMOVED***, con***REMOVED***g = true },
 	{ ***REMOVED***akinsho/toggleterm.nvim***REMOVED***, version = ***REMOVED*******REMOVED***, con***REMOVED***g = true },
-	-- { ***REMOVED***mistricky/codesnap.nvim***REMOVED***, build = ***REMOVED***make***REMOVED*** },
+	{ ***REMOVED***mistricky/codesnap.nvim***REMOVED***, build = ***REMOVED***make build_generator***REMOVED*** },
 	{
 		***REMOVED***MeanderingProgrammer/render-markdown.nvim***REMOVED***,
 		opts = {},

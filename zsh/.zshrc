@@ -1,5 +1,5 @@
 # Fastfetch
-fastfetch
+# fastfetch
 
 # Set Zsh theme
 ZSH_THEME=***REMOVED***robbyrussell***REMOVED***

@@ -1,7 +1,7 @@
 # Pending when ghostty supports this
 # font_family***REMOVED***Iosevka***REMOVED***
 
-font-size = 6.9
+font-size = 8
 
 cursor-style = block
 cursor-style-blink = false
@@ -16,7 +16,8 @@ window-inherit-font-size = true
 window-decoration = false
 window-theme = ghostty
 window-save-state = always
-
+window-padding-x = 8
+window-padding-y = 6
 
 auto-update =download
 desktop-noti***REMOVED***cations = true

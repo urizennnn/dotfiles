@@ -12,6 +12,7 @@
   ***REMOVED***cmp-path***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***main***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***91ff86cd9c29299a64f968ebb45846c485725f23***REMOVED*** },
   ***REMOVED***cmp-r***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***main***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***18b88eeb7e47996623b9aa0a763677ac00a16221***REMOVED*** },
   ***REMOVED***cmp_luasnip***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***98d9cb5c2c38532bd9bdb481067b20fea8f32e90***REMOVED*** },
+  ***REMOVED***codesnap.nvim***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***main***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***6400480aa6cc366cbd931146c429aaa64680dab9***REMOVED*** },
   ***REMOVED***conform.nvim***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***master***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***f4e8837878fc5712d053ba3091a73d27d96a09e2***REMOVED*** },
   ***REMOVED***copilot.vim***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***release***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***87038123804796ca7af20d1b71c3428d858a9124***REMOVED*** },
   ***REMOVED***crates.nvim***REMOVED***: { ***REMOVED***branch***REMOVED***: ***REMOVED***main***REMOVED***, ***REMOVED***commit***REMOVED***: ***REMOVED***8bf8358ee326d5d8c11dcd7ac0bcc9ff97dbc785***REMOVED*** },
