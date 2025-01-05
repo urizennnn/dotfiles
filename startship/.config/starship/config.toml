@@ -1,20 +1,18 @@
-add_newline = false
-# A minimal left prompt
-format = ***REMOVED******REMOVED******REMOVED***$directory$character***REMOVED******REMOVED******REMOVED***
-palette = ***REMOVED***catppuccin_mocha***REMOVED***
-# move the rest of the prompt to the right
-right_format = ***REMOVED******REMOVED******REMOVED***$all***REMOVED******REMOVED******REMOVED***
-command_timeout = 1000
-
-[character]
-vicmd_symbol = ***REMOVED***[N] >>>***REMOVED***
-success_symbol = '[➜](bold green)'
-
-[directory.substitutions]
-'~/tests/starship-custom' = 'work-project'
-
-[git_branch]
-format =  '[$symbol$branch(:$remote_branch)]($style)'
+format = ***REMOVED******REMOVED******REMOVED***
+$username\
+$hostname\
+$directory\
+$git_branch\
+$golang\
+$git_state\
+$git_status\
+$git_metrics\
+$aws\
+$***REMOVED***ll\
+$nodejs\
+${custom.home} $cmd_duration $jobs $time\
+$line_break\
+$character***REMOVED******REMOVED******REMOVED***
 
 [aws]
 format = '[$symbol(pro***REMOVED***le: ***REMOVED***$pro***REMOVED***le***REMOVED*** )(\(region: $region\) )]($style)'
@@ -22,45 +20,62 @@ disabled = false
 style = 'bold blue'
 symbol = ***REMOVED*** ***REMOVED***
 
+
+[nodejs]
+format = ***REMOVED***[$symbol($version )]($style)***REMOVED***
+
+[***REMOVED***ll]
+symbol = ***REMOVED*** ***REMOVED***
+
+[directory]
+style = ***REMOVED***blue***REMOVED***
+read_only = ***REMOVED*** ***REMOVED***
+truncation_length = 4
+truncate_to_repo = false
+
+[character]
+success_symbol = ***REMOVED***[❯](purple)***REMOVED***
+error_symbol = ***REMOVED***[❯](red)***REMOVED***
+vicmd_symbol = ***REMOVED***[❮](green)***REMOVED***
+
+[git_branch]
+symbol = ***REMOVED*** ***REMOVED***
+format = ***REMOVED***[$symbol$branch]($style) ***REMOVED***
+style = ***REMOVED***bright-black***REMOVED***
+
+[jobs]
+symbol = ***REMOVED******REMOVED***
+style = ***REMOVED***bold red***REMOVED***
+number_threshold = 1
+format = ***REMOVED***[$symbol]($style)***REMOVED***
 [golang]
 format = '[ ](bold cyan)'
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = ***REMOVED***cyan***REMOVED***
 
-[kubernetes]
-symbol = '☸ '
-disabled = true
-detect_***REMOVED***les = ['Docker***REMOVED***le']
-format = '[$symbol$context( \($namespace\))]($style) '
-contexts = [
-  { context_pattern = ***REMOVED***arn:aws:eks:us-west-2:577926974532:cluster/zd-pvc-omer***REMOVED***, style = ***REMOVED***green***REMOVED***, context_alias = ***REMOVED***omerxx***REMOVED***, symbol = ***REMOVED*** ***REMOVED*** },
-]
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = ***REMOVED***bright-black***REMOVED***
 
-[docker_context]
-disabled = true
+[git_metrics]
+disabled = false
 
-[palettes.catppuccin_mocha]
-rosewater = ***REMOVED***#f5e0dc***REMOVED***
-flamingo = ***REMOVED***#f2cdcd***REMOVED***
-pink = ***REMOVED***#f5c2e7***REMOVED***
-mauve = ***REMOVED***#cba6f7***REMOVED***
-red = ***REMOVED***#f38ba8***REMOVED***
-maroon = ***REMOVED***#eba0ac***REMOVED***
-peach = ***REMOVED***#fab387***REMOVED***
-yellow = ***REMOVED***#f9e2af***REMOVED***
-green = ***REMOVED***#a6e3a1***REMOVED***
-teal = ***REMOVED***#94e2d5***REMOVED***
-sky = ***REMOVED***#89dceb***REMOVED***
-sapphire = ***REMOVED***#74c7ec***REMOVED***
-blue = ***REMOVED***#89b4fa***REMOVED***
-lavender = ***REMOVED***#b4befe***REMOVED***
-text = ***REMOVED***#cdd6f4***REMOVED***
-subtext1 = ***REMOVED***#bac2de***REMOVED***
-subtext0 = ***REMOVED***#a6adc8***REMOVED***
-overlay2 = ***REMOVED***#9399b2***REMOVED***
-overlay1 = ***REMOVED***#7f849c***REMOVED***
-overlay0 = ***REMOVED***#6c7086***REMOVED***
-surface2 = ***REMOVED***#585b70***REMOVED***
-surface1 = ***REMOVED***#45475a***REMOVED***
-surface0 = ***REMOVED***#313244***REMOVED***
-base = ***REMOVED***#1e1e2e***REMOVED***
-mantle = ***REMOVED***#181825***REMOVED***
-crust = ***REMOVED***#11111b***REMOVED***
+[cmd_duration]
+format = ***REMOVED***[$duration]($style)***REMOVED***
+style = ***REMOVED***yellow***REMOVED***
+
+[memory_usage]
+symbol = ***REMOVED*** ***REMOVED***
+
+[rust]
+symbol = ***REMOVED*** ***REMOVED***
+
+[time]
+disabled = false
+style = ***REMOVED***bold white***REMOVED***
+format = ***REMOVED***[$time]($style)***REMOVED***
+
+[custom.home]
+when = ***REMOVED***test $HOME = $PWD***REMOVED***
+format = ***REMOVED***🏠***REMOVED***

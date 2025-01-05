@@ -9,7 +9,7 @@ ZSH_THEME=***REMOVED***robbyrussell***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
-# Update PATH to include custom directories
+***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
