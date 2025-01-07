@@ -41,7 +41,7 @@ vicmd_symbol = ***REMOVED***[❮](green)***REMOVED***
 [git_branch]
 symbol = ***REMOVED*** ***REMOVED***
 format = ***REMOVED***[$symbol$branch]($style) ***REMOVED***
-style = ***REMOVED***bright-black***REMOVED***
+style = ***REMOVED***green***REMOVED***
 
 [jobs]
 symbol = ***REMOVED******REMOVED***

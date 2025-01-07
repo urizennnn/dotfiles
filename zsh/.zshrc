@@ -1,7 +1,3 @@
-# Fastfetch
-# fastfetch
-
-# Path to your Oh My Zsh installation.
 ***REMOVED***
 ***REMOVED***
 
@@ -78,12 +74,11 @@ eval ***REMOVED***$(zoxide init zsh)***REMOVED***
 
 eval ***REMOVED***$(fzf --zsh)***REMOVED***
 # Plugins con***REMOVED***guration
-plugins=(git zoxide fzf archlinux gh history zsh-interactive-cd zsh-syntax-highlighting zsh-completions fzf-tab zsh-autosuggestions web-search)
-
-***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
+***REMOVED***
+
 ***REMOVED***
 
 eval ***REMOVED***$(starship init zsh)***REMOVED***
@@ -93,3 +88,4 @@ eval ***REMOVED***$(atuin init zsh)***REMOVED***
 export NVM_DIR=***REMOVED***$HOME/.nvm***REMOVED***
 [ -s ***REMOVED***$NVM_DIR/nvm.sh***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/nvm.sh***REMOVED***  # This loads nvm
 [ -s ***REMOVED***$NVM_DIR/bash_completion***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/bash_completion***REMOVED***  # This loads nvm bash_completion
+***REMOVED***
