@@ -10,6 +10,8 @@ $git_metrics\
 $aws\
 $***REMOVED***ll\
 $nodejs\
+$rust\
+$python\
 ${custom.home} $cmd_duration $jobs $time\
 $line_break\
 $character***REMOVED******REMOVED******REMOVED***
@@ -19,6 +21,16 @@ format = '[$symbol(pro***REMOVED***le: ***REMOVED***$pro***REMOVED***le***REMOVE
 disabled = false
 style = 'bold blue'
 symbol = ***REMOVED*** ***REMOVED***
+
+[python]
+symbol = ***REMOVED*** ***REMOVED***
+style = ***REMOVED***bold yellow***REMOVED***
+format = ***REMOVED***[$symbol$virtualenv]($style) ***REMOVED***
+
+[rust]
+format = ***REMOVED***[$symbol($version )]($style)***REMOVED***
+symbol = ***REMOVED*** rust***REMOVED***
+style = ***REMOVED***bold red***REMOVED***
 
 
 [nodejs]
@@ -68,8 +80,6 @@ style = ***REMOVED***yellow***REMOVED***
 [memory_usage]
 symbol = ***REMOVED*** ***REMOVED***
 
-[rust]
-symbol = ***REMOVED*** ***REMOVED***
 
 [time]
 disabled = false

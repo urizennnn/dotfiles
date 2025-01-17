@@ -162,7 +162,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 		reload = true,
 	},
 	{ ***REMOVED***nvim-treesitter/playground***REMOVED***, cmd = ***REMOVED***TSHighlightCapturesUnderCursor***REMOVED*** },
-	{ ***REMOVED***rebelot/kanagawa.nvim***REMOVED*** },
+	-- { ***REMOVED***rebelot/kanagawa.nvim***REMOVED*** },
 	{ ***REMOVED***catppuccin/nvim***REMOVED***, name = ***REMOVED***catppuccin***REMOVED***, priority = 1000, lazy = false },
 	{
 		***REMOVED***folke/snacks.nvim***REMOVED***,

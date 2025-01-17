@@ -1,6 +1,8 @@
 ***REMOVED***
 ***REMOVED***
+***REMOVED***
 
+***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
@@ -66,6 +68,7 @@ alias venv=***REMOVED***$HOME/scripts/venv.sh***REMOVED***
 alias empty=***REMOVED***trash-empty***REMOVED***
 alias convert=***REMOVED***$HOME/scripts/convert-audio.sh***REMOVED***
 alias zo=***REMOVED***$HOME/scripts/zoxide_search.sh***REMOVED***
+alias sef=***REMOVED***mongosh 'mongodb+srv://sefarvest:AlK7Kl8l8uD85IVN@cluster0.agqhxs8.mongodb.net/Sefarvest?retryWrites=true&w=majority'***REMOVED***
 
 # Initialize Zoxide (to be executed after alias de***REMOVED***nition)
 eval ***REMOVED***$(zoxide init zsh)***REMOVED***
@@ -80,6 +83,7 @@ eval ***REMOVED***$(fzf --zsh)***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
+***REMOVED***
 
 eval ***REMOVED***$(starship init zsh)***REMOVED***
 alias ls=***REMOVED***eza  --long --no-***REMOVED***lesize --icons=always --no-time --no-permissions --no-user***REMOVED***
@@ -88,4 +92,3 @@ eval ***REMOVED***$(atuin init zsh)***REMOVED***
 export NVM_DIR=***REMOVED***$HOME/.nvm***REMOVED***
 [ -s ***REMOVED***$NVM_DIR/nvm.sh***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/nvm.sh***REMOVED***  # This loads nvm
 [ -s ***REMOVED***$NVM_DIR/bash_completion***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/bash_completion***REMOVED***  # This loads nvm bash_completion
-***REMOVED***

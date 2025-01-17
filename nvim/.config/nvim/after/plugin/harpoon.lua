@@ -8,26 +8,27 @@ harpoon:setup({
 
 -- basic telescope con***REMOVED***guration
 local conf = require(***REMOVED***telescope.con***REMOVED***g***REMOVED***).values
--- local function toggle_telescope(harpoon_***REMOVED***les)
--- 	local ***REMOVED***le_paths = {}
--- 	for _, item in ipairs(harpoon_***REMOVED***les.items) do
--- 		table.insert(***REMOVED***le_paths, item.value)
--- 	end
---
--- 	require(***REMOVED***telescope.pickers***REMOVED***)
--- 		.new({}, {
--- 			prompt_title = ***REMOVED***Harpoon***REMOVED***,
--- 			***REMOVED***nder = require(***REMOVED***telescope.***REMOVED***nders***REMOVED***).new_table({
--- 				results = ***REMOVED***le_paths,
--- 			}),
--- 			previewer = conf.***REMOVED***le_previewer({}),
--- 			sorter = conf.generic_sorter({}),
--- 		})
--- 		:***REMOVED***nd()
--- end
+local function toggle_telescope(harpoon_***REMOVED***les)
+	local ***REMOVED***le_paths = {}
+	for _, item in ipairs(harpoon_***REMOVED***les.items) do
+		table.insert(***REMOVED***le_paths, item.value)
+	end
+
+	require(***REMOVED***telescope.pickers***REMOVED***)
+		.new({}, {
+			prompt_title = ***REMOVED***Harpoon***REMOVED***,
+			***REMOVED***nder = require(***REMOVED***telescope.***REMOVED***nders***REMOVED***).new_table({
+				results = ***REMOVED***le_paths,
+			}),
+			previewer = conf.***REMOVED***le_previewer({}),
+			sorter = conf.generic_sorter({}),
+		})
+		:***REMOVED***nd()
+end
 --
 vim.keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***<C-e>***REMOVED***, function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
+	toggle_telescope(harpoon:list())
+	-- harpoon.ui:toggle_telescope(harpoon:list())
 end, { desc = ***REMOVED***Open harpoon window***REMOVED*** })
 vim.keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***<leader>a***REMOVED***, function()
 	harpoon:list():add()
