@@ -9,6 +9,7 @@ $git_status\
 $git_metrics\
 $aws\
 $***REMOVED***ll\
+${custom.package_manager}\
 $nodejs\
 $rust\
 $python\
@@ -29,19 +30,38 @@ format = ***REMOVED***[$symbol$virtualenv]($style) ***REMOVED***
 
 [rust]
 format = ***REMOVED***[$symbol($version )]($style)***REMOVED***
-symbol = ***REMOVED*** rust***REMOVED***
+symbol = ***REMOVED*** rust***REMOVED***
 style = ***REMOVED***bold red***REMOVED***
-
 
 [nodejs]
 format = ***REMOVED***[$symbol($version )]($style)***REMOVED***
+detect_***REMOVED***les = [***REMOVED***package.json***REMOVED***, ***REMOVED***node_modules***REMOVED***]
+detect_folders = [***REMOVED***node_modules***REMOVED***]
+
+[custom.package_manager]
+command = ***REMOVED******REMOVED******REMOVED***
+if [ -f package-lock.json ]; then
+    echo ***REMOVED***npm***REMOVED***
+elif [ -f yarn.lock ]; then
+    echo ***REMOVED***yarn***REMOVED***
+elif [ -f pnpm-lock.yaml ]; then
+    echo ***REMOVED***pnpm***REMOVED***
+elif [ -f bun.lockb ]; then
+    echo ***REMOVED***bun***REMOVED***
+***REMOVED***
+    exit 1
+***REMOVED***
+***REMOVED******REMOVED******REMOVED***
+when = ***REMOVED******REMOVED******REMOVED***test -f package.json || test -f yarn.lock || test -f pnpm-lock.yaml || test -f bun.lockb***REMOVED******REMOVED******REMOVED***
+style = ***REMOVED***bold yellow***REMOVED***
+format = ***REMOVED***[$output ]($style)***REMOVED***
 
 [***REMOVED***ll]
 symbol = ***REMOVED*** ***REMOVED***
 
 [directory]
 style = ***REMOVED***blue***REMOVED***
-read_only = ***REMOVED*** ***REMOVED***
+read_only = ***REMOVED*** ***REMOVED***
 truncation_length = 4
 truncate_to_repo = false
 
@@ -56,12 +76,14 @@ format = ***REMOVED***[$symbol$branch]($style) ***REMOVED***
 style = ***REMOVED***green***REMOVED***
 
 [jobs]
-symbol = ***REMOVED******REMOVED***
+symbol = ***REMOVED***  ***REMOVED***
 style = ***REMOVED***bold red***REMOVED***
 number_threshold = 1
 format = ***REMOVED***[$symbol]($style)***REMOVED***
+
 [golang]
-format = '[ ](bold cyan)'
+format = '[ ](bold cyan)'
+
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
 style = ***REMOVED***cyan***REMOVED***
@@ -80,7 +102,6 @@ style = ***REMOVED***yellow***REMOVED***
 [memory_usage]
 symbol = ***REMOVED*** ***REMOVED***
 
-
 [time]
 disabled = false
 style = ***REMOVED***bold white***REMOVED***
@@ -89,3 +110,4 @@ format = ***REMOVED***[$time]($style)***REMOVED***
 [custom.home]
 when = ***REMOVED***test $HOME = $PWD***REMOVED***
 format = ***REMOVED***🏠***REMOVED***
+
