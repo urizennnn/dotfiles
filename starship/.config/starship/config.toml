@@ -61,7 +61,7 @@ symbol = ***REMOVED*** ***REMOVED***
 
 [directory]
 style = ***REMOVED***blue***REMOVED***
-read_only = ***REMOVED*** ***REMOVED***
+read_only = ***REMOVED***🔒 ***REMOVED***
 truncation_length = 4
 truncate_to_repo = false
 

@@ -148,3 +148,57 @@ keymap(***REMOVED***i***REMOVED***, ***REMOVED***<PageUp>***REMOVED***, ***REMOV
 keymap(***REMOVED***i***REMOVED***, ***REMOVED***<PageDown>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
 keymap(***REMOVED***v***REMOVED***, ***REMOVED***<PageUp>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
 keymap(***REMOVED***v***REMOVED***, ***REMOVED***<PageDown>***REMOVED***, ***REMOVED***<Nop>***REMOVED***, { noremap = true, silent = true })
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>kk***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').run()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Execute the request***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***[***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').jump_prev()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Jump to the previous request***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***]***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').jump_next()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Jump to the next request***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>i***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').inspect()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Inspect the current request***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>t***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').toggle_view()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Toggle between body and headers***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>r***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').run_all()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Toggle headers***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>rr***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').replay()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Toggle headers***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>i***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').inspect()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Toggle headers***REMOVED*** }
+)
+keymap(
+	***REMOVED***n***REMOVED***,
+	***REMOVED***<leader>ks***REMOVED***,
+	***REMOVED***<cmd>lua require('kulala').scratchpad()<cr>***REMOVED***,
+	{ noremap = true, silent = true, desc = ***REMOVED***Toggle headers***REMOVED*** }
+)

@@ -58,11 +58,27 @@ alias yay=***REMOVED***yay --nocon***REMOVED***rm***REMOVED***
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+git con***REMOVED***g --global user.name 'consult-with-josh'
+git con***REMOVED***g --global user.email ''
+***REMOVED***
+***REMOVED***
+alias work-logout=***REMOVED***
+***REMOVED***
+git con***REMOVED***g --global user.name 'urizennnn'
+git con***REMOVED***g --global user.email 'igamerryt@gmail.com'
+***REMOVED***
+***REMOVED***
 alias Git=***REMOVED***lazygit***REMOVED***
 alias ginit=***REMOVED***$HOME/scripts/init.sh***REMOVED***
 alias del=***REMOVED***trash-put***REMOVED***
 alias cht=***REMOVED***$HOME/scripts/cht.sh***REMOVED***
 alias restore=***REMOVED***trash-restore***REMOVED***
+alias gitcfg=***REMOVED***git con***REMOVED***g --list --global***REMOVED***
 alias list=***REMOVED***trash-list***REMOVED***
 alias venv=***REMOVED***$HOME/scripts/venv.sh***REMOVED***
 alias empty=***REMOVED***trash-empty***REMOVED***

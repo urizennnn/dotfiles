@@ -11,6 +11,8 @@ vim.g.mkdp_***REMOVED***letypes = { ***REMOVED***markdown***REMOVED*** }
 vim.g.mkdp_theme = ***REMOVED***dark***REMOVED***
 vim.g.loaded_netrwPlugin = 1
 
+
+
 vim.diagnostic.con***REMOVED***g({
 	virtual_text = {
 		pre***REMOVED***x = ***REMOVED***●***REMOVED***, -- Could be '■', '▎', 'x'
@@ -160,6 +162,113 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	-- },
 	dev = {
 		reload = true,
+	},
+	{
+		***REMOVED***mistweaverco/kulala.nvim***REMOVED***,
+		opts = {
+			-- cURL path
+			-- if you have curl installed in a non-standard path,
+			-- you can specify it here
+			curl_path = ***REMOVED***curl***REMOVED***,
+
+			-- Display mode, possible values: ***REMOVED***split***REMOVED***, ***REMOVED***float***REMOVED***
+			display_mode = ***REMOVED***split***REMOVED***,
+
+			-- q to close the float (only used when display_mode is set to ***REMOVED***float***REMOVED***)
+			-- possible values: true, false
+			q_to_close_float = false,
+
+			-- split direction
+			-- possible values: ***REMOVED***vertical***REMOVED***, ***REMOVED***horizontal***REMOVED***
+			split_direction = ***REMOVED***vertical***REMOVED***,
+
+			-- default_view, body or headers or headers_body or verbose
+			default_view = ***REMOVED***body***REMOVED***,
+
+			-- dev, test, prod, can be anything
+			-- see: https://learn.microsoft.com/en-us/aspnet/core/test/http-***REMOVED***les?view=aspnetcore-8.0#environment-***REMOVED***les
+			default_env = ***REMOVED***dev***REMOVED***,
+
+			-- enable/disable debug mode
+			debug = false,
+
+			-- default formatters/pathresolver for different content types
+			contenttypes = {
+				[***REMOVED***application/json***REMOVED***] = {
+					ft = ***REMOVED***json***REMOVED***,
+					formatter = { ***REMOVED***jq***REMOVED***, ***REMOVED***.***REMOVED*** },
+				},
+				[***REMOVED***application/xml***REMOVED***] = {
+					ft = ***REMOVED***xml***REMOVED***,
+					formatter = { ***REMOVED***xmllint***REMOVED***, ***REMOVED***--format***REMOVED***, ***REMOVED***-***REMOVED*** },
+					pathresolver = { ***REMOVED***xmllint***REMOVED***, ***REMOVED***--xpath***REMOVED***, ***REMOVED***{{path}}***REMOVED***, ***REMOVED***-***REMOVED*** },
+				},
+				[***REMOVED***text/html***REMOVED***] = {
+					ft = ***REMOVED***html***REMOVED***,
+					formatter = { ***REMOVED***xmllint***REMOVED***, ***REMOVED***--format***REMOVED***, ***REMOVED***--html***REMOVED***, ***REMOVED***-***REMOVED*** },
+					pathresolver = {},
+				},
+			},
+
+			-- can be used to show loading, done and error icons in inlay hints
+			-- possible values: ***REMOVED***on_request***REMOVED***, ***REMOVED***above_request***REMOVED***, ***REMOVED***below_request***REMOVED***, or nil to disable
+			-- If ***REMOVED***above_request***REMOVED*** or ***REMOVED***below_request***REMOVED*** is used, the icons will be shown above or below the request line
+			-- Make sure to have a line above or below the request line to show the icons
+			show_icons = ***REMOVED***on_request***REMOVED***,
+
+			-- default icons
+			icons = {
+				inlay = {
+					loading = ***REMOVED***⏳***REMOVED***,
+					done = ***REMOVED***✅***REMOVED***,
+					error = ***REMOVED***❌***REMOVED***,
+				},
+				lualine = ***REMOVED***🐼***REMOVED***,
+			},
+
+			-- additional cURL options
+			-- see: https://curl.se/docs/manpage.html
+			additional_curl_options = {},
+
+			-- scratchpad default contents
+			scratchpad_default_contents = {
+				***REMOVED***@MY_TOKEN_NAME=my_token_value***REMOVED***,
+				***REMOVED******REMOVED***,
+				***REMOVED***# @name scratchpad***REMOVED***,
+				***REMOVED***POST https://httpbin.org/post HTTP/1.1***REMOVED***,
+				***REMOVED***accept: application/json***REMOVED***,
+				***REMOVED***content-type: application/json***REMOVED***,
+				***REMOVED******REMOVED***,
+				***REMOVED***{***REMOVED***,
+				'  ***REMOVED***foo***REMOVED***: ***REMOVED***bar***REMOVED***',
+				***REMOVED***}***REMOVED***,
+			},
+
+			-- enable winbar
+			winbar = false,
+
+			-- Specify the panes to be displayed by default
+			-- Current available pane contains { ***REMOVED***body***REMOVED***, ***REMOVED***headers***REMOVED***, ***REMOVED***headers_body***REMOVED***, ***REMOVED***script_output***REMOVED***, ***REMOVED***stats***REMOVED*** },
+			default_winbar_panes = { ***REMOVED***body***REMOVED***, ***REMOVED***headers***REMOVED***, ***REMOVED***headers_body***REMOVED***, ***REMOVED***verbose***REMOVED*** },
+
+			-- enable reading vscode rest client environment variables
+			vscode_rest_client_environmentvars = false,
+
+			-- disable the vim.print output of the scripts
+			-- they will be still written to disk, but not printed immediately
+			disable_script_print_output = false,
+
+			-- set scope for environment and request variables
+			-- possible values: b = buffer, g = global
+			environment_scope = ***REMOVED***b***REMOVED***,
+
+			-- certi***REMOVED***cates
+			certi***REMOVED***cates = {},
+
+			-- Specify how to escape query parameters
+			-- possible values: always, skipencoded = keep %xx as is
+			urlencode = ***REMOVED***always***REMOVED***,
+		},
 	},
 	{ ***REMOVED***nvim-treesitter/playground***REMOVED***, cmd = ***REMOVED***TSHighlightCapturesUnderCursor***REMOVED*** },
 	-- { ***REMOVED***rebelot/kanagawa.nvim***REMOVED*** },
@@ -544,18 +653,11 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	},
 	--
 	{
-		dir = ***REMOVED***/home/urizen/rescue-lsp***REMOVED***,
-		name = ***REMOVED***rescue-lsp***REMOVED***,
+		***REMOVED***urizennnn/rescue-lsp.nvim***REMOVED***,
 		con***REMOVED***g = function()
 			require(***REMOVED***rescue-lsp***REMOVED***).setup()
 		end,
 	},
-	-- {
-	-- 	***REMOVED***urizennnn/rescue-lsp.nvim***REMOVED***,
-	-- 	con***REMOVED***g = function()
-	-- 		require(***REMOVED***rescue-lsp***REMOVED***).setup()
-	-- 	end,
-	-- },
 	{ -- LSP Con***REMOVED***guration & Plugins
 		***REMOVED***neovim/nvim-lspcon***REMOVED***g***REMOVED***,
 		dependencies = {
