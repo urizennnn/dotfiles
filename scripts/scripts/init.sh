@@ -64,6 +64,5 @@ git add .
 git commit -m ***REMOVED***Initial commit***REMOVED***
 
 git remote add origin $REMOTE_REPO_URL
-
 git push -u origin $BRANCH_NAME
 

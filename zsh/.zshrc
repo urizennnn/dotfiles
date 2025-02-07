@@ -48,6 +48,7 @@
 ***REMOVED***
 ***REMOVED***
 ***REMOVED***
+***REMOVED***
 alias pacman=***REMOVED***sudo pacman --nocon***REMOVED***rm***REMOVED***
 ***REMOVED***
 alias yay=***REMOVED***yay --nocon***REMOVED***rm***REMOVED***
@@ -84,6 +85,7 @@ alias venv=***REMOVED***$HOME/scripts/venv.sh***REMOVED***
 alias empty=***REMOVED***trash-empty***REMOVED***
 alias convert=***REMOVED***$HOME/scripts/convert-audio.sh***REMOVED***
 alias zo=***REMOVED***$HOME/scripts/zoxide_search.sh***REMOVED***
+alias staging=***REMOVED***mongosh 'mongodb+srv://avengers_assemble:yUjHaI59DgQkDvqn@subtrack.jukvj.mongodb.net/sub-staging?retryWrites=true&w=majority'***REMOVED***
 alias sef=***REMOVED***mongosh 'mongodb+srv://sefarvest:AlK7Kl8l8uD85IVN@cluster0.agqhxs8.mongodb.net/Sefarvest?retryWrites=true&w=majority'***REMOVED***
 
 # Initialize Zoxide (to be executed after alias de***REMOVED***nition)
@@ -108,3 +110,6 @@ eval ***REMOVED***$(atuin init zsh)***REMOVED***
 export NVM_DIR=***REMOVED***$HOME/.nvm***REMOVED***
 [ -s ***REMOVED***$NVM_DIR/nvm.sh***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/nvm.sh***REMOVED***  # This loads nvm
 [ -s ***REMOVED***$NVM_DIR/bash_completion***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/bash_completion***REMOVED***  # This loads nvm bash_completion
+
+# eval ***REMOVED***$(op signin)***REMOVED***
+# eval ***REMOVED***$(/usr/bin/anaconda3/bin/conda shell.zsh hook)***REMOVED***
