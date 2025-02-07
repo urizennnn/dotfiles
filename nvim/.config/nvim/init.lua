@@ -279,12 +279,11 @@ require(***REMOVED***lazy***REMOVED***).setup({
 				ignore_install = { ***REMOVED***haskell***REMOVED*** },
 				auto_install = true,
 				sync_install = true,
-				ensure_installed = { ***REMOVED***markdown***REMOVED***, ***REMOVED***markdown_inline***REMOVED***, ***REMOVED***r***REMOVED***, ***REMOVED***rnoweb***REMOVED***, ***REMOVED***yaml***REMOVED*** },
+				ensure_installed = { ***REMOVED***markdown***REMOVED***, ***REMOVED***markdown_inline***REMOVED***, ***REMOVED***yaml***REMOVED*** },
 				highlight = { enable = true },
 			})
 		end,
 	},
-	***REMOVED***R-nvim/cmp-r***REMOVED***,
 	{
 		***REMOVED***pwntester/octo.nvim***REMOVED***,
 		requires = {
@@ -296,8 +295,6 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	},
 	{ ***REMOVED***f-person/git-blame.nvim***REMOVED*** },
 	{ ***REMOVED***github/copilot.vim***REMOVED*** },
-	{ ***REMOVED***mfussenegger/nvim-dap***REMOVED*** },
-	{ ***REMOVED***mfussenegger/nvim-dap-ui***REMOVED*** },
 	{ ***REMOVED***folke/todo-comments.nvim***REMOVED***, dependencies = { ***REMOVED***nvim-lua/plenary.nvim***REMOVED*** } },
 	{ ***REMOVED***folke/trouble.nvim***REMOVED***, dependencies = { ***REMOVED***nvim-tree/nvim-web-devicons***REMOVED*** } },
 	{ ***REMOVED***nvim-lualine/lualine.nvim***REMOVED***, dependencies = { ***REMOVED***nvim-tree/nvim-web-devicons***REMOVED*** } },

@@ -1,4 +1,3 @@
-vim.print(***REMOVED***Snacks loaded***REMOVED***)
 local opts = {
 	big***REMOVED***le = {
 		enabled = true,
