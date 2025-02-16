@@ -34,7 +34,6 @@ vim.g.clipboard = {
 vim.opt.clipboard = ***REMOVED***unnamedplus***REMOVED***
 vim.g.have_nerd_font = true
 vim.opt.scrollback = 100000
-vim.opt.lazyredraw = true
 vim.opt.number = true
 vim.opt.showmode = true
 
