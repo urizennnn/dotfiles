@@ -147,21 +147,19 @@ require(***REMOVED***lazy***REMOVED***).setup({
 						require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).debug.backtrace()
 					end
 					vim.print = _G.dd
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle.option(***REMOVED***spell***REMOVED***, { name = ***REMOVED***Spelling***REMOVED*** }):map(***REMOVED***<leader>us***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle.option(***REMOVED***wrap***REMOVED***, { name = ***REMOVED***Wrap***REMOVED*** }):map(***REMOVED***<leader>uw***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle
-						.option(***REMOVED***relativenumber***REMOVED***, { name = ***REMOVED***Relative Number***REMOVED*** })
-						:map(***REMOVED***<leader>uL***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle.diagnostics():map(***REMOVED***<leader>ud***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle.line_number():map(***REMOVED***<leader>ul***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle
+					Snacks.toggle.option(***REMOVED***spell***REMOVED***, { name = ***REMOVED***Spelling***REMOVED*** }):map(***REMOVED***<leader>us***REMOVED***)
+					Snacks.toggle.option(***REMOVED***wrap***REMOVED***, { name = ***REMOVED***Wrap***REMOVED*** }):map(***REMOVED***<leader>uw***REMOVED***)
+					Snacks.toggle.option(***REMOVED***relativenumber***REMOVED***, { name = ***REMOVED***Relative Number***REMOVED*** }):map(***REMOVED***<leader>uL***REMOVED***)
+					Snacks.toggle.diagnostics():map(***REMOVED***<leader>ud***REMOVED***)
+					Snacks.toggle.line_number():map(***REMOVED***<leader>ul***REMOVED***)
+					Snacks.toggle
 						.option(***REMOVED***conceallevel***REMOVED***, { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
 						:map(***REMOVED***<leader>uc***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle.treesitter():map(***REMOVED***<leader>uT***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle
+					Snacks.toggle.treesitter():map(***REMOVED***<leader>uT***REMOVED***)
+					Snacks.toggle
 						.option(***REMOVED***background***REMOVED***, { off = ***REMOVED***light***REMOVED***, on = ***REMOVED***dark***REMOVED***, name = ***REMOVED***Dark Background***REMOVED*** })
 						:map(***REMOVED***<leader>ub***REMOVED***)
-					require(***REMOVED***plugin-con***REMOVED***g.snacks***REMOVED***).toggle.inlay_hints():map(***REMOVED***<leader>uh***REMOVED***)
+					Snacks.toggle.inlay_hints():map(***REMOVED***<leader>uh***REMOVED***)
 				end,
 			})
 		end,
