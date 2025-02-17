@@ -3,10 +3,10 @@ local keymap = vim.keymap.set
 vim.g.mapleader = ***REMOVED*** ***REMOVED***
 keymap(***REMOVED***n***REMOVED***, ***REMOVED***<leader>x***REMOVED***, ***REMOVED***<cmd> :bdelete <cr>***REMOVED***)
 keymap(***REMOVED***n***REMOVED***, ***REMOVED***<leader>***REMOVED***, ***REMOVED***:NvimTreeToggle<CR>***REMOVED***, { noremap = true, silent = true })
-keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-d>***REMOVED***, ***REMOVED***10j***REMOVED***)
+keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-d>zz***REMOVED***, ***REMOVED***10j***REMOVED***)
 keymap(***REMOVED***v***REMOVED***, ***REMOVED***J***REMOVED***, ***REMOVED***:m '>+1<CR>gv=gv***REMOVED***)
 keymap(***REMOVED***v***REMOVED***, ***REMOVED***K***REMOVED***, ***REMOVED***:m '<-2<CR>gv=gv***REMOVED***)
-keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-u>***REMOVED***, ***REMOVED***10k***REMOVED***)
+keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-u>zz***REMOVED***, ***REMOVED***10k***REMOVED***)
 keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-v>***REMOVED***, '***REMOVED***+p***REMOVED***')
 keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-c>***REMOVED***, '***REMOVED***+y***REMOVED***')
 keymap(***REMOVED***n***REMOVED***, ***REMOVED***<C-l>***REMOVED***, vim.cmd.Lazy)

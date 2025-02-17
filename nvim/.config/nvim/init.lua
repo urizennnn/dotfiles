@@ -128,6 +128,54 @@ require(***REMOVED***lazy***REMOVED***).setup({
 			urlencode = ***REMOVED***always***REMOVED***,
 		},
 	},
+	{
+		***REMOVED***folke/flash.nvim***REMOVED***,
+		event = ***REMOVED***VeryLazy***REMOVED***,
+		---@type Flash.Con***REMOVED***g
+		opts = {},
+		keys = {
+			{
+				***REMOVED***s***REMOVED***,
+				mode = { ***REMOVED***n***REMOVED***, ***REMOVED***x***REMOVED***, ***REMOVED***o***REMOVED*** },
+				function()
+					require(***REMOVED***flash***REMOVED***).jump()
+				end,
+				desc = ***REMOVED***Flash***REMOVED***,
+			},
+			{
+				***REMOVED***S***REMOVED***,
+				mode = { ***REMOVED***n***REMOVED***, ***REMOVED***x***REMOVED***, ***REMOVED***o***REMOVED*** },
+				function()
+					require(***REMOVED***flash***REMOVED***).treesitter()
+				end,
+				desc = ***REMOVED***Flash Treesitter***REMOVED***,
+			},
+			{
+				***REMOVED***r***REMOVED***,
+				mode = ***REMOVED***o***REMOVED***,
+				function()
+					require(***REMOVED***flash***REMOVED***).remote()
+				end,
+				desc = ***REMOVED***Remote Flash***REMOVED***,
+			},
+			{
+				***REMOVED***R***REMOVED***,
+				mode = { ***REMOVED***o***REMOVED***, ***REMOVED***x***REMOVED*** },
+				function()
+					require(***REMOVED***flash***REMOVED***).treesitter_search()
+				end,
+				desc = ***REMOVED***Treesitter Search***REMOVED***,
+			},
+			{
+				***REMOVED***<c-s>***REMOVED***,
+				mode = { ***REMOVED***c***REMOVED*** },
+				function()
+					require(***REMOVED***flash***REMOVED***).toggle()
+				end,
+				desc = ***REMOVED***Toggle Flash Search***REMOVED***,
+			},
+		},
+	},
 	{ ***REMOVED***nvim-treesitter/playground***REMOVED***, cmd = ***REMOVED***TSHighlightCapturesUnderCursor***REMOVED*** },
 	{ ***REMOVED***catppuccin/nvim***REMOVED***, name = ***REMOVED***catppuccin***REMOVED***, priority = 1000, lazy = false },
 	{
