@@ -83,6 +83,7 @@ alias gitcfg=***REMOVED***git con***REMOVED***g --list --global***REMOVED***
 alias list=***REMOVED***trash-list***REMOVED***
 alias venv=***REMOVED***$HOME/scripts/venv.sh***REMOVED***
 alias empty=***REMOVED***trash-empty***REMOVED***
+alias zi=***REMOVED***builtin cd -- ***REMOVED***
 alias convert=***REMOVED***$HOME/scripts/convert-audio.sh***REMOVED***
 alias zo=***REMOVED***$HOME/scripts/zoxide_search.sh***REMOVED***
 alias staging=***REMOVED***mongosh 'mongodb+srv://avengers_assemble:yUjHaI59DgQkDvqn@subtrack.jukvj.mongodb.net/sub-staging?retryWrites=true&w=majority'***REMOVED***
@@ -113,3 +114,11 @@ export NVM_DIR=***REMOVED***$HOME/.nvm***REMOVED***
 
 # eval ***REMOVED***$(op signin)***REMOVED***
 # eval ***REMOVED***$(/usr/bin/anaconda3/bin/conda shell.zsh hook)***REMOVED***
+
+***REMOVED***
+export PNPM_HOME=***REMOVED***/home/urizen/.local/share/pnpm***REMOVED***
+case ***REMOVED***:$PATH:***REMOVED*** in
+  ****REMOVED***:$PNPM_HOME:***REMOVED****) ;;
+  *) export PATH=***REMOVED***$PNPM_HOME:$PATH***REMOVED*** ;;
+***REMOVED***
+***REMOVED*** end
