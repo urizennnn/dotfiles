@@ -251,6 +251,7 @@ require(***REMOVED***lazy***REMOVED***).setup({
 	{
 		***REMOVED***Saecki/crates.nvim***REMOVED***,
 		event = { ***REMOVED***BufRead Cargo.toml***REMOVED*** },
+		tag=***REMOVED***stable***REMOVED***,
 		con***REMOVED***g = function()
 			require(***REMOVED***crates***REMOVED***).setup()
 		end,

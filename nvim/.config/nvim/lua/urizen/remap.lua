@@ -174,12 +174,6 @@ keymap(
 )
 keymap(
 	***REMOVED***n***REMOVED***,
-	***REMOVED***<leader>t***REMOVED***,
-	***REMOVED***<cmd>lua require('kulala').toggle_view()<cr>***REMOVED***,
-	{ noremap = true, silent = true, desc = ***REMOVED***Toggle between body and headers***REMOVED*** }
-)
-keymap(
-	***REMOVED***n***REMOVED***,
 	***REMOVED***<leader>r***REMOVED***,
 	***REMOVED***<cmd>lua require('kulala').run_all()<cr>***REMOVED***,
 	{ noremap = true, silent = true, desc = ***REMOVED***Toggle headers***REMOVED*** }
