@@ -112,11 +112,9 @@ require(***REMOVED***lspcon***REMOVED***g***REMOVED***).html.setup({
 	},
 	single_***REMOVED***le_support = true,
 })
--- require(***REMOVED***lspcon***REMOVED***g***REMOVED***).golangci_lint_ls.setup({})
 require(***REMOVED***lspcon***REMOVED***g***REMOVED***).gopls.setup({
-	-- capabilities = capabilities,
-	cmd = { ***REMOVED***gopls***REMOVED*** }, -- Remove ***REMOVED***serve***REMOVED*** for now
-	***REMOVED***letypes = { ***REMOVED***go***REMOVED***, ***REMOVED***gomod***REMOVED*** }, -- Add ***REMOVED***gomod***REMOVED*** if working with Go modules
+	cmd = { ***REMOVED***gopls***REMOVED*** },
+	***REMOVED***letypes = { ***REMOVED***go***REMOVED***, ***REMOVED***gomod***REMOVED*** },
 	root_dir = require(***REMOVED***lspcon***REMOVED***g.util***REMOVED***).root_pattern(***REMOVED***go.mod***REMOVED***, ***REMOVED***.git***REMOVED***),
 	single_***REMOVED***le_support = true,
 	settings = {
@@ -131,30 +129,12 @@ require(***REMOVED***lspcon***REMOVED***g***REMOVED***).gopls.setup({
 	},
 })
 
--- require(***REMOVED***lspcon***REMOVED***g***REMOVED***).r_language_server.setup({
--- 	cmd = { ***REMOVED***R***REMOVED***, ***REMOVED***--slave***REMOVED***, ***REMOVED***-e***REMOVED***, ***REMOVED***languageserver::run()***REMOVED*** },
--- 	***REMOVED***letypes = { ***REMOVED***r***REMOVED***, ***REMOVED***rmd***REMOVED*** },
--- 	root_dir = require(***REMOVED***lspcon***REMOVED***g***REMOVED***).util.root_pattern(***REMOVED***.git***REMOVED***, ***REMOVED***.***REMOVED***),
-
--- })
-
 require(***REMOVED***lspcon***REMOVED***g***REMOVED***).eslint.setup({
-	on_attach = function(client, bufnr)
-		-- Set up buffer-local keymaps, formatting, etc.
+	on_attach = function(_client, bufnr)
 		local function buf_set_option(...)
 			vim.api.nvim_buf_set_option(bufnr, ...)
 		end
 		buf_set_option(***REMOVED***omnifunc***REMOVED***, ***REMOVED***v:lua.vim.lsp.omnifunc***REMOVED***)
-
-		-- Optional: enable auto-formatting on save if desired
-		if client.resolved_capabilities.document_formatting then
-			vim.cmd([[
-        augroup LspFormatting
-          autocmd! * <buffer>
-          autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-        augroup END
-      ]])
-		end
 	end,
 	settings = {
 		format = { enable = true },
