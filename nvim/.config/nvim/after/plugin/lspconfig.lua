@@ -4,7 +4,7 @@ capabilities.textDocument.formatting = true
 
 require(***REMOVED***mason***REMOVED***).setup()
 require(***REMOVED***mason-lspcon***REMOVED***g***REMOVED***).setup({
-	ensure_installed = { ***REMOVED***lua_ls***REMOVED*** },
+	ensure_installed = { ***REMOVED***lua_ls***REMOVED***, ***REMOVED***eslint***REMOVED*** },
 })
 require(***REMOVED***mason-lspcon***REMOVED***g***REMOVED***).setup_handlers({
 	[***REMOVED***rust_analyzer***REMOVED***] = function() end,
@@ -135,4 +135,28 @@ require(***REMOVED***lspcon***REMOVED***g***REMOVED***).gopls.setup({
 -- 	cmd = { ***REMOVED***R***REMOVED***, ***REMOVED***--slave***REMOVED***, ***REMOVED***-e***REMOVED***, ***REMOVED***languageserver::run()***REMOVED*** },
 -- 	***REMOVED***letypes = { ***REMOVED***r***REMOVED***, ***REMOVED***rmd***REMOVED*** },
 -- 	root_dir = require(***REMOVED***lspcon***REMOVED***g***REMOVED***).util.root_pattern(***REMOVED***.git***REMOVED***, ***REMOVED***.***REMOVED***),
+
 -- })
+
+require(***REMOVED***lspcon***REMOVED***g***REMOVED***).eslint.setup({
+	on_attach = function(client, bufnr)
+		-- Set up buffer-local keymaps, formatting, etc.
+		local function buf_set_option(...)
+			vim.api.nvim_buf_set_option(bufnr, ...)
+		end
+		buf_set_option(***REMOVED***omnifunc***REMOVED***, ***REMOVED***v:lua.vim.lsp.omnifunc***REMOVED***)
+
+		-- Optional: enable auto-formatting on save if desired
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd([[
+        augroup LspFormatting
+          autocmd! * <buffer>
+          autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        augroup END
+      ]])
+		end
+	end,
+	settings = {
+		format = { enable = true },
+	},
+})
