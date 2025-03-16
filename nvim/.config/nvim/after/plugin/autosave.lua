@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd({ ***REMOVED***InsertLeave***REMOVED***, ***REMOVED*
 	callback = function()
 		if autosave_enabled then
 			vim.cmd(***REMOVED***silent! wa***REMOVED***)
+			require(***REMOVED***conform***REMOVED***).format({ lsp_fallback = true })
 		end
 	end,
 })
