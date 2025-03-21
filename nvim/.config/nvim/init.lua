@@ -1,4 +1,5 @@
 require("set")
+vim.g.augment_workspace_folders = { "~/givese-mvp-api", "~/zync" }
 local snacks = require("plugin-config.snacks")
 
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#808080" })
@@ -128,6 +129,7 @@ require("lazy").setup({
 			urlencode = "always",
 		},
 	},
+	{ "augmentcode/augment.vim" },
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",

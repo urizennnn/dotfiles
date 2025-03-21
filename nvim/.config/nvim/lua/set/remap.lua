@@ -168,3 +168,7 @@ keymap("v", "<PageDown>", "<Nop>", { noremap = true, silent = true }) -- Disable
 keymap("n", "nd", "<cmd>NoiceDismiss<CR>", { noremap = true, silent = true })
 
 keymap("n", "git", "<cmd>LazyGit<CR>", opts)
+
+keymap("n", "<leader>cc", "<cmd>Augment chat-toggle<CR>", opts)
+keymap("n", "<leader>c", "<cmd>Augment chat<CR>", opts)
+keymap("n", "<leader>cn", "<cmd>Augment chat-new<CR>", opts)
