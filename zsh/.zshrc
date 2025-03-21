@@ -86,8 +86,6 @@ alias empty="trash-empty"
 alias zi="builtin cd -- "
 alias convert="$HOME/scripts/convert-audio.sh"
 alias zo="$HOME/scripts/zoxide_search.sh"
-alias staging="mongosh 'mongodb+srv://avengers_assemble:yUjHaI59DgQkDvqn@subtrack.jukvj.mongodb.net/sub-staging?retryWrites=true&w=majority'"
-alias sef="mongosh 'mongodb+srv://sefarvest:AlK7Kl8l8uD85IVN@cluster0.agqhxs8.mongodb.net/Sefarvest?retryWrites=true&w=majority'"
 
 # Initialize Zoxide (to be executed after alias definition)
 eval "$(zoxide init zsh)"
