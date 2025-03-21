@@ -1,33 +1,33 @@
--- require(***REMOVED***catppuccin***REMOVED***).setup({
--- 	flavour = ***REMOVED***mocha***REMOVED***, -- latte, frappe, macchiato, mocha
+-- require("catppuccin").setup({
+-- 	flavour = "mocha", -- latte, frappe, macchiato, mocha
 -- 	background = { -- :h background
--- 		light = ***REMOVED***latte***REMOVED***,
--- 		dark = ***REMOVED***mocha***REMOVED***,
+-- 		light = "latte",
+-- 		dark = "mocha",
 -- 	},
 -- 	transparent_background = false, -- disables setting the background color.
 -- 	show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
 -- 	term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
 -- 	dim_inactive = {
 -- 		enabled = true, -- dims the background color of inactive window
--- 		shade = ***REMOVED***dark***REMOVED***,
+-- 		shade = "dark",
 -- 		percentage = 0.15, -- percentage of the shade to apply to the inactive window
 -- 	},
 -- 	no_italic = true, -- Force no italic
 -- 	no_bold = false, -- Force no bold
 -- 	no_underline = false, -- Force no underline
 -- 	styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
--- 		comments = { ***REMOVED***italic***REMOVED*** }, -- Change the style of comments
--- 		conditionals = { ***REMOVED***italic***REMOVED*** },
--- 		loops = { ***REMOVED***italic***REMOVED*** },
--- 		functions = { ***REMOVED***italic***REMOVED*** },
--- 		keywords = { ***REMOVED***italic***REMOVED*** },
--- 		strings = { ***REMOVED***italic***REMOVED*** },
--- 		variables = { ***REMOVED***italic***REMOVED*** },
--- 		numbers = { ***REMOVED***italic***REMOVED*** },
--- 		booleans = { ***REMOVED***italic***REMOVED*** },
--- 		properties = { ***REMOVED***italic***REMOVED*** },
--- 		types = { ***REMOVED***italic***REMOVED*** },
--- 		operators = { ***REMOVED***italic***REMOVED*** },
+-- 		comments = { "italic" }, -- Change the style of comments
+-- 		conditionals = { "italic" },
+-- 		loops = { "italic" },
+-- 		functions = { "italic" },
+-- 		keywords = { "italic" },
+-- 		strings = { "italic" },
+-- 		variables = { "italic" },
+-- 		numbers = { "italic" },
+-- 		booleans = { "italic" },
+-- 		properties = { "italic" },
+-- 		types = { "italic" },
+-- 		operators = { "italic" },
 -- 		-- miscs = {}, -- Uncomment to turn off hard-coded styles
 -- 	},
 -- 	color_overrides = {},
@@ -41,7 +41,7 @@
 -- 		notify = true,
 -- 		mini = {
 -- 			enabled = true,
--- 			indentscope_color = ***REMOVED******REMOVED***,
+-- 			indentscope_color = "",
 -- 		},
 -- 		harpoon = {
 -- 			enabled = true,

@@ -1,23 +1,23 @@
 #!/bin/bash
 
-DOTFILES_DIR=***REMOVED***$HOME/dot***REMOVED***les***REMOVED***
+DOTFILES_DIR="$HOME/dotfiles"
 
-if [ ! -d ***REMOVED***$DOTFILES_DIR***REMOVED*** ]; then
-  echo ***REMOVED***Error: Dot***REMOVED***les directory '$DOTFILES_DIR' not found!***REMOVED***
+if [ ! -d "$DOTFILES_DIR" ]; then
+  echo "Error: Dotfiles directory '$DOTFILES_DIR' not found!"
   exit 1
-***REMOVED***
+fi
 
-TARGET_DIR=***REMOVED***$HOME***REMOVED***
+TARGET_DIR="$HOME"
 
 if ! command -v stow &> /dev/null; then
-  echo ***REMOVED***Error: stow is not installed. Please install stow and try again.***REMOVED***
+  echo "Error: stow is not installed. Please install stow and try again."
   exit 1
-***REMOVED***
+fi
 
 for package in $(ls -d $DOTFILES_DIR/*/); do
   package_name=$(basename $package)
-  echo ***REMOVED***Stowing '$package_name' to the target directory '$TARGET_DIR'...***REMOVED***
-  stow --target=***REMOVED***$TARGET_DIR***REMOVED*** ***REMOVED***$package_name***REMOVED***
+  echo "Stowing '$package_name' to the target directory '$TARGET_DIR'..."
+  stow --target="$TARGET_DIR" "$package_name"
 done
 
-echo ***REMOVED***Dot***REMOVED***les installation complete!***REMOVED***
+echo "Dotfiles installation complete!"

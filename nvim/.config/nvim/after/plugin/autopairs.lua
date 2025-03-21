@@ -1,25 +1,25 @@
-local npairs = require(***REMOVED***nvim-autopairs***REMOVED***)
-local Rule = require(***REMOVED***nvim-autopairs.rule***REMOVED***)
+local npairs = require("nvim-autopairs")
+local Rule = require("nvim-autopairs.rule")
 
 npairs.setup({
 	check_ts = true,
-	ts_con***REMOVED***g = {
-		lua = { ***REMOVED***string***REMOVED*** },
-		javascript = { ***REMOVED***template_string***REMOVED*** },
+	ts_config = {
+		lua = { "string" },
+		javascript = { "template_string" },
 		java = false,
 	},
 	enable_check_bracket_line = true,
 })
 
-local ts_conds = require(***REMOVED***nvim-autopairs.ts-conds***REMOVED***)
+local ts_conds = require("nvim-autopairs.ts-conds")
 
 npairs.add_rules({
-	Rule(***REMOVED***%***REMOVED***, ***REMOVED***%***REMOVED***, ***REMOVED***lua***REMOVED***):with_pair(ts_conds.is_ts_node({ ***REMOVED***string***REMOVED***, ***REMOVED***comment***REMOVED*** })),
-	Rule(***REMOVED***$***REMOVED***, ***REMOVED***$***REMOVED***, ***REMOVED***lua***REMOVED***):with_pair(ts_conds.is_not_ts_node({ ***REMOVED***function***REMOVED*** })),
-	Rule(***REMOVED***<***REMOVED***, ***REMOVED***>***REMOVED***, ***REMOVED***rust***REMOVED***),
-	Rule(***REMOVED***<***REMOVED***, ***REMOVED***>***REMOVED***, ***REMOVED***typescript***REMOVED***),
-	Rule(***REMOVED***<***REMOVED***, ***REMOVED***>***REMOVED***, ***REMOVED***javascript***REMOVED***),
-	Rule(***REMOVED***|***REMOVED***, ***REMOVED***|***REMOVED***, ***REMOVED***rust***REMOVED***),
-	Rule(***REMOVED***<***REMOVED***, ***REMOVED***>***REMOVED***, ***REMOVED***lua***REMOVED***):with_pair(ts_conds.is_not_ts_node({ ***REMOVED***function***REMOVED***, ***REMOVED***string***REMOVED*** })),
-	Rule(***REMOVED***<***REMOVED***, ***REMOVED***>***REMOVED***, ***REMOVED***html***REMOVED***),
+	Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
+	Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
+	Rule("<", ">", "rust"),
+	Rule("<", ">", "typescript"),
+	Rule("<", ">", "javascript"),
+	Rule("|", "|", "rust"),
+	Rule("<", ">", "lua"):with_pair(ts_conds.is_not_ts_node({ "function", "string" })),
+	Rule("<", ">", "html"),
 })

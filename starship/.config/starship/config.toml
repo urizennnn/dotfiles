@@ -1,4 +1,4 @@
-format = ***REMOVED******REMOVED******REMOVED***
+format = """
 $username\
 $hostname\
 $directory\
@@ -8,106 +8,105 @@ $git_state\
 $git_status\
 $git_metrics\
 $aws\
-$***REMOVED***ll\
+$fill\
 ${custom.package_manager}\
 $nodejs\
 $rust\
 $python\
 ${custom.home} $cmd_duration $jobs $time\
 $line_break\
-$character***REMOVED******REMOVED******REMOVED***
+$character"""
 
 [aws]
-format = '[$symbol(pro***REMOVED***le: ***REMOVED***$pro***REMOVED***le***REMOVED*** )(\(region: $region\) )]($style)'
+format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
 disabled = false
 style = 'bold blue'
-symbol = ***REMOVED*** ***REMOVED***
+symbol = " "
 
 [python]
-symbol = ***REMOVED*** ***REMOVED***
-style = ***REMOVED***bold yellow***REMOVED***
-format = ***REMOVED***[$symbol$virtualenv]($style) ***REMOVED***
+symbol = " "
+style = "bold yellow"
+format = "[$symbol$virtualenv]($style) "
 
 [rust]
-format = ***REMOVED***[$symbol($version )]($style)***REMOVED***
-symbol = ***REMOVED*** rust***REMOVED***
-style = ***REMOVED***bold red***REMOVED***
+format = "[$symbol($version )]($style)"
+symbol = " rust"
+style = "bold red"
 
 [nodejs]
-format = ***REMOVED***[$symbol($version )]($style)***REMOVED***
-detect_***REMOVED***les = [***REMOVED***package.json***REMOVED***, ***REMOVED***node_modules***REMOVED***]
-detect_folders = [***REMOVED***node_modules***REMOVED***]
+format = "[$symbol($version )]($style)"
+detect_files = ["package.json", "node_modules"]
+detect_folders = ["node_modules"]
 
 [custom.package_manager]
-command = ***REMOVED******REMOVED******REMOVED***
+command = """
 if [ -f package-lock.json ]; then
-    echo ***REMOVED***npm***REMOVED***
+    echo "npm"
 elif [ -f yarn.lock ]; then
-    echo ***REMOVED***yarn***REMOVED***
+    echo "yarn"
 elif [ -f pnpm-lock.yaml ]; then
-    echo ***REMOVED***pnpm***REMOVED***
+    echo "pnpm"
 elif [ -f bun.lockb ]; then
-    echo ***REMOVED***bun***REMOVED***
-***REMOVED***
+    echo "bun"
+else
     exit 1
-***REMOVED***
-***REMOVED******REMOVED******REMOVED***
-when = ***REMOVED******REMOVED******REMOVED***test -f package.json || test -f yarn.lock || test -f pnpm-lock.yaml || test -f bun.lockb***REMOVED******REMOVED******REMOVED***
-style = ***REMOVED***bold yellow***REMOVED***
-format = ***REMOVED***[$output ]($style)***REMOVED***
+fi
+"""
+when = """test -f package.json || test -f yarn.lock || test -f pnpm-lock.yaml || test -f bun.lockb"""
+style = "bold yellow"
+format = "[$output ]($style)"
 
-[***REMOVED***ll]
-symbol = ***REMOVED*** ***REMOVED***
+[fill]
+symbol = " "
 
 [directory]
-style = ***REMOVED***blue***REMOVED***
-read_only = ***REMOVED***🔒 ***REMOVED***
+style = "blue"
+read_only = "🔒 "
 truncation_length = 4
 truncate_to_repo = false
 
 [character]
-success_symbol = ***REMOVED***[❯](purple)***REMOVED***
-error_symbol = ***REMOVED***[❯](red)***REMOVED***
-vicmd_symbol = ***REMOVED***[❮](green)***REMOVED***
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vicmd_symbol = "[❮](green)"
 
 [git_branch]
-symbol = ***REMOVED*** ***REMOVED***
-format = ***REMOVED***[$symbol$branch]($style) ***REMOVED***
-style = ***REMOVED***green***REMOVED***
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "green"
 
 [jobs]
-symbol = ***REMOVED***  ***REMOVED***
-style = ***REMOVED***bold red***REMOVED***
+symbol = "  "
+style = "bold red"
 number_threshold = 1
-format = ***REMOVED***[$symbol]($style)***REMOVED***
+format = "[$symbol]($style)"
 
 [golang]
 format = '[ ](bold cyan)'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
-style = ***REMOVED***cyan***REMOVED***
+style = "cyan"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = ***REMOVED***bright-black***REMOVED***
+style = "bright-black"
 
 [git_metrics]
 disabled = false
 
 [cmd_duration]
-format = ***REMOVED***[$duration]($style)***REMOVED***
-style = ***REMOVED***yellow***REMOVED***
+format = "[$duration]($style)"
+style = "yellow"
 
 [memory_usage]
-symbol = ***REMOVED*** ***REMOVED***
+symbol = " "
 
 [time]
 disabled = false
-style = ***REMOVED***bold white***REMOVED***
-format = ***REMOVED***[$time]($style)***REMOVED***
+style = "bold white"
+format = "[$time]($style)"
 
 [custom.home]
-when = ***REMOVED***test $HOME = $PWD***REMOVED***
-format = ***REMOVED***🏠***REMOVED***
-
+when = "test $HOME = $PWD"
+format = "🏠"

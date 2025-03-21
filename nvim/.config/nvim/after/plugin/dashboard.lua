@@ -1,8 +1,8 @@
-require(***REMOVED***dashboard***REMOVED***).setup({
+require("dashboard").setup({
 	hide = {
 		statusline = false,
 	},
-	con***REMOVED***g = {
+	config = {
 		header = {
 			[[]],
 			[[UUUUUUUU     UUUUUUUURRRRRRRRRRRRRRRRR   IIIIIIIIIIZZZZZZZZZZZZZZZZZZZEEEEEEEEEEEEEEEEEEEEEENNNNNNNN        NNNNNNNN]],
@@ -24,22 +24,22 @@ require(***REMOVED***dashboard***REMOVED***).setup({
 			[[]],
 		},
 		center = {
-			{ action = ***REMOVED***ene | startinsert***REMOVED***, desc = ***REMOVED***New File***REMOVED***, icon = ***REMOVED*** ***REMOVED***, key = ***REMOVED***n***REMOVED*** },
-			{ action = ***REMOVED***Lazy***REMOVED***, desc = ***REMOVED***Lazy***REMOVED***, icon = ***REMOVED***󰒲 ***REMOVED***, key = ***REMOVED***l***REMOVED*** },
-			{ action = ***REMOVED***Telescope old***REMOVED***les***REMOVED***, desc = ***REMOVED***Old ***REMOVED***les***REMOVED***, icon = ***REMOVED*** ***REMOVED***, key = ***REMOVED***o***REMOVED*** },
+			{ action = "ene | startinsert", desc = "New File", icon = " ", key = "n" },
+			{ action = "Lazy", desc = "Lazy", icon = "󰒲 ", key = "l" },
+			{ action = "Telescope oldfiles", desc = "Old files", icon = " ", key = "o" },
 			{
 				action = function()
-					vim.api.nvim_input(***REMOVED***<cmd>qa<cr>***REMOVED***)
+					vim.api.nvim_input("<cmd>qa<cr>")
 				end,
-				desc = ***REMOVED***Quit***REMOVED***,
-				icon = ***REMOVED*** ***REMOVED***,
-				key = ***REMOVED***q***REMOVED***,
+				desc = "Quit",
+				icon = " ",
+				key = "q",
 			},
 		},
 		footer = function()
-			local stats = require(***REMOVED***lazy***REMOVED***).stats()
+			local stats = require("lazy").stats()
 			local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-			return { ***REMOVED***⚡ Neovim loaded ***REMOVED*** .. stats.loaded .. ***REMOVED***/***REMOVED*** .. stats.count .. ***REMOVED*** plugins in ***REMOVED*** .. ms .. ***REMOVED***ms***REMOVED*** }
+			return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
 		end,
 	},
 })

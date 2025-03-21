@@ -1,5 +1,5 @@
 # Pending when ghostty supports this
-# font_family***REMOVED***Iosevka***REMOVED***
+# font_family"Iosevka"
 
 font-size = 8
 
@@ -20,5 +20,5 @@ window-padding-x = 8
 window-padding-y = 6
 
 auto-update =download
-desktop-noti***REMOVED***cations = true
+desktop-notifications = true
 gtk-wide-tabs = false

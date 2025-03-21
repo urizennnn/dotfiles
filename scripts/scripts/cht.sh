@@ -1,33 +1,33 @@
 #!/bin/bash
 
-topic_constraint=***REMOVED***none***REMOVED***
+topic_constraint="none"
 
-while [[ ***REMOVED***$#***REMOVED*** -gt 0 ]];do
+while [[ "$#" -gt 0 ]];do
 case $1 in
   l|lang) 
-  topic_constraint=***REMOVED***lang***REMOVED***
+  topic_constraint="lang"
   shift;;
-***REMOVED***
+esac
 done
 
-topic=***REMOVED******REMOVED***
-if [[ ***REMOVED***$topic_constraint***REMOVED*** == ***REMOVED***lang***REMOVED*** ]]; then
-  topic=$(printf ***REMOVED***go\nrust\nc***REMOVED*** | fzf) 
+topic=""
+if [[ "$topic_constraint" == "lang" ]]; then
+  topic=$(printf "go\nrust\nc" | fzf) 
   stty sane
-***REMOVED***
+else
   topic=$(curl -s cht.sh/:list | fzf)
   stty sane
-***REMOVED***
+fi
 
-if [[ -z ***REMOVED***$topic***REMOVED*** ]]; then
+if [[ -z "$topic" ]]; then
   exit 0
-***REMOVED***
+fi
 
 sheet=$(curl -s cht.sh/$topic/:list | fzf)
 
-if [[ -z ***REMOVED***$sheet***REMOVED*** ]]; then
+if [[ -z "$sheet" ]]; then
   curl -s cht.sh/$topic?style=rrt | bat 
   exit 0
-***REMOVED***
+fi
 
 curl -s cht.sh/$topic/$sheet?style=rrt  | bat 

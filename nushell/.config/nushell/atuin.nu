@@ -1,9 +1,9 @@
-# Source this in your ~/.con***REMOVED***g/nushell/con***REMOVED***g.nu
+# Source this in your ~/.config/nushell/config.nu
 $env.ATUIN_SESSION = (atuin uuid)
 hide-env -i ATUIN_HISTORY_ID
 
 # Magic token to make sure we don't record commands run by keybindings
-let ATUIN_KEYBINDING_TOKEN = $***REMOVED***# (random uuid)***REMOVED***
+let ATUIN_KEYBINDING_TOKEN = $"# (random uuid)"
 
 let _atuin_pre_execution = {||
     if ($nu | get -i history-enabled) == false {
@@ -37,7 +37,7 @@ def _atuin_search_cmd [...flags: string] {
         if $major != null {
             # These members are only available in versions > 0.92.2
             [$major $version.minor $version.patch]
-        } ***REMOVED*** {
+        } else {
             # So fall back to the slower parsing when they're missing
             $version.version | split row '.' | into int
         }
@@ -46,35 +46,35 @@ def _atuin_search_cmd [...flags: string] {
         $ATUIN_KEYBINDING_TOKEN,
         ([
             `with-env { ATUIN_LOG: error, ATUIN_QUERY: (commandline) } {`,
-                (if $nu_version.0 <= 0 and $nu_version.1 <= 90 { 'commandline' } ***REMOVED*** { 'commandline edit' }),
-                (if $nu_version.1 >= 92 { '(run-external atuin search' } ***REMOVED*** { '(run-external --redirect-stderr atuin search' }),
-                    ($flags | append [--interactive] | each {|e| $'***REMOVED***($e)***REMOVED***'}),
-                (if $nu_version.1 >= 92 { ' e>| str trim)' } ***REMOVED*** {' | complete | $in.stderr | str substring ..-1)'}),
+                (if $nu_version.0 <= 0 and $nu_version.1 <= 90 { 'commandline' } else { 'commandline edit' }),
+                (if $nu_version.1 >= 92 { '(run-external atuin search' } else { '(run-external --redirect-stderr atuin search' }),
+                    ($flags | append [--interactive] | each {|e| $'"($e)"'}),
+                (if $nu_version.1 >= 92 { ' e>| str trim)' } else {' | complete | $in.stderr | str substring ..-1)'}),
             `}`,
         ] | flatten | str join ' '),
-    ] | str join ***REMOVED***\n***REMOVED***
+    ] | str join "\n"
 }
 
-$env.con***REMOVED***g = ($env | default {} con***REMOVED***g).con***REMOVED***g
-$env.con***REMOVED***g = ($env.con***REMOVED***g | default {} hooks)
-$env.con***REMOVED***g = (
-    $env.con***REMOVED***g | upsert hooks (
-        $env.con***REMOVED***g.hooks
+$env.config = ($env | default {} config).config
+$env.config = ($env.config | default {} hooks)
+$env.config = (
+    $env.config | upsert hooks (
+        $env.config.hooks
         | upsert pre_execution (
-            $env.con***REMOVED***g.hooks | get -i pre_execution | default [] | append $_atuin_pre_execution)
+            $env.config.hooks | get -i pre_execution | default [] | append $_atuin_pre_execution)
         | upsert pre_prompt (
-            $env.con***REMOVED***g.hooks | get -i pre_prompt | default [] | append $_atuin_pre_prompt)
+            $env.config.hooks | get -i pre_prompt | default [] | append $_atuin_pre_prompt)
     )
 )
 
-$env.con***REMOVED***g = ($env.con***REMOVED***g | default [] keybindings)
+$env.config = ($env.config | default [] keybindings)
 
-$env.con***REMOVED***g = (
-    $env.con***REMOVED***g | upsert keybindings (
-        $env.con***REMOVED***g.keybindings
+$env.config = (
+    $env.config | upsert keybindings (
+        $env.config.keybindings
         | append {
             name: atuin
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_r
             mode: [emacs, vi_normal, vi_insert]
             event: { send: executehostcommand cmd: (_atuin_search_cmd) }
@@ -82,12 +82,12 @@ $env.con***REMOVED***g = (
     )
 )
 
-$env.con***REMOVED***g = (
-    $env.con***REMOVED***g | upsert keybindings (
-        $env.con***REMOVED***g.keybindings
+$env.config = (
+    $env.config | upsert keybindings (
+        $env.config.keybindings
         | append {
             name: atuin
-            modi***REMOVED***er: none
+            modifier: none
             keycode: up
             mode: [emacs, vi_normal, vi_insert]
             event: {

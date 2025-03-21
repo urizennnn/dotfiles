@@ -1,2 +1,2 @@
-vim.keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***<leader>gs***REMOVED***, vim.cmd.Git)
-vim.keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***merge***REMOVED***, ***REMOVED***<cmd>Gvdiffsplit!<CR>***REMOVED***)
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "merge", "<cmd>Gvdiffsplit!<CR>")

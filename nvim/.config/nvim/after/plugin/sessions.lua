@@ -1,16 +1,16 @@
 -- return {
--- 	***REMOVED***rmagatti/auto-session***REMOVED***,
--- 	con***REMOVED***g = function()
--- 		local session = require(***REMOVED***auto-session***REMOVED***)
+-- 	"rmagatti/auto-session",
+-- 	config = function()
+-- 		local session = require("auto-session")
 -- 		session.setup({
 -- 			auto_restore_enabled = true,
 -- 			auto_save_enabled = true,
--- 			auto_session_suppress_dirs = { ***REMOVED***~/***REMOVED***, ***REMOVED***~/Downloads***REMOVED***, ***REMOVED***~/Documents***REMOVED*** },
+-- 			auto_session_suppress_dirs = { "~/", "~/Downloads", "~/Documents" },
 -- 		})
 --
 -- 		local keymap = vim.keymap
 --
--- 		keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***<C-s>***REMOVED***, ***REMOVED***<cmd>SaveSession<CR>***REMOVED***)
--- 		keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***<leader>r***REMOVED***, ***REMOVED***<cmd>RestoreSession<CR>***REMOVED***)
+-- 		keymap.set("n", "<C-s>", "<cmd>SaveSession<CR>")
+-- 		keymap.set("n", "<leader>r", "<cmd>RestoreSession<CR>")
 -- 	end,
 -- }

@@ -2,15 +2,15 @@
 #!/bin/bash
 
 # Check if the script is run as root
-if [ ***REMOVED***$(id -u)***REMOVED*** -ne 0 ]; then
-  echo ***REMOVED***Please run this script as root.***REMOVED***
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Please run this script as root."
   exit 1
-***REMOVED***
+fi
 
-echo ***REMOVED***Clearing unused RAM and freeing up memory...***REMOVED***
+echo "Clearing unused RAM and freeing up memory..."
 
 # Display memory usage before clearing
-echo ***REMOVED***Memory usage before clearing:***REMOVED***
+echo "Memory usage before clearing:"
 free -h
 
 # Clear the page cache
@@ -26,7 +26,7 @@ echo 3 > /proc/sys/vm/drop_caches
 sync
 
 # Display memory usage after clearing
-echo ***REMOVED***Memory usage after clearing:***REMOVED***
+echo "Memory usage after clearing:"
 free -h
 
-echo ***REMOVED***RAM has been cleared successfully!***REMOVED***
+echo "RAM has been cleared successfully!"

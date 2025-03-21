@@ -2,17 +2,17 @@
 
 # =============================================================================
 #
-# Hook con***REMOVED***guration for zoxide.
+# Hook configuration for zoxide.
 #
 
 # Initialize hook to add new entries to the database.
 if (not ($env | default false __zoxide_hooked | get __zoxide_hooked)) {
   $env.__zoxide_hooked = true
-  $env.con***REMOVED***g = ($env | default {} con***REMOVED***g).con***REMOVED***g
-  $env.con***REMOVED***g = ($env.con***REMOVED***g | default {} hooks)
-  $env.con***REMOVED***g = ($env.con***REMOVED***g | update hooks ($env.con***REMOVED***g.hooks | default {} env_change))
-  $env.con***REMOVED***g = ($env.con***REMOVED***g | update hooks.env_change ($env.con***REMOVED***g.hooks.env_change | default [] PWD))
-  $env.con***REMOVED***g = ($env.con***REMOVED***g | update hooks.env_change.PWD ($env.con***REMOVED***g.hooks.env_change.PWD | append {|_, dir|
+  $env.config = ($env | default {} config).config
+  $env.config = ($env.config | default {} hooks)
+  $env.config = ($env.config | update hooks ($env.config.hooks | default {} env_change))
+  $env.config = ($env.config | update hooks.env_change ($env.config.hooks.env_change | default [] PWD))
+  $env.config = ($env.config | update hooks.env_change.PWD ($env.config.hooks.env_change.PWD | append {|_, dir|
     zoxide add -- $dir
   }))
 }
@@ -28,15 +28,15 @@ def --env --wrapped __zoxide_z [...rest:string] {
   let arg0_is_dir = (try {$arg0 | path expand | path type}) == 'dir'
   let path = if (($rest | length) <= 1) and ($arg0 == '-' or $arg0_is_dir) {
     $arg0
-  } ***REMOVED*** {
-    (zoxide query --exclude $env.PWD -- ...$rest | str trim -r -c ***REMOVED***\n***REMOVED***)
+  } else {
+    (zoxide query --exclude $env.PWD -- ...$rest | str trim -r -c "\n")
   }
   cd $path
 }
 
 # Jump to a directory using interactive search.
 def --env --wrapped __zoxide_zi [...rest:string] {
-  cd $'(zoxide query --interactive -- ...$rest | str trim -r -c ***REMOVED***\n***REMOVED***)'
+  cd $'(zoxide query --interactive -- ...$rest | str trim -r -c "\n")'
 }
 
 # =============================================================================
@@ -49,12 +49,12 @@ alias zi = __zoxide_zi
 
 # =============================================================================
 #
-# Add this to your env ***REMOVED***le (***REMOVED***nd it by running `$nu.env-path` in Nushell):
+# Add this to your env file (find it by running `$nu.env-path` in Nushell):
 #
 #   zoxide init nushell | save -f ~/.zoxide.nu
 #
-# Now, add this to the end of your con***REMOVED***g ***REMOVED***le (***REMOVED***nd it by running
-# `$nu.con***REMOVED***g-path` in Nushell):
+# Now, add this to the end of your config file (find it by running
+# `$nu.config-path` in Nushell):
 #
 #   source ~/.zoxide.nu
 #

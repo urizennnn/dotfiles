@@ -15,19 +15,19 @@ local function create_floating_terminal(opts)
 	local buf = nil
 	if vim.api.nvim_buf_is_valid(state.floating.buf) then
 		buf = state.floating.buf
-	***REMOVED***
+	else
 		buf = vim.api.nvim_create_buf(false, true)
 		state.floating.buf = buf
 	end
 
 	local win = vim.api.nvim_open_win(buf, true, {
-		relative = ***REMOVED***editor***REMOVED***,
+		relative = "editor",
 		width = width,
 		height = height,
 		row = row,
 		col = col,
-		style = ***REMOVED***minimal***REMOVED***,
-		border = ***REMOVED***rounded***REMOVED***,
+		style = "minimal",
+		border = "rounded",
 	})
 	return { buf = buf, win = win }
 end
@@ -35,13 +35,13 @@ end
 local function toggle_tem()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		state.floating = create_floating_terminal({ buf = state.floating.buf })
-		if vim.bo[state.floating.buf].buftype ~= ***REMOVED***terminal***REMOVED*** then
+		if vim.bo[state.floating.buf].buftype ~= "terminal" then
 			vim.cmd.term()
 		end
-	***REMOVED***
+	else
 		vim.api.nvim_win_hide(state.floating.win)
 	end
 end
 
-vim.api.nvim_create_user_command(***REMOVED***ScratchTerminal***REMOVED***, toggle_tem, {})
-vim.keymap.set({ ***REMOVED***n***REMOVED***, ***REMOVED***t***REMOVED*** }, ***REMOVED***<leader>sc***REMOVED***, toggle_tem, { noremap = true, silent = true })
+vim.api.nvim_create_user_command("ScratchTerminal", toggle_tem, {})
+vim.keymap.set({ "n", "t" }, "<leader>sc", toggle_tem, { noremap = true, silent = true })

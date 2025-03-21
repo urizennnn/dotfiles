@@ -1,8 +1,8 @@
-# Nushell Con***REMOVED***g File
+# Nushell Config File
 #
-# version = ***REMOVED***0.100.0***REMOVED***
+# version = "0.100.0"
 
-# For more information on de***REMOVED***ning custom themes, see
+# For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
 # And here is the theme collection
 # https://github.com/nushell/nu_scripts/tree/main/themes
@@ -12,12 +12,12 @@ let dark_theme = {
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
     header: green_bold
     empty: blue
-    # Closures can be used to choose colors for speci***REMOVED***c values.
+    # Closures can be used to choose colors for specific values.
     # The value (in this case, a bool) is piped into the closure.
-    # eg) {|| if $in { 'light_cyan' } ***REMOVED*** { 'light_gray' } }
+    # eg) {|| if $in { 'light_cyan' } else { 'light_gray' } }
     bool: light_cyan
     int: white
-    ***REMOVED***lesize: cyan
+    filesize: cyan
     duration: white
     date: purple
     range: white
@@ -43,7 +43,7 @@ let dark_theme = {
     shape_external: cyan
     shape_externalarg: green_bold
     shape_external_resolved: light_yellow_bold
-    shape_***REMOVED***lepath: cyan
+    shape_filepath: cyan
     shape_flag: blue_bold
     shape_float: purple_bold
     # shapes are used to change the cli syntax highlighting
@@ -79,8 +79,8 @@ let dark_theme = {
 #     carapace $spans.0 nushell ...$spans | from json
 # }
 
-# The default con***REMOVED***g record. This is where much of your global con***REMOVED***guration is setup.
-$env.con***REMOVED***g = {
+# The default config record. This is where much of your global configuration is setup.
+$env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 
     ls: {
@@ -94,20 +94,20 @@ $env.con***REMOVED***g = {
 
     table: {
         mode:  heavy # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
-        index_mode: always # ***REMOVED***always***REMOVED*** show indexes, ***REMOVED***never***REMOVED*** show indexes, ***REMOVED***auto***REMOVED*** = show indexes when a table has ***REMOVED***index***REMOVED*** column
+        index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
         show_empty: true # show 'empty list' and 'empty record' placeholders for command output
         padding: { left: 1, right: 1 } # a left right padding of each column in a table
         trim: {
             methodology: wrapping # wrapping or truncating
             wrapping_try_keep_words: true # A strategy used by the 'wrapping' methodology
-            truncating_suf***REMOVED***x: ***REMOVED***...***REMOVED*** # A suf***REMOVED***x used by the 'truncating' methodology
+            truncating_suffix: "..." # A suffix used by the 'truncating' methodology
         }
         header_on_separator: false # show header text on separator/border line
         footer_inheritance: false # render footer in parent table if child is big enough (extended table option)
         # abbreviated_row_count: 10 # limit data rows from top and bottom after reaching a set point
     }
 
-    error_style: ***REMOVED***fancy***REMOVED*** # ***REMOVED***fancy***REMOVED*** or ***REMOVED***plain***REMOVED*** for screen reader-friendly error messages
+    error_style: "fancy" # "fancy" or "plain" for screen reader-friendly error messages
 
     # Whether an error message should be printed if an error of a certain kind is triggered.
     display_errors: {
@@ -119,11 +119,11 @@ $env.con***REMOVED***g = {
 
 
     explore: {
-        status_bar_background: { fg: ***REMOVED***#1D1F21***REMOVED***, bg: ***REMOVED***#C4C9C6***REMOVED*** },
-        command_bar_text: { fg: ***REMOVED***#C4C9C6***REMOVED*** },
-        highlight: { fg: ***REMOVED***black***REMOVED***, bg: ***REMOVED***yellow***REMOVED*** },
+        status_bar_background: { fg: "#1D1F21", bg: "#C4C9C6" },
+        command_bar_text: { fg: "#C4C9C6" },
+        highlight: { fg: "black", bg: "yellow" },
         status: {
-            error: { fg: ***REMOVED***white***REMOVED***, bg: ***REMOVED***red***REMOVED*** },
+            error: { fg: "white", bg: "red" },
             warn: {}
             info: {}
         },
@@ -132,28 +132,28 @@ $env.con***REMOVED***g = {
 
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
-        sync_on_enter: true # Enable to share history between multiple sessions, ***REMOVED*** you have to close the session to write history to ***REMOVED***le
-        ***REMOVED***le_format: ***REMOVED***plaintext***REMOVED*** # ***REMOVED***sqlite***REMOVED*** or ***REMOVED***plaintext***REMOVED***
-        isolation: false # only available with sqlite ***REMOVED***le_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
+        sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
+        file_format: "plaintext" # "sqlite" or "plaintext"
+        isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
     }
 
     completions: {
         case_sensitive: false # set to true to enable case-sensitive completions
         quick: true    # set this to false to prevent auto-selecting completions when only one remains
-        partial: true    # set this to false to prevent partial ***REMOVED***lling of the prompt
-        algorithm: ***REMOVED***fuzzy***REMOVED***    # pre***REMOVED***x or fuzzy
-        sort: ***REMOVED***smart***REMOVED*** # ***REMOVED***smart***REMOVED*** (alphabetical for pre***REMOVED***x matching, fuzzy score for fuzzy matching) or ***REMOVED***alphabetical***REMOVED***
+        partial: true    # set this to false to prevent partial filling of the prompt
+        algorithm: "fuzzy"    # prefix or fuzzy
+        sort: "smart" # "smart" (alphabetical for prefix matching, fuzzy score for fuzzy matching) or "alphabetical"
         external: {
-            enable: true # set to false to prevent nushell looking into $env.PATH to ***REMOVED***nd more suggestions, `false` recommended for WSL users as this look up may be very slow
+            enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
             completer: null # check 'carapace_completer' above as an example
         }
-        use_ls_colors: true # set this to true to enable ***REMOVED***le/path/directory completions using LS_COLORS
+        use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
     }
 
-    ***REMOVED***lesize: {
+    filesize: {
         metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-        format: ***REMOVED***auto***REMOVED*** # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
+        format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
     }
 
     cursor_shape: {
@@ -162,7 +162,7 @@ $env.con***REMOVED***g = {
         vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
-    color_con***REMOVED***g: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
+    color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     buffer_editor: null # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.VISUAL and $env.EDITOR
@@ -182,14 +182,14 @@ $env.con***REMOVED***g = {
         # 133;A - Mark prompt start
         # 133;B - Mark prompt end
         # 133;C - Mark pre-execution
-        # 133;D;exit - Mark execution ***REMOVED***nished with exit code
-        # This is used to enable terminals to know where the prompt is, the command is, where the command ***REMOVED***nishes, and where the output of the command is
+        # 133;D;exit - Mark execution finished with exit code
+        # This is used to enable terminals to know where the prompt is, the command is, where the command finishes, and where the output of the command is
         osc133: true
         # osc633 is closely related to osc133 but only exists in visual studio code (vscode) and supports their shell integration features
         # 633;A - Mark prompt start
         # 633;B - Mark prompt end
         # 633;C - Mark pre-execution
-        # 633;D;exit - Mark execution ***REMOVED***nished with exit code
+        # 633;D;exit - Mark execution finished with exit code
         # 633;E - Explicitly set the command line with an optional nonce
         # 633;P;Cwd=<path> - Mark the current working directory and communicate it to the terminal
         # and also helps with the run recent menu in vscode
@@ -202,16 +202,16 @@ $env.con***REMOVED***g = {
     highlight_resolved_externals: false # true enables highlighting of external commands in the repl resolved by which.
     recursion_limit: 50 # the maximum number of times nushell allows recursion before stopping it
 
-    plugins: {} # Per-plugin con***REMOVED***guration. See https://www.nushell.sh/contributor-book/plugins.html#con***REMOVED***guration.
+    plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
 
     plugin_gc: {
-        # Con***REMOVED***guration for plugin garbage collection
+        # Configuration for plugin garbage collection
         default: {
             enabled: true # true to enable stopping of inactive plugins
             stop_after: 10sec # how long to wait after a plugin is inactive to stop it
         }
         plugins: {
-            # alternate con***REMOVED***guration for speci***REMOVED***c plugins, by name, for example:
+            # alternate configuration for specific plugins, by name, for example:
             #
             # gstat: {
             #     enabled: false
@@ -225,17 +225,17 @@ $env.con***REMOVED***g = {
         env_change: {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
         }
-        display_output: ***REMOVED***if (term size).columns >= 100 { table -e } ***REMOVED*** { table }***REMOVED*** # run to display the output of a pipeline
+        display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
         command_not_found: { null } # return an error message when a command is not found
     }
 
     menus: [
-        # Con***REMOVED***guration for default nushell menus
+        # Configuration for default nushell menus
         # Note the lack of source parameter
         {
             name: completion_menu
             only_buffer_difference: false
-            marker: ***REMOVED***| ***REMOVED***
+            marker: "| "
             type: {
                 layout: columnar
                 columns: 4
@@ -253,7 +253,7 @@ $env.con***REMOVED***g = {
         {
             name: ide_completion_menu
             only_buffer_difference: false
-            marker: ***REMOVED***| ***REMOVED***
+            marker: "| "
             type: {
                 layout: ide
                 min_completion_width: 0,
@@ -262,7 +262,7 @@ $env.con***REMOVED***g = {
                 padding: 0,
                 border: true,
                 cursor_offset: 0,
-                description_mode: ***REMOVED***prefer_right***REMOVED***
+                description_mode: "prefer_right"
                 min_description_width: 0
                 max_description_width: 50
                 max_description_height: 10
@@ -286,7 +286,7 @@ $env.con***REMOVED***g = {
         {
             name: history_menu
             only_buffer_difference: true
-            marker: ***REMOVED***? ***REMOVED***
+            marker: "? "
             type: {
                 layout: list
                 page_size: 10
@@ -300,7 +300,7 @@ $env.con***REMOVED***g = {
         {
             name: help_menu
             only_buffer_difference: true
-            marker: ***REMOVED***? ***REMOVED***
+            marker: "? "
             type: {
                 layout: description
                 columns: 4
@@ -320,7 +320,7 @@ $env.con***REMOVED***g = {
     keybindings: [
         {
             name: completion_menu
-            modi***REMOVED***er: none
+            modifier: none
             keycode: tab
             mode: [emacs vi_normal vi_insert]
             event: {
@@ -333,14 +333,14 @@ $env.con***REMOVED***g = {
         }
         {
             name: completion_previous_menu
-            modi***REMOVED***er: shift
+            modifier: shift
             keycode: backtab
             mode: [emacs, vi_normal, vi_insert]
             event: { send: menuprevious }
         }
         {
             name: ide_completion_menu
-            modi***REMOVED***er: control
+            modifier: control
             keycode: space
             mode: [emacs vi_normal vi_insert]
             event: {
@@ -353,28 +353,28 @@ $env.con***REMOVED***g = {
         }
         {
             name: history_menu
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_r
             mode: [emacs, vi_insert, vi_normal]
             event: { send: menu name: history_menu }
         }
         {
             name: help_menu
-            modi***REMOVED***er: none
+            modifier: none
             keycode: f1
             mode: [emacs, vi_insert, vi_normal]
             event: { send: menu name: help_menu }
         }
         {
             name: next_page_menu
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_x
             mode: emacs
             event: { send: menupagenext }
         }
         {
             name: undo_or_previous_page_menu
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_z
             mode: emacs
             event: {
@@ -386,49 +386,49 @@ $env.con***REMOVED***g = {
         }
         {
             name: escape
-            modi***REMOVED***er: none
+            modifier: none
             keycode: escape
             mode: [emacs, vi_normal, vi_insert]
             event: { send: esc }    # NOTE: does not appear to work
         }
         {
             name: cancel_command
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_c
             mode: [emacs, vi_normal, vi_insert]
             event: { send: ctrlc }
         }
         {
             name: quit_shell
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_d
             mode: [emacs, vi_normal, vi_insert]
             event: { send: ctrld }
         }
         {
             name: clear_screen
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_l
             mode: [emacs, vi_normal, vi_insert]
             event: { send: clearscreen }
         }
         {
             name: search_history
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_q
             mode: [emacs, vi_normal, vi_insert]
             event: { send: searchhistory }
         }
         {
             name: open_command_editor
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_o
             mode: [emacs, vi_normal, vi_insert]
             event: { send: openeditor }
         }
         {
             name: move_up
-            modi***REMOVED***er: none
+            modifier: none
             keycode: up
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -440,7 +440,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_down
-            modi***REMOVED***er: none
+            modifier: none
             keycode: down
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -452,7 +452,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_left
-            modi***REMOVED***er: none
+            modifier: none
             keycode: left
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -464,7 +464,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_right_or_take_history_hint
-            modi***REMOVED***er: none
+            modifier: none
             keycode: right
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -477,14 +477,14 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_one_word_left
-            modi***REMOVED***er: control
+            modifier: control
             keycode: left
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
-            modi***REMOVED***er: control
+            modifier: control
             keycode: right
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -496,21 +496,21 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_to_line_start
-            modi***REMOVED***er: none
+            modifier: none
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movetolinestart }
         }
         {
             name: move_to_line_start
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_a
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movetolinestart }
         }
         {
             name: move_to_line_end_or_take_history_hint
-            modi***REMOVED***er: none
+            modifier: none
             keycode: end
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -522,7 +522,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_to_line_end_or_take_history_hint
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_e
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -534,21 +534,21 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_to_line_start
-            modi***REMOVED***er: control
+            modifier: control
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movetolinestart }
         }
         {
             name: move_to_line_end
-            modi***REMOVED***er: control
+            modifier: control
             keycode: end
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movetolineend }
         }
         {
             name: move_down
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_n
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -560,7 +560,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_up
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_p
             mode: [emacs, vi_normal, vi_insert]
             event: {
@@ -572,63 +572,63 @@ $env.con***REMOVED***g = {
         }
         {
             name: delete_one_character_backward
-            modi***REMOVED***er: none
+            modifier: none
             keycode: backspace
             mode: [emacs, vi_insert]
             event: { edit: backspace }
         }
         {
             name: delete_one_word_backward
-            modi***REMOVED***er: control
+            modifier: control
             keycode: backspace
             mode: [emacs, vi_insert]
             event: { edit: backspaceword }
         }
         {
             name: delete_one_character_forward
-            modi***REMOVED***er: none
+            modifier: none
             keycode: delete
             mode: [emacs, vi_insert]
             event: { edit: delete }
         }
         {
             name: delete_one_character_forward
-            modi***REMOVED***er: control
+            modifier: control
             keycode: delete
             mode: [emacs, vi_insert]
             event: { edit: delete }
         }
         {
             name: delete_one_character_backward
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_h
             mode: [emacs, vi_insert]
             event: { edit: backspace }
         }
         {
             name: delete_one_word_backward
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_w
             mode: [emacs, vi_insert]
             event: { edit: backspaceword }
         }
         {
             name: move_left
-            modi***REMOVED***er: none
+            modifier: none
             keycode: backspace
             mode: vi_normal
             event: { edit: moveleft }
         }
         {
             name: newline_or_run_command
-            modi***REMOVED***er: none
+            modifier: none
             keycode: enter
             mode: emacs
             event: { send: enter }
         }
         {
             name: move_left
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_b
             mode: emacs
             event: {
@@ -640,7 +640,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_right_or_take_history_hint
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_f
             mode: emacs
             event: {
@@ -653,63 +653,63 @@ $env.con***REMOVED***g = {
         }
         {
             name: redo_change
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_g
             mode: emacs
             event: { edit: redo }
         }
         {
             name: undo_change
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_z
             mode: emacs
             event: { edit: undo }
         }
         {
             name: paste_before
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_y
             mode: emacs
             event: { edit: pastecutbufferbefore }
         }
         {
             name: cut_word_left
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_w
             mode: emacs
             event: { edit: cutwordleft }
         }
         {
             name: cut_line_to_end
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_k
             mode: emacs
             event: { edit: cuttolineend }
         }
         {
             name: cut_line_from_start
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_u
             mode: emacs
             event: { edit: cutfromstart }
         }
         {
             name: swap_graphemes
-            modi***REMOVED***er: control
+            modifier: control
             keycode: char_t
             mode: emacs
             event: { edit: swapgraphemes }
         }
         {
             name: move_one_word_left
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: left
             mode: emacs
             event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: right
             mode: emacs
             event: {
@@ -721,14 +721,14 @@ $env.con***REMOVED***g = {
         }
         {
             name: move_one_word_left
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_b
             mode: emacs
             event: { edit: movewordleft }
         }
         {
             name: move_one_word_right_or_take_history_hint
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_f
             mode: emacs
             event: {
@@ -740,49 +740,49 @@ $env.con***REMOVED***g = {
         }
         {
             name: delete_one_word_forward
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: delete
             mode: emacs
             event: { edit: deleteword }
         }
         {
             name: delete_one_word_backward
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: backspace
             mode: emacs
             event: { edit: backspaceword }
         }
         {
             name: delete_one_word_backward
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_m
             mode: emacs
             event: { edit: backspaceword }
         }
         {
             name: cut_word_to_right
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_d
             mode: emacs
             event: { edit: cutwordright }
         }
         {
             name: upper_case_word
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_u
             mode: emacs
             event: { edit: uppercaseword }
         }
         {
             name: lower_case_word
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_l
             mode: emacs
             event: { edit: lowercaseword }
         }
         {
             name: capitalize_char
-            modi***REMOVED***er: alt
+            modifier: alt
             keycode: char_c
             mode: emacs
             event: { edit: capitalizechar }
@@ -794,7 +794,7 @@ $env.con***REMOVED***g = {
         # using the internal clipboard.
         {
             name: copy_selection
-            modi***REMOVED***er: control_shift
+            modifier: control_shift
             keycode: char_c
             mode: emacs
             event: { edit: copyselection }
@@ -802,7 +802,7 @@ $env.con***REMOVED***g = {
         }
         {
             name: cut_selection
-            modi***REMOVED***er: control_shift
+            modifier: control_shift
             keycode: char_x
             mode: emacs
             event: { edit: cutselection }
@@ -810,14 +810,14 @@ $env.con***REMOVED***g = {
         }
         # {
         #     name: paste_system
-        #     modi***REMOVED***er: control_shift
+        #     modifier: control_shift
         #     keycode: char_v
         #     mode: emacs
         #     event: { edit: pastesystem }
         # }
         {
             name: select_all
-            modi***REMOVED***er: control_shift
+            modifier: control_shift
             keycode: char_a
             mode: emacs
             event: { edit: selectall }
@@ -827,7 +827,7 @@ $env.con***REMOVED***g = {
 source ./env.nu
 source ./zoxide.nu
 source ./atuin.nu
-$env.PROMPT_MULTILINE_INDICATOR = {|| ***REMOVED***::: ***REMOVED*** }
+$env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 
 use ~/.cache/starship/init.nu

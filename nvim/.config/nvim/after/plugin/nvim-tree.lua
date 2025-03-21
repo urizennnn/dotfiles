@@ -6,31 +6,31 @@ vim.cmd([[
     highlight NvimTreeFolderName guifg=#c6d0f5
 ]])
 
-require(***REMOVED***nvim-tree***REMOVED***).setup({
-	update_focused_***REMOVED***le = {
-		enable = true, -- Enables the sync with the current ***REMOVED***le
+require("nvim-tree").setup({
+	update_focused_file = {
+		enable = true, -- Enables the sync with the current file
 		update_cwd = true, -- Updates the current working directory
 		ignore_list = {}, -- Files or folders to ignore for this feature
 	},
 	sort = {
-		sorter = ***REMOVED***case_sensitive***REMOVED***,
+		sorter = "case_sensitive",
 	},
 	view = {
 		centralize_selection = false,
 		cursorline = true,
 		debounce_delay = 15,
-		side = ***REMOVED***left***REMOVED***,
+		side = "left",
 		preserve_window_proportions = false,
 		number = false,
 		relativenumber = false,
-		signcolumn = ***REMOVED***yes***REMOVED***,
+		signcolumn = "yes",
 		adaptive_size = true,
 		float = {
 			enable = true,
 			quit_on_focus_loss = true,
-			open_win_con***REMOVED***g = {
-				relative = ***REMOVED***editor***REMOVED***,
-				border = ***REMOVED***rounded***REMOVED***,
+			open_win_config = {
+				relative = "editor",
+				border = "rounded",
 				width = 30,
 				height = 30,
 				row = 1,
@@ -42,7 +42,7 @@ require(***REMOVED***nvim-tree***REMOVED***).setup({
 		group_empty = true,
 		icons = {
 			web_devicons = {
-				***REMOVED***le = {
+				file = {
 					enable = true,
 					color = true,
 				},
@@ -52,25 +52,25 @@ require(***REMOVED***nvim-tree***REMOVED***).setup({
 				},
 			},
 			glyphs = {
-				default = ***REMOVED******REMOVED***,
-				symlink = ***REMOVED******REMOVED***,
-				bookmark = ***REMOVED***󰆤***REMOVED***,
-				modi***REMOVED***ed = ***REMOVED***●***REMOVED***,
+				default = "",
+				symlink = "",
+				bookmark = "󰆤",
+				modified = "●",
 				folder = {
-					arrow_closed = ***REMOVED******REMOVED***,
-					arrow_open = ***REMOVED******REMOVED***,
-					default = ***REMOVED******REMOVED***,
-					open = ***REMOVED******REMOVED***,
-					empty = ***REMOVED******REMOVED***,
-					empty_open = ***REMOVED******REMOVED***,
-					symlink = ***REMOVED******REMOVED***,
-					symlink_open = ***REMOVED******REMOVED***,
+					arrow_closed = "",
+					arrow_open = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
 				},
 			},
 		},
 	},
-	***REMOVED***lters = {
-		dot***REMOVED***les = false,
+	filters = {
+		dotfiles = false,
 		git_ignored = false,
 	},
 })

@@ -1,10 +1,10 @@
-require(***REMOVED***lualine***REMOVED***).setup({
-	theme = ***REMOVED***tokyonight***REMOVED***,
+require("lualine").setup({
+	theme = "tokyonight",
 	options = {
 		icons_enabled = true,
-		component_separators = ***REMOVED******REMOVED***,
-		section_separators = { left = ***REMOVED******REMOVED***, right = ***REMOVED******REMOVED*** },
-		disabled_***REMOVED***letypes = {
+		component_separators = "",
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = {
 			statusline = {},
 			winbar = {},
 		},
@@ -18,18 +18,18 @@ require(***REMOVED***lualine***REMOVED***).setup({
 		},
 	},
 	sections = {
-		lualine_a = { ***REMOVED***mode***REMOVED*** },
-		lualine_b = { ***REMOVED***branch***REMOVED***, ***REMOVED***diff***REMOVED***, ***REMOVED***diagnostics***REMOVED*** },
-		lualine_c = { ***REMOVED******REMOVED***lename***REMOVED*** },
-		lualine_x = { ***REMOVED***encoding***REMOVED***, ***REMOVED******REMOVED***leformat***REMOVED***, ***REMOVED******REMOVED***letype***REMOVED*** },
-		lualine_y = { ***REMOVED***progress***REMOVED*** },
-		lualine_z = { ***REMOVED***location***REMOVED*** },
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { "filename" },
+		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { ***REMOVED******REMOVED***lename***REMOVED*** },
-		lualine_x = { ***REMOVED***location***REMOVED*** },
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
 		lualine_y = {},
 		lualine_z = {},
 	},

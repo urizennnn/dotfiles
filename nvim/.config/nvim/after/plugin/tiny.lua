@@ -1,22 +1,22 @@
--- -- Default con***REMOVED***guration
--- require(***REMOVED***tiny-inline-diagnostic***REMOVED***).setup({
+-- -- Default configuration
+-- require("tiny-inline-diagnostic").setup({
 -- 	signs = {
--- 		left = ***REMOVED******REMOVED***,
--- 		right = ***REMOVED******REMOVED***,
--- 		diag = ***REMOVED***●***REMOVED***,
--- 		arrow = ***REMOVED***    ***REMOVED***,
--- 		up_arrow = ***REMOVED***    ***REMOVED***,
--- 		vertical = ***REMOVED*** │***REMOVED***,
--- 		vertical_end = ***REMOVED*** └***REMOVED***,
+-- 		left = "",
+-- 		right = "",
+-- 		diag = "●",
+-- 		arrow = "    ",
+-- 		up_arrow = "    ",
+-- 		vertical = " │",
+-- 		vertical_end = " └",
 -- 	},
 -- 	hi = {
--- 		error = ***REMOVED***DiagnosticError***REMOVED***,
--- 		warn = ***REMOVED***DiagnosticWarn***REMOVED***,
--- 		info = ***REMOVED***DiagnosticInfo***REMOVED***,
--- 		hint = ***REMOVED***DiagnosticHint***REMOVED***,
--- 		arrow = ***REMOVED***NonText***REMOVED***,
--- 		background = ***REMOVED***CursorLine***REMOVED***, -- Can be a highlight or a hexadecimal color (#RRGGBB)
--- 		mixing_color = ***REMOVED***None***REMOVED***, -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
+-- 		error = "DiagnosticError",
+-- 		warn = "DiagnosticWarn",
+-- 		info = "DiagnosticInfo",
+-- 		hint = "DiagnosticHint",
+-- 		arrow = "NonText",
+-- 		background = "CursorLine", -- Can be a highlight or a hexadecimal color (#RRGGBB)
+-- 		mixing_color = "None", -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
 -- 	},
 -- 	blend = {
 -- 		factor = 0.27,
@@ -40,7 +40,7 @@
 -- 			-- Manage the overflow of the message.
 -- 			--    - wrap: when the message is too long, it is then displayed on multiple lines.
 -- 			--    - none: the message will not be truncated, and will be displayed on a single line.
--- 			mode = ***REMOVED***wrap***REMOVED***,
+-- 			mode = "wrap",
 -- 		},
 --
 -- 		--- Enable it if you want to always have message with `after` characters length.

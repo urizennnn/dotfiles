@@ -1,48 +1,48 @@
-# Con***REMOVED***guration for fzf preview
-set-env FZF_TAB_PREVIEW ***REMOVED***exa --tree --level=2 --color=always {}***REMOVED***
+# Configuration for fzf preview
+set-env FZF_TAB_PREVIEW "exa --tree --level=2 --color=always {}"
 
-# Helper function to fuzzy ***REMOVED***nd ***REMOVED***les
-def fzf-***REMOVED***nd-***REMOVED***le [] {
+# Helper function to fuzzy find files
+def fzf-find-file [] {
     ls
     | get name
     | to text
     | fzf --preview $env.FZF_TAB_PREVIEW
 }
 
-# Helper function to fuzzy ***REMOVED***nd directories
-def fzf-***REMOVED***nd-dir [] {
+# Helper function to fuzzy find directories
+def fzf-find-dir [] {
     ls
-    | where type == ***REMOVED***dir***REMOVED***
+    | where type == "dir"
     | get name
     | to text
     | fzf --preview $env.FZF_TAB_PREVIEW
 }
 
 # Custom completion for cd command
-def ***REMOVED***nu-complete cd***REMOVED*** [] {
-    fzf-***REMOVED***nd-dir
+def "nu-complete cd" [] {
+    fzf-find-dir
 }
 
 # Custom completion for open command
-def ***REMOVED***nu-complete open***REMOVED*** [] {
-    fzf-***REMOVED***nd-***REMOVED***le
+def "nu-complete open" [] {
+    fzf-find-file
 }
 
-# De***REMOVED***ne custom fcd function (fuzzy cd)
+# Define custom fcd function (fuzzy cd)
 def fcd [dir] {
     if ($dir == null) {
         cd (nu-complete cd)
-    } ***REMOVED*** {
+    } else {
         cd $dir
     }
 }
 
-# De***REMOVED***ne custom fopen function (fuzzy open)
-def fopen [***REMOVED***le] {
-    if ($***REMOVED***le == null) {
+# Define custom fopen function (fuzzy open)
+def fopen [file] {
+    if ($file == null) {
         open (nu-complete open)
-    } ***REMOVED*** {
-        open $***REMOVED***le
+    } else {
+        open $file
     }
 }
 
@@ -58,12 +58,12 @@ def fzf-history [] {
 }
 
 # Bind Ctrl+R to history search
-$env.con***REMOVED***g = ($env.con***REMOVED***g | upsert keybindings [{
+$env.config = ($env.config | upsert keybindings [{
     name: history_search
-    modi***REMOVED***er: control
+    modifier: control
     keycode: char_r
     mode: [emacs, vi_normal, vi_insert]
-    event: { send: ***REMOVED***executeCapturedShell: (fzf-history)***REMOVED*** }
+    event: { send: "executeCapturedShell: (fzf-history)" }
 }])
 
 # Function to fuzzy search through environment variables
@@ -73,7 +73,7 @@ def fzf-env [] {
     | to text
     | fzf
     | str trim
-    | if ($in != ***REMOVED******REMOVED***) { $env | get $in }
+    | if ($in != "") { $env | get $in }
 }
 
 # Function to fuzzy search through running processes
@@ -94,17 +94,17 @@ def fopen-cmd [] {
 }
 
 # Bind fcd and fopen as convenience functions
-$env.con***REMOVED***g = ($env.con***REMOVED***g | upsert keybindings [{
+$env.config = ($env.config | upsert keybindings [{
     name: fcd
-    modi***REMOVED***er: control
+    modifier: control
     keycode: char_d
-    event: { send: executeCapturedShell: ***REMOVED***(fcd-cmd)***REMOVED*** }
+    event: { send: executeCapturedShell: "(fcd-cmd)" }
 }])
 
-$env.con***REMOVED***g = ($env.con***REMOVED***g | upsert keybindings [{
+$env.config = ($env.config | upsert keybindings [{
     name: fopen
-    modi***REMOVED***er: control
+    modifier: control
     keycode: char_o
-    event: { send: executeCapturedShell: ***REMOVED***(fopen-cmd)***REMOVED*** }
+    event: { send: executeCapturedShell: "(fopen-cmd)" }
 }])
 

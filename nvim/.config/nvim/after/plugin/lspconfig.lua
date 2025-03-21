@@ -1,37 +1,37 @@
-local augroup = vim.api.nvim_create_augroup(***REMOVED***LspFormatting***REMOVED***, { clear = true })
-local capabilities = require(***REMOVED***cmp_nvim_lsp***REMOVED***).default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.formatting = true
 
-require(***REMOVED***mason***REMOVED***).setup()
-require(***REMOVED***mason-lspcon***REMOVED***g***REMOVED***).setup({
-	ensure_installed = { ***REMOVED***lua_ls***REMOVED***, ***REMOVED***eslint***REMOVED*** },
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = { "lua_ls", "eslint" },
 })
-require(***REMOVED***mason-lspcon***REMOVED***g***REMOVED***).setup_handlers({
-	[***REMOVED***rust_analyzer***REMOVED***] = function() end,
+require("mason-lspconfig").setup_handlers({
+	["rust_analyzer"] = function() end,
 })
 --- autocmd for formatting
-vim.api.nvim_create_autocmd(***REMOVED***BufWritePre***REMOVED***, {
-	group = vim.api.nvim_create_augroup(***REMOVED***custom_lsp***REMOVED***, { clear = false }),
-	pattern = ***REMOVED*******REMOVED***,
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = vim.api.nvim_create_augroup("custom_lsp", { clear = false }),
+	pattern = "*",
 	callback = function(_)
-		require(***REMOVED***conform***REMOVED***).format({ lsp_fallback = true })
+		require("conform").format({ lsp_fallback = true })
 	end,
 })
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).lua_ls.setup({
+require("lspconfig").lua_ls.setup({
 	settings = {
 		Lua = {
 			runtime = {
-				version = ***REMOVED***LuaJIT***REMOVED***,
-				path = vim.split(package.path, ***REMOVED***;***REMOVED***),
+				version = "LuaJIT",
+				path = vim.split(package.path, ";"),
 			},
 			diagnostics = {
-				globals = { ***REMOVED***vim***REMOVED*** },
+				globals = { "vim" },
 			},
 			workspace = {
 				library = {
-					[vim.fn.expand(***REMOVED***$VIMRUNTIME/lua***REMOVED***)] = true,
-					[vim.fn.stdpath(***REMOVED***con***REMOVED***g***REMOVED***) .. ***REMOVED***/lua***REMOVED***] = true,
-					[***REMOVED***.local/share/nvim/lazy/conform.nvim/lua/***REMOVED***] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.stdpath("config") .. "/lua"] = true,
+					[".local/share/nvim/lazy/conform.nvim/lua/"] = true,
 				},
 				maxPreload = 10000,
 				preloadFileSize = 1000,
@@ -41,82 +41,82 @@ require(***REMOVED***lspcon***REMOVED***g***REMOVED***).lua_ls.setup({
 	},
 })
 
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).ts_ls.setup({})
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).pyright.setup({
+require("lspconfig").ts_ls.setup({})
+require("lspconfig").pyright.setup({
 	capabilities = capabilities,
-	cmd = { ***REMOVED***pyright-langserver***REMOVED***, ***REMOVED***--stdio***REMOVED*** },
-	***REMOVED***letypes = { ***REMOVED***python***REMOVED*** },
-	root_dir = require(***REMOVED***lspcon***REMOVED***g.util***REMOVED***).root_pattern(***REMOVED***pyproject.toml***REMOVED***, ***REMOVED***setup.py***REMOVED***, ***REMOVED***setup.cfg***REMOVED***, ***REMOVED***requirements.txt***REMOVED***),
-	single_***REMOVED***le_support = true,
+	cmd = { "pyright-langserver", "--stdio" },
+	filetypes = { "python" },
+	root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "setup.py", "setup.cfg", "requirements.txt"),
+	single_file_support = true,
 	settings = {
 		python = {
-			pythonPath = vim.fn.exepath(***REMOVED***python***REMOVED***),
+			pythonPath = vim.fn.exepath("python"),
 		},
 	},
 	on_attach = function(client, bufnr)
-		if client.supports_method(***REMOVED***textDocument/formatting***REMOVED***) then
+		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({
 				group = augroup,
 				buffer = bufnr,
 			})
-			vim.api.nvim_create_autocmd(***REMOVED***BufWritePre***REMOVED***, {
-				pattern = ***REMOVED*******REMOVED***,
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
 				callback = function(args)
-					require(***REMOVED***conform***REMOVED***).format({ bufnr = args.buf })
+					require("conform").format({ bufnr = args.buf })
 				end,
 			})
 		end
 	end,
 })
 
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).clangd.setup({
+require("lspconfig").clangd.setup({
 	cmd = {
-		***REMOVED***clangd***REMOVED***,
-		***REMOVED***--offset-encoding=utf-16***REMOVED***,
-		***REMOVED***-j=4***REMOVED***,
-		***REMOVED***--background-index***REMOVED***,
-		***REMOVED***--clang-tidy***REMOVED***,
-		***REMOVED***--fallback-style=llvm***REMOVED***,
-		***REMOVED***--all-scopes-completion***REMOVED***,
-		***REMOVED***--completion-style=detailed***REMOVED***,
-		***REMOVED***--header-insertion=iwyu***REMOVED***,
-		***REMOVED***--header-insertion-decorators***REMOVED***,
-		***REMOVED***--pch-storage=memory***REMOVED***,
-		***REMOVED***--enable-con***REMOVED***g***REMOVED***,
-		***REMOVED***--suggest-missing-includes***REMOVED***,
-		***REMOVED***--cross-***REMOVED***le-rename***REMOVED***,
+		"clangd",
+		"--offset-encoding=utf-16",
+		"-j=4",
+		"--background-index",
+		"--clang-tidy",
+		"--fallback-style=llvm",
+		"--all-scopes-completion",
+		"--completion-style=detailed",
+		"--header-insertion=iwyu",
+		"--header-insertion-decorators",
+		"--pch-storage=memory",
+		"--enable-config",
+		"--suggest-missing-includes",
+		"--cross-file-rename",
 	},
-	***REMOVED***letypes = { ***REMOVED***c***REMOVED***, ***REMOVED***cpp***REMOVED***, ***REMOVED***objc***REMOVED***, ***REMOVED***objcpp***REMOVED*** },
-	root_dir = require(***REMOVED***lspcon***REMOVED***g.util***REMOVED***).root_pattern(
-		***REMOVED***compile_commands.json***REMOVED***,
-		***REMOVED***.git***REMOVED***,
-		***REMOVED***.clangd***REMOVED***,
-		***REMOVED***compile_flags.txt***REMOVED***,
-		***REMOVED***.clangd-tidy***REMOVED***,
-		***REMOVED***.clang-format***REMOVED***,
-		***REMOVED***con***REMOVED***gure.ac***REMOVED***
+	filetypes = { "c", "cpp", "objc", "objcpp" },
+	root_dir = require("lspconfig.util").root_pattern(
+		"compile_commands.json",
+		".git",
+		".clangd",
+		"compile_flags.txt",
+		".clangd-tidy",
+		".clang-format",
+		"configure.ac"
 	),
-	single_***REMOVED***le_support = true,
+	single_file_support = true,
 })
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).html.setup({
+require("lspconfig").html.setup({
 	capabilities = capabilities,
-	cmd = { ***REMOVED***vscode-html-language-server***REMOVED***, ***REMOVED***--stdio***REMOVED*** },
-	***REMOVED***letypes = { ***REMOVED***html***REMOVED*** },
+	cmd = { "vscode-html-language-server", "--stdio" },
+	filetypes = { "html" },
 	init_options = {
-		con***REMOVED***gurationSection = { ***REMOVED***html***REMOVED***, ***REMOVED***css***REMOVED***, ***REMOVED***javascript***REMOVED*** },
+		configurationSection = { "html", "css", "javascript" },
 		embeddedLanguages = {
 			css = true,
 			javascript = true,
 		},
 		provideFormatter = true,
 	},
-	single_***REMOVED***le_support = true,
+	single_file_support = true,
 })
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).gopls.setup({
-	cmd = { ***REMOVED***gopls***REMOVED*** },
-	***REMOVED***letypes = { ***REMOVED***go***REMOVED***, ***REMOVED***gomod***REMOVED*** },
-	root_dir = require(***REMOVED***lspcon***REMOVED***g.util***REMOVED***).root_pattern(***REMOVED***go.mod***REMOVED***, ***REMOVED***.git***REMOVED***),
-	single_***REMOVED***le_support = true,
+require("lspconfig").gopls.setup({
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod" },
+	root_dir = require("lspconfig.util").root_pattern("go.mod", ".git"),
+	single_file_support = true,
 	settings = {
 		gopls = {
 			analyses = {
@@ -129,12 +129,12 @@ require(***REMOVED***lspcon***REMOVED***g***REMOVED***).gopls.setup({
 	},
 })
 
-require(***REMOVED***lspcon***REMOVED***g***REMOVED***).eslint.setup({
+require("lspconfig").eslint.setup({
 	on_attach = function(_client, bufnr)
 		local function buf_set_option(...)
 			vim.api.nvim_buf_set_option(bufnr, ...)
 		end
-		buf_set_option(***REMOVED***omnifunc***REMOVED***, ***REMOVED***v:lua.vim.lsp.omnifunc***REMOVED***)
+		buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 	end,
 	settings = {
 		format = { enable = true },

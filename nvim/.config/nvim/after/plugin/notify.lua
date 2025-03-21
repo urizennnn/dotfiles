@@ -1,35 +1,35 @@
-local notify = require(***REMOVED***notify***REMOVED***)
+local notify = require("notify")
 
-notify(***REMOVED***Welcome back Urizen***REMOVED***)
+notify("Welcome back Fisayo")
 
 vim.notify = notify
 notify.setup({
 	-- Animation style (see below for details)
-	animation_style = ***REMOVED***ease***REMOVED***,
+	animation_style = "ease",
 	max_width = 80,
 	max_height = 15,
 	on_open = function()
-		vim.cmd(***REMOVED***mode***REMOVED***)
+		vim.cmd("mode")
 	end,
 	on_close = function()
-		vim.cmd(***REMOVED***mode***REMOVED***)
+		vim.cmd("mode")
 	end,
-	background_colour = ***REMOVED***NotifyBackground***REMOVED***,
+	background_colour = "NotifyBackground",
 	fps = 30,
 	icons = {
-		DEBUG = ***REMOVED******REMOVED***,
-		ERROR = ***REMOVED******REMOVED***,
-		INFO = ***REMOVED******REMOVED***,
-		TRACE = ***REMOVED***✎***REMOVED***,
-		WARN = ***REMOVED******REMOVED***,
+		DEBUG = "",
+		ERROR = "",
+		INFO = "",
+		TRACE = "✎",
+		WARN = "",
 	},
 	level = 2,
 	minimum_width = 50,
-	render = ***REMOVED***default***REMOVED***,
-	stages = ***REMOVED***fade_in_slide_out***REMOVED***,
+	render = "default",
+	stages = "fade_in_slide_out",
 	time_formats = {
-		noti***REMOVED***cation = ***REMOVED***%T***REMOVED***,
-		noti***REMOVED***cation_history = ***REMOVED***%FT%T***REMOVED***,
+		notification = "%T",
+		notification_history = "%FT%T",
 	},
 	timeout = 5000,
 	top_down = true,

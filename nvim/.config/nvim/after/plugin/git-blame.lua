@@ -1,3 +1,3 @@
-require(***REMOVED***gitblame***REMOVED***).setup({
+require("gitblame").setup({
 	enabled = false,
 })

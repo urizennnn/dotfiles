@@ -1,195 +1,195 @@
-require(***REMOVED***octo***REMOVED***).setup({
-	use_local_fs = false, -- use local ***REMOVED***les on right side of reviews
+require("octo").setup({
+	use_local_fs = false, -- use local files on right side of reviews
 	suppress_missing_scope = { projects_v2 = true },
 	enable_builtin = true, -- shows a list of builtin actions when no action is provided
-	default_remote = { ***REMOVED***upstream***REMOVED***, ***REMOVED***origin***REMOVED*** }, -- order to try remotes
-	default_merge_method = ***REMOVED***commit***REMOVED***, -- default merge method which should be used when calling `Octo pr merge`, could be `commit`, `rebase` or `squash`
-	ssh_aliases = {}, -- SSH aliases. e.g. `ssh_aliases = {[***REMOVED***github.com-work***REMOVED***] = ***REMOVED***github.com***REMOVED***}`
-	picker = ***REMOVED***telescope***REMOVED***, -- or ***REMOVED***fzf-lua***REMOVED***
-	picker_con***REMOVED***g = {
-		use_emojis = false, -- only used by ***REMOVED***fzf-lua***REMOVED*** picker for now
+	default_remote = { "upstream", "origin" }, -- order to try remotes
+	default_merge_method = "commit", -- default merge method which should be used when calling `Octo pr merge`, could be `commit`, `rebase` or `squash`
+	ssh_aliases = {}, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
+	picker = "telescope", -- or "fzf-lua"
+	picker_config = {
+		use_emojis = false, -- only used by "fzf-lua" picker for now
 		mappings = { -- mappings for the pickers
-			open_in_browser = { lhs = ***REMOVED***<C-b>***REMOVED***, desc = ***REMOVED***open issue in browser***REMOVED*** },
-			copy_url = { lhs = ***REMOVED***<C-y>***REMOVED***, desc = ***REMOVED***copy url to system clipboard***REMOVED*** },
-			checkout_pr = { lhs = ***REMOVED***<C-o>***REMOVED***, desc = ***REMOVED***checkout pull request***REMOVED*** },
-			merge_pr = { lhs = ***REMOVED***<C-r>***REMOVED***, desc = ***REMOVED***merge pull request***REMOVED*** },
+			open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+			copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+			checkout_pr = { lhs = "<C-o>", desc = "checkout pull request" },
+			merge_pr = { lhs = "<C-r>", desc = "merge pull request" },
 		},
 	},
-	comment_icon = ***REMOVED***▎***REMOVED***, -- comment marker
-	outdated_icon = ***REMOVED***󰅒 ***REMOVED***, -- outdated indicator
-	resolved_icon = ***REMOVED*** ***REMOVED***, -- resolved indicator
-	reaction_viewer_hint_icon = ***REMOVED*** ***REMOVED***, -- marker for user reactions
-	user_icon = ***REMOVED*** ***REMOVED***, -- user icon
-	timeline_marker = ***REMOVED*** ***REMOVED***, -- timeline marker
-	timeline_indent = ***REMOVED***2***REMOVED***, -- timeline indentation
-	right_bubble_delimiter = ***REMOVED******REMOVED***, -- bubble delimiter
-	left_bubble_delimiter = ***REMOVED******REMOVED***, -- bubble delimiter
-	github_hostname = ***REMOVED******REMOVED***, -- GitHub Enterprise host
+	comment_icon = "▎", -- comment marker
+	outdated_icon = "󰅒 ", -- outdated indicator
+	resolved_icon = " ", -- resolved indicator
+	reaction_viewer_hint_icon = " ", -- marker for user reactions
+	user_icon = " ", -- user icon
+	timeline_marker = " ", -- timeline marker
+	timeline_indent = "2", -- timeline indentation
+	right_bubble_delimiter = "", -- bubble delimiter
+	left_bubble_delimiter = "", -- bubble delimiter
+	github_hostname = "", -- GitHub Enterprise host
 	snippet_context_lines = 4, -- number or lines around commented lines
-	gh_cmd = ***REMOVED***gh***REMOVED***, -- Command to use when calling Github CLI
+	gh_cmd = "gh", -- Command to use when calling Github CLI
 	gh_env = {}, -- extra environment variables to pass on to GitHub CLI, can be a table or function returning a table
 	timeout = 5000, -- timeout for requests between the remote server
 	ui = {
-		use_signcolumn = false, -- show ***REMOVED***modi***REMOVED***ed***REMOVED*** marks on the sign column
-		use_signstatus = true, -- show ***REMOVED***modi***REMOVED***ed***REMOVED*** marks on the status column
+		use_signcolumn = false, -- show "modified" marks on the sign column
+		use_signstatus = true, -- show "modified" marks on the status column
 	},
 	issues = {
 		order_by = { -- criteria to sort results of `Octo issue list`
-			***REMOVED***eld = ***REMOVED***CREATED_AT***REMOVED***, -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorder***REMOVED***eld)
-			direction = ***REMOVED***DESC***REMOVED***, -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+			field = "CREATED_AT", -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
+			direction = "DESC", -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
 		},
 	},
 	pull_requests = {
 		order_by = { -- criteria to sort the results of `Octo pr list`
-			***REMOVED***eld = ***REMOVED***CREATED_AT***REMOVED***, -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorder***REMOVED***eld)
-			direction = ***REMOVED***DESC***REMOVED***, -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+			field = "CREATED_AT", -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
+			direction = "DESC", -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
 		},
 		always_select_remote_on_create = false, -- always give prompt to select base remote repo when creating PRs
 	},
-	***REMOVED***le_panel = {
-		size = 10, -- changed ***REMOVED***les panel rows
-		use_icons = true, -- use web-devicons in ***REMOVED***le panel (if false, nvim-web-devicons does not need to be installed)
+	file_panel = {
+		size = 10, -- changed files panel rows
+		use_icons = true, -- use web-devicons in file panel (if false, nvim-web-devicons does not need to be installed)
 	},
 	colors = { -- used for highlight groups (see Colors section below)
-		white = ***REMOVED***#ffffff***REMOVED***,
-		grey = ***REMOVED***#2A354C***REMOVED***,
-		black = ***REMOVED***#000000***REMOVED***,
-		red = ***REMOVED***#fdb8c0***REMOVED***,
-		dark_red = ***REMOVED***#da3633***REMOVED***,
-		green = ***REMOVED***#acf2bd***REMOVED***,
-		dark_green = ***REMOVED***#238636***REMOVED***,
-		yellow = ***REMOVED***#d3c846***REMOVED***,
-		dark_yellow = ***REMOVED***#735c0f***REMOVED***,
-		blue = ***REMOVED***#58A6FF***REMOVED***,
-		dark_blue = ***REMOVED***#0366d6***REMOVED***,
-		purple = ***REMOVED***#6f42c1***REMOVED***,
+		white = "#ffffff",
+		grey = "#2A354C",
+		black = "#000000",
+		red = "#fdb8c0",
+		dark_red = "#da3633",
+		green = "#acf2bd",
+		dark_green = "#238636",
+		yellow = "#d3c846",
+		dark_yellow = "#735c0f",
+		blue = "#58A6FF",
+		dark_blue = "#0366d6",
+		purple = "#6f42c1",
 	},
 	mappings = {
 		issue = {
-			close_issue = { lhs = ***REMOVED***<leader>ic***REMOVED***, desc = ***REMOVED***close issue***REMOVED*** },
-			reopen_issue = { lhs = ***REMOVED***<leader>io***REMOVED***, desc = ***REMOVED***reopen issue***REMOVED*** },
-			list_issues = { lhs = ***REMOVED***<leader>il***REMOVED***, desc = ***REMOVED***list open issues on same repo***REMOVED*** },
-			reload = { lhs = ***REMOVED***<C-r>***REMOVED***, desc = ***REMOVED***reload issue***REMOVED*** },
-			open_in_browser = { lhs = ***REMOVED***<C-b>***REMOVED***, desc = ***REMOVED***open issue in browser***REMOVED*** },
-			copy_url = { lhs = ***REMOVED***<C-y>***REMOVED***, desc = ***REMOVED***copy url to system clipboard***REMOVED*** },
-			add_assignee = { lhs = ***REMOVED***<leader>aa***REMOVED***, desc = ***REMOVED***add assignee***REMOVED*** },
-			remove_assignee = { lhs = ***REMOVED***<leader>ad***REMOVED***, desc = ***REMOVED***remove assignee***REMOVED*** },
-			create_label = { lhs = ***REMOVED***<leader>lc***REMOVED***, desc = ***REMOVED***create label***REMOVED*** },
-			add_label = { lhs = ***REMOVED***<leader>la***REMOVED***, desc = ***REMOVED***add label***REMOVED*** },
-			remove_label = { lhs = ***REMOVED***<leader>ld***REMOVED***, desc = ***REMOVED***remove label***REMOVED*** },
-			goto_issue = { lhs = ***REMOVED***<leader>gi***REMOVED***, desc = ***REMOVED***navigate to a local repo issue***REMOVED*** },
-			add_comment = { lhs = ***REMOVED***<leader>ca***REMOVED***, desc = ***REMOVED***add comment***REMOVED*** },
-			delete_comment = { lhs = ***REMOVED***<leader>cd***REMOVED***, desc = ***REMOVED***delete comment***REMOVED*** },
-			next_comment = { lhs = ***REMOVED***]c***REMOVED***, desc = ***REMOVED***go to next comment***REMOVED*** },
-			prev_comment = { lhs = ***REMOVED***[c***REMOVED***, desc = ***REMOVED***go to previous comment***REMOVED*** },
-			react_hooray = { lhs = ***REMOVED***<leader>rp***REMOVED***, desc = ***REMOVED***add/remove 🎉 reaction***REMOVED*** },
-			react_heart = { lhs = ***REMOVED***<leader>rh***REMOVED***, desc = ***REMOVED***add/remove ❤️ reaction***REMOVED*** },
-			react_eyes = { lhs = ***REMOVED***<leader>re***REMOVED***, desc = ***REMOVED***add/remove 👀 reaction***REMOVED*** },
-			react_thumbs_up = { lhs = ***REMOVED***<leader>r+***REMOVED***, desc = ***REMOVED***add/remove 👍 reaction***REMOVED*** },
-			react_thumbs_down = { lhs = ***REMOVED***<leader>r-***REMOVED***, desc = ***REMOVED***add/remove 👎 reaction***REMOVED*** },
-			react_rocket = { lhs = ***REMOVED***<leader>rr***REMOVED***, desc = ***REMOVED***add/remove 🚀 reaction***REMOVED*** },
-			react_laugh = { lhs = ***REMOVED***<leader>rl***REMOVED***, desc = ***REMOVED***add/remove 😄 reaction***REMOVED*** },
-			react_confused = { lhs = ***REMOVED***<leader>rc***REMOVED***, desc = ***REMOVED***add/remove 😕 reaction***REMOVED*** },
+			close_issue = { lhs = "<leader>ic", desc = "close issue" },
+			reopen_issue = { lhs = "<leader>io", desc = "reopen issue" },
+			list_issues = { lhs = "<leader>il", desc = "list open issues on same repo" },
+			reload = { lhs = "<C-r>", desc = "reload issue" },
+			open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+			copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+			add_assignee = { lhs = "<leader>aa", desc = "add assignee" },
+			remove_assignee = { lhs = "<leader>ad", desc = "remove assignee" },
+			create_label = { lhs = "<leader>lc", desc = "create label" },
+			add_label = { lhs = "<leader>la", desc = "add label" },
+			remove_label = { lhs = "<leader>ld", desc = "remove label" },
+			goto_issue = { lhs = "<leader>gi", desc = "navigate to a local repo issue" },
+			add_comment = { lhs = "<leader>ca", desc = "add comment" },
+			delete_comment = { lhs = "<leader>cd", desc = "delete comment" },
+			next_comment = { lhs = "]c", desc = "go to next comment" },
+			prev_comment = { lhs = "[c", desc = "go to previous comment" },
+			react_hooray = { lhs = "<leader>rp", desc = "add/remove 🎉 reaction" },
+			react_heart = { lhs = "<leader>rh", desc = "add/remove ❤️ reaction" },
+			react_eyes = { lhs = "<leader>re", desc = "add/remove 👀 reaction" },
+			react_thumbs_up = { lhs = "<leader>r+", desc = "add/remove 👍 reaction" },
+			react_thumbs_down = { lhs = "<leader>r-", desc = "add/remove 👎 reaction" },
+			react_rocket = { lhs = "<leader>rr", desc = "add/remove 🚀 reaction" },
+			react_laugh = { lhs = "<leader>rl", desc = "add/remove 😄 reaction" },
+			react_confused = { lhs = "<leader>rc", desc = "add/remove 😕 reaction" },
 		},
 		pull_request = {
-			checkout_pr = { lhs = ***REMOVED***<leader>po***REMOVED***, desc = ***REMOVED***checkout PR***REMOVED*** },
-			merge_pr = { lhs = ***REMOVED***<leader>pm***REMOVED***, desc = ***REMOVED***merge commit PR***REMOVED*** },
-			squash_and_merge_pr = { lhs = ***REMOVED***<leader>psm***REMOVED***, desc = ***REMOVED***squash and merge PR***REMOVED*** },
-			rebase_and_merge_pr = { lhs = ***REMOVED***<leader>prm***REMOVED***, desc = ***REMOVED***rebase and merge PR***REMOVED*** },
-			list_commits = { lhs = ***REMOVED***<leader>pc***REMOVED***, desc = ***REMOVED***list PR commits***REMOVED*** },
-			list_changed_***REMOVED***les = { lhs = ***REMOVED***<leader>pf***REMOVED***, desc = ***REMOVED***list PR changed ***REMOVED***les***REMOVED*** },
-			show_pr_diff = { lhs = ***REMOVED***<leader>pd***REMOVED***, desc = ***REMOVED***show PR diff***REMOVED*** },
-			add_reviewer = { lhs = ***REMOVED***<leader>va***REMOVED***, desc = ***REMOVED***add reviewer***REMOVED*** },
-			remove_reviewer = { lhs = ***REMOVED***<leader>vd***REMOVED***, desc = ***REMOVED***remove reviewer request***REMOVED*** },
-			close_issue = { lhs = ***REMOVED***<leader>ic***REMOVED***, desc = ***REMOVED***close PR***REMOVED*** },
-			reopen_issue = { lhs = ***REMOVED***<leader>io***REMOVED***, desc = ***REMOVED***reopen PR***REMOVED*** },
-			list_issues = { lhs = ***REMOVED***<leader>il***REMOVED***, desc = ***REMOVED***list open issues on same repo***REMOVED*** },
-			reload = { lhs = ***REMOVED***<C-r>***REMOVED***, desc = ***REMOVED***reload PR***REMOVED*** },
-			open_in_browser = { lhs = ***REMOVED***<C-b>***REMOVED***, desc = ***REMOVED***open PR in browser***REMOVED*** },
-			copy_url = { lhs = ***REMOVED***<C-y>***REMOVED***, desc = ***REMOVED***copy url to system clipboard***REMOVED*** },
-			goto_***REMOVED***le = { lhs = ***REMOVED***gf***REMOVED***, desc = ***REMOVED***go to ***REMOVED***le***REMOVED*** },
-			add_assignee = { lhs = ***REMOVED***<leader>aa***REMOVED***, desc = ***REMOVED***add assignee***REMOVED*** },
-			remove_assignee = { lhs = ***REMOVED***<leader>ad***REMOVED***, desc = ***REMOVED***remove assignee***REMOVED*** },
-			create_label = { lhs = ***REMOVED***<leader>lc***REMOVED***, desc = ***REMOVED***create label***REMOVED*** },
-			add_label = { lhs = ***REMOVED***<leader>la***REMOVED***, desc = ***REMOVED***add label***REMOVED*** },
-			remove_label = { lhs = ***REMOVED***<leader>ld***REMOVED***, desc = ***REMOVED***remove label***REMOVED*** },
-			goto_issue = { lhs = ***REMOVED***<leader>gi***REMOVED***, desc = ***REMOVED***navigate to a local repo issue***REMOVED*** },
-			add_comment = { lhs = ***REMOVED***<leader>ca***REMOVED***, desc = ***REMOVED***add comment***REMOVED*** },
-			delete_comment = { lhs = ***REMOVED***<leader>cd***REMOVED***, desc = ***REMOVED***delete comment***REMOVED*** },
-			next_comment = { lhs = ***REMOVED***]c***REMOVED***, desc = ***REMOVED***go to next comment***REMOVED*** },
-			prev_comment = { lhs = ***REMOVED***[c***REMOVED***, desc = ***REMOVED***go to previous comment***REMOVED*** },
-			react_hooray = { lhs = ***REMOVED***<leader>rp***REMOVED***, desc = ***REMOVED***add/remove 🎉 reaction***REMOVED*** },
-			react_heart = { lhs = ***REMOVED***<leader>rh***REMOVED***, desc = ***REMOVED***add/remove ❤️ reaction***REMOVED*** },
-			react_eyes = { lhs = ***REMOVED***<leader>re***REMOVED***, desc = ***REMOVED***add/remove 👀 reaction***REMOVED*** },
-			react_thumbs_up = { lhs = ***REMOVED***<leader>r+***REMOVED***, desc = ***REMOVED***add/remove 👍 reaction***REMOVED*** },
-			react_thumbs_down = { lhs = ***REMOVED***<leader>r-***REMOVED***, desc = ***REMOVED***add/remove 👎 reaction***REMOVED*** },
-			react_rocket = { lhs = ***REMOVED***<leader>rr***REMOVED***, desc = ***REMOVED***add/remove 🚀 reaction***REMOVED*** },
-			react_laugh = { lhs = ***REMOVED***<leader>rl***REMOVED***, desc = ***REMOVED***add/remove 😄 reaction***REMOVED*** },
-			react_confused = { lhs = ***REMOVED***<leader>rc***REMOVED***, desc = ***REMOVED***add/remove 😕 reaction***REMOVED*** },
-			review_start = { lhs = ***REMOVED***<leader>vs***REMOVED***, desc = ***REMOVED***start a review for the current PR***REMOVED*** },
-			review_resume = { lhs = ***REMOVED***<leader>vr***REMOVED***, desc = ***REMOVED***resume a pending review for the current PR***REMOVED*** },
+			checkout_pr = { lhs = "<leader>po", desc = "checkout PR" },
+			merge_pr = { lhs = "<leader>pm", desc = "merge commit PR" },
+			squash_and_merge_pr = { lhs = "<leader>psm", desc = "squash and merge PR" },
+			rebase_and_merge_pr = { lhs = "<leader>prm", desc = "rebase and merge PR" },
+			list_commits = { lhs = "<leader>pc", desc = "list PR commits" },
+			list_changed_files = { lhs = "<leader>pf", desc = "list PR changed files" },
+			show_pr_diff = { lhs = "<leader>pd", desc = "show PR diff" },
+			add_reviewer = { lhs = "<leader>va", desc = "add reviewer" },
+			remove_reviewer = { lhs = "<leader>vd", desc = "remove reviewer request" },
+			close_issue = { lhs = "<leader>ic", desc = "close PR" },
+			reopen_issue = { lhs = "<leader>io", desc = "reopen PR" },
+			list_issues = { lhs = "<leader>il", desc = "list open issues on same repo" },
+			reload = { lhs = "<C-r>", desc = "reload PR" },
+			open_in_browser = { lhs = "<C-b>", desc = "open PR in browser" },
+			copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+			goto_file = { lhs = "gf", desc = "go to file" },
+			add_assignee = { lhs = "<leader>aa", desc = "add assignee" },
+			remove_assignee = { lhs = "<leader>ad", desc = "remove assignee" },
+			create_label = { lhs = "<leader>lc", desc = "create label" },
+			add_label = { lhs = "<leader>la", desc = "add label" },
+			remove_label = { lhs = "<leader>ld", desc = "remove label" },
+			goto_issue = { lhs = "<leader>gi", desc = "navigate to a local repo issue" },
+			add_comment = { lhs = "<leader>ca", desc = "add comment" },
+			delete_comment = { lhs = "<leader>cd", desc = "delete comment" },
+			next_comment = { lhs = "]c", desc = "go to next comment" },
+			prev_comment = { lhs = "[c", desc = "go to previous comment" },
+			react_hooray = { lhs = "<leader>rp", desc = "add/remove 🎉 reaction" },
+			react_heart = { lhs = "<leader>rh", desc = "add/remove ❤️ reaction" },
+			react_eyes = { lhs = "<leader>re", desc = "add/remove 👀 reaction" },
+			react_thumbs_up = { lhs = "<leader>r+", desc = "add/remove 👍 reaction" },
+			react_thumbs_down = { lhs = "<leader>r-", desc = "add/remove 👎 reaction" },
+			react_rocket = { lhs = "<leader>rr", desc = "add/remove 🚀 reaction" },
+			react_laugh = { lhs = "<leader>rl", desc = "add/remove 😄 reaction" },
+			react_confused = { lhs = "<leader>rc", desc = "add/remove 😕 reaction" },
+			review_start = { lhs = "<leader>vs", desc = "start a review for the current PR" },
+			review_resume = { lhs = "<leader>vr", desc = "resume a pending review for the current PR" },
 		},
 		review_thread = {
-			goto_issue = { lhs = ***REMOVED***<leader>gi***REMOVED***, desc = ***REMOVED***navigate to a local repo issue***REMOVED*** },
-			add_comment = { lhs = ***REMOVED***<leader>ca***REMOVED***, desc = ***REMOVED***add comment***REMOVED*** },
-			add_suggestion = { lhs = ***REMOVED***<leader>sa***REMOVED***, desc = ***REMOVED***add suggestion***REMOVED*** },
-			delete_comment = { lhs = ***REMOVED***<leader>cd***REMOVED***, desc = ***REMOVED***delete comment***REMOVED*** },
-			next_comment = { lhs = ***REMOVED***]c***REMOVED***, desc = ***REMOVED***go to next comment***REMOVED*** },
-			prev_comment = { lhs = ***REMOVED***[c***REMOVED***, desc = ***REMOVED***go to previous comment***REMOVED*** },
-			select_next_entry = { lhs = ***REMOVED***]q***REMOVED***, desc = ***REMOVED***move to previous changed ***REMOVED***le***REMOVED*** },
-			select_prev_entry = { lhs = ***REMOVED***[q***REMOVED***, desc = ***REMOVED***move to next changed ***REMOVED***le***REMOVED*** },
-			select_***REMOVED***rst_entry = { lhs = ***REMOVED***[Q***REMOVED***, desc = ***REMOVED***move to ***REMOVED***rst changed ***REMOVED***le***REMOVED*** },
-			select_last_entry = { lhs = ***REMOVED***]Q***REMOVED***, desc = ***REMOVED***move to last changed ***REMOVED***le***REMOVED*** },
-			close_review_tab = { lhs = ***REMOVED***<C-c>***REMOVED***, desc = ***REMOVED***close review tab***REMOVED*** },
-			react_hooray = { lhs = ***REMOVED***<leader>rp***REMOVED***, desc = ***REMOVED***add/remove 🎉 reaction***REMOVED*** },
-			react_heart = { lhs = ***REMOVED***<leader>rh***REMOVED***, desc = ***REMOVED***add/remove ❤️ reaction***REMOVED*** },
-			react_eyes = { lhs = ***REMOVED***<leader>re***REMOVED***, desc = ***REMOVED***add/remove 👀 reaction***REMOVED*** },
-			react_thumbs_up = { lhs = ***REMOVED***<leader>r+***REMOVED***, desc = ***REMOVED***add/remove 👍 reaction***REMOVED*** },
-			react_thumbs_down = { lhs = ***REMOVED***<leader>r-***REMOVED***, desc = ***REMOVED***add/remove 👎 reaction***REMOVED*** },
-			react_rocket = { lhs = ***REMOVED***<leader>rr***REMOVED***, desc = ***REMOVED***add/remove 🚀 reaction***REMOVED*** },
-			react_laugh = { lhs = ***REMOVED***<leader>rl***REMOVED***, desc = ***REMOVED***add/remove 😄 reaction***REMOVED*** },
-			react_confused = { lhs = ***REMOVED***<leader>rc***REMOVED***, desc = ***REMOVED***add/remove 😕 reaction***REMOVED*** },
+			goto_issue = { lhs = "<leader>gi", desc = "navigate to a local repo issue" },
+			add_comment = { lhs = "<leader>ca", desc = "add comment" },
+			add_suggestion = { lhs = "<leader>sa", desc = "add suggestion" },
+			delete_comment = { lhs = "<leader>cd", desc = "delete comment" },
+			next_comment = { lhs = "]c", desc = "go to next comment" },
+			prev_comment = { lhs = "[c", desc = "go to previous comment" },
+			select_next_entry = { lhs = "]q", desc = "move to previous changed file" },
+			select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
+			select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
+			select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
+			close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+			react_hooray = { lhs = "<leader>rp", desc = "add/remove 🎉 reaction" },
+			react_heart = { lhs = "<leader>rh", desc = "add/remove ❤️ reaction" },
+			react_eyes = { lhs = "<leader>re", desc = "add/remove 👀 reaction" },
+			react_thumbs_up = { lhs = "<leader>r+", desc = "add/remove 👍 reaction" },
+			react_thumbs_down = { lhs = "<leader>r-", desc = "add/remove 👎 reaction" },
+			react_rocket = { lhs = "<leader>rr", desc = "add/remove 🚀 reaction" },
+			react_laugh = { lhs = "<leader>rl", desc = "add/remove 😄 reaction" },
+			react_confused = { lhs = "<leader>rc", desc = "add/remove 😕 reaction" },
 		},
 		submit_win = {
-			approve_review = { lhs = ***REMOVED***<C-a>***REMOVED***, desc = ***REMOVED***approve review***REMOVED*** },
-			comment_review = { lhs = ***REMOVED***<C-m>***REMOVED***, desc = ***REMOVED***comment review***REMOVED*** },
-			request_changes = { lhs = ***REMOVED***<C-r>***REMOVED***, desc = ***REMOVED***request changes review***REMOVED*** },
-			close_review_tab = { lhs = ***REMOVED***<C-c>***REMOVED***, desc = ***REMOVED***close review tab***REMOVED*** },
+			approve_review = { lhs = "<C-a>", desc = "approve review" },
+			comment_review = { lhs = "<C-m>", desc = "comment review" },
+			request_changes = { lhs = "<C-r>", desc = "request changes review" },
+			close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
 		},
 		review_diff = {
-			submit_review = { lhs = ***REMOVED***<leader>vs***REMOVED***, desc = ***REMOVED***submit review***REMOVED*** },
-			discard_review = { lhs = ***REMOVED***<leader>vd***REMOVED***, desc = ***REMOVED***discard review***REMOVED*** },
-			add_review_comment = { lhs = ***REMOVED***<leader>ca***REMOVED***, desc = ***REMOVED***add a new review comment***REMOVED*** },
-			add_review_suggestion = { lhs = ***REMOVED***<leader>sa***REMOVED***, desc = ***REMOVED***add a new review suggestion***REMOVED*** },
-			focus_***REMOVED***les = { lhs = ***REMOVED***<leader>e***REMOVED***, desc = ***REMOVED***move focus to changed ***REMOVED***le panel***REMOVED*** },
-			toggle_***REMOVED***les = { lhs = ***REMOVED***<leader>b***REMOVED***, desc = ***REMOVED***hide/show changed ***REMOVED***les panel***REMOVED*** },
-			next_thread = { lhs = ***REMOVED***]t***REMOVED***, desc = ***REMOVED***move to next thread***REMOVED*** },
-			prev_thread = { lhs = ***REMOVED***[t***REMOVED***, desc = ***REMOVED***move to previous thread***REMOVED*** },
-			select_next_entry = { lhs = ***REMOVED***]q***REMOVED***, desc = ***REMOVED***move to previous changed ***REMOVED***le***REMOVED*** },
-			select_prev_entry = { lhs = ***REMOVED***[q***REMOVED***, desc = ***REMOVED***move to next changed ***REMOVED***le***REMOVED*** },
-			select_***REMOVED***rst_entry = { lhs = ***REMOVED***[Q***REMOVED***, desc = ***REMOVED***move to ***REMOVED***rst changed ***REMOVED***le***REMOVED*** },
-			select_last_entry = { lhs = ***REMOVED***]Q***REMOVED***, desc = ***REMOVED***move to last changed ***REMOVED***le***REMOVED*** },
-			close_review_tab = { lhs = ***REMOVED***<C-c>***REMOVED***, desc = ***REMOVED***close review tab***REMOVED*** },
-			toggle_viewed = { lhs = ***REMOVED***<leader><leader>***REMOVED***, desc = ***REMOVED***toggle viewer viewed state***REMOVED*** },
-			goto_***REMOVED***le = { lhs = ***REMOVED***gf***REMOVED***, desc = ***REMOVED***go to ***REMOVED***le***REMOVED*** },
+			submit_review = { lhs = "<leader>vs", desc = "submit review" },
+			discard_review = { lhs = "<leader>vd", desc = "discard review" },
+			add_review_comment = { lhs = "<leader>ca", desc = "add a new review comment" },
+			add_review_suggestion = { lhs = "<leader>sa", desc = "add a new review suggestion" },
+			focus_files = { lhs = "<leader>e", desc = "move focus to changed file panel" },
+			toggle_files = { lhs = "<leader>b", desc = "hide/show changed files panel" },
+			next_thread = { lhs = "]t", desc = "move to next thread" },
+			prev_thread = { lhs = "[t", desc = "move to previous thread" },
+			select_next_entry = { lhs = "]q", desc = "move to previous changed file" },
+			select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
+			select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
+			select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
+			close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+			toggle_viewed = { lhs = "<leader><leader>", desc = "toggle viewer viewed state" },
+			goto_file = { lhs = "gf", desc = "go to file" },
 		},
-		***REMOVED***le_panel = {
-			submit_review = { lhs = ***REMOVED***<leader>vs***REMOVED***, desc = ***REMOVED***submit review***REMOVED*** },
-			discard_review = { lhs = ***REMOVED***<leader>vd***REMOVED***, desc = ***REMOVED***discard review***REMOVED*** },
-			next_entry = { lhs = ***REMOVED***j***REMOVED***, desc = ***REMOVED***move to next changed ***REMOVED***le***REMOVED*** },
-			prev_entry = { lhs = ***REMOVED***k***REMOVED***, desc = ***REMOVED***move to previous changed ***REMOVED***le***REMOVED*** },
-			select_entry = { lhs = ***REMOVED***<cr>***REMOVED***, desc = ***REMOVED***show selected changed ***REMOVED***le diffs***REMOVED*** },
-			refresh_***REMOVED***les = { lhs = ***REMOVED***R***REMOVED***, desc = ***REMOVED***refresh changed ***REMOVED***les panel***REMOVED*** },
-			focus_***REMOVED***les = { lhs = ***REMOVED***<leader>e***REMOVED***, desc = ***REMOVED***move focus to changed ***REMOVED***le panel***REMOVED*** },
-			toggle_***REMOVED***les = { lhs = ***REMOVED***<leader>b***REMOVED***, desc = ***REMOVED***hide/show changed ***REMOVED***les panel***REMOVED*** },
-			select_next_entry = { lhs = ***REMOVED***]q***REMOVED***, desc = ***REMOVED***move to previous changed ***REMOVED***le***REMOVED*** },
-			select_prev_entry = { lhs = ***REMOVED***[q***REMOVED***, desc = ***REMOVED***move to next changed ***REMOVED***le***REMOVED*** },
-			select_***REMOVED***rst_entry = { lhs = ***REMOVED***[Q***REMOVED***, desc = ***REMOVED***move to ***REMOVED***rst changed ***REMOVED***le***REMOVED*** },
-			select_last_entry = { lhs = ***REMOVED***]Q***REMOVED***, desc = ***REMOVED***move to last changed ***REMOVED***le***REMOVED*** },
-			close_review_tab = { lhs = ***REMOVED***<C-c>***REMOVED***, desc = ***REMOVED***close review tab***REMOVED*** },
-			toggle_viewed = { lhs = ***REMOVED***<leader><leader>***REMOVED***, desc = ***REMOVED***toggle viewer viewed state***REMOVED*** },
+		file_panel = {
+			submit_review = { lhs = "<leader>vs", desc = "submit review" },
+			discard_review = { lhs = "<leader>vd", desc = "discard review" },
+			next_entry = { lhs = "j", desc = "move to next changed file" },
+			prev_entry = { lhs = "k", desc = "move to previous changed file" },
+			select_entry = { lhs = "<cr>", desc = "show selected changed file diffs" },
+			refresh_files = { lhs = "R", desc = "refresh changed files panel" },
+			focus_files = { lhs = "<leader>e", desc = "move focus to changed file panel" },
+			toggle_files = { lhs = "<leader>b", desc = "hide/show changed files panel" },
+			select_next_entry = { lhs = "]q", desc = "move to previous changed file" },
+			select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
+			select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
+			select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
+			close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+			toggle_viewed = { lhs = "<leader><leader>", desc = "toggle viewer viewed state" },
 		},
 	},
 })
-vim.keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***pr***REMOVED***, ***REMOVED***<Cmd>Octo pr list<CR>***REMOVED***)
-vim.keymap.set(***REMOVED***n***REMOVED***, ***REMOVED***<leader>O***REMOVED***, ***REMOVED***<cmd>Octo<CR>***REMOVED***)
+vim.keymap.set("n", "pr", "<Cmd>Octo pr list<CR>")
+vim.keymap.set("n", "<leader>O", "<cmd>Octo<CR>")

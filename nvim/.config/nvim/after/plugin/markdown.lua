@@ -1,26 +1,26 @@
-require(***REMOVED***render-markdown***REMOVED***).setup({
+require("render-markdown").setup({
 	heading = {
 		-- Turn on / off heading icon & background rendering
 		enabled = true,
 		-- Turn on / off any sign column related rendering
 		sign = true,
-		-- Determines how icons ***REMOVED***ll the available space:
+		-- Determines how icons fill the available space:
 		--  inline:  underlying '#'s are concealed resulting in a left aligned icon
 		--  overlay: result is left padded with spaces to hide any additional '#'
-		position = ***REMOVED***overlay***REMOVED***,
+		position = "overlay",
 		-- Replaces '#+' of 'atx_h._marker'
 		-- The number of '#' in the heading determines the 'level'
 		-- The 'level' is used to index into the array using a cycle
-		icons = { ***REMOVED***󰲡 ***REMOVED***, ***REMOVED***󰲣 ***REMOVED***, ***REMOVED***󰲥 ***REMOVED***, ***REMOVED***󰲧 ***REMOVED***, ***REMOVED***󰲩 ***REMOVED***, ***REMOVED***󰲫 ***REMOVED*** },
+		icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
 		-- Added to the sign column if enabled
 		-- The 'level' is used to index into the array using a cycle
-		signs = { ***REMOVED***󰫎 ***REMOVED*** },
+		signs = { "󰫎 " },
 		-- Width of the heading background:
 		--  block: width of the heading text
 		--  full:  full width of the window
 		-- Can also be an array of the above values in which case the 'level' is used
 		-- to index into the array using a clamp
-		width = ***REMOVED***full***REMOVED***,
+		width = "full",
 		-- Amount of padding to add to the left of headings
 		left_pad = 0,
 		-- Amount of padding to add to the right of headings when width is 'block'
@@ -30,30 +30,30 @@ require(***REMOVED***render-markdown***REMOVED***).setup({
 		-- Determins if a border is added above and below headings
 		border = false,
 		-- Highlight the start of the border using the foreground highlight
-		border_pre***REMOVED***x = false,
+		border_prefix = false,
 		-- Used above heading for border
-		above = ***REMOVED***▄***REMOVED***,
+		above = "▄",
 		-- Used below heading for border
-		below = ***REMOVED***▀***REMOVED***,
+		below = "▀",
 		-- The 'level' is used to index into the array using a clamp
 		-- Highlight for the heading icon and extends through the entire line
 		backgrounds = {
-			***REMOVED***RenderMarkdownH1Bg***REMOVED***,
-			***REMOVED***RenderMarkdownH2Bg***REMOVED***,
-			***REMOVED***RenderMarkdownH3Bg***REMOVED***,
-			***REMOVED***RenderMarkdownH4Bg***REMOVED***,
-			***REMOVED***RenderMarkdownH5Bg***REMOVED***,
-			***REMOVED***RenderMarkdownH6Bg***REMOVED***,
+			"RenderMarkdownH1Bg",
+			"RenderMarkdownH2Bg",
+			"RenderMarkdownH3Bg",
+			"RenderMarkdownH4Bg",
+			"RenderMarkdownH5Bg",
+			"RenderMarkdownH6Bg",
 		},
 		-- The 'level' is used to index into the array using a clamp
 		-- Highlight for the heading and sign icons
 		foregrounds = {
-			***REMOVED***RenderMarkdownH1***REMOVED***,
-			***REMOVED***RenderMarkdownH2***REMOVED***,
-			***REMOVED***RenderMarkdownH3***REMOVED***,
-			***REMOVED***RenderMarkdownH4***REMOVED***,
-			***REMOVED***RenderMarkdownH5***REMOVED***,
-			***REMOVED***RenderMarkdownH6***REMOVED***,
+			"RenderMarkdownH1",
+			"RenderMarkdownH2",
+			"RenderMarkdownH3",
+			"RenderMarkdownH4",
+			"RenderMarkdownH5",
+			"RenderMarkdownH6",
 		},
 	},
 	code = {
@@ -66,20 +66,20 @@ require(***REMOVED***render-markdown***REMOVED***).setup({
 		--  normal:   adds highlight group to code blocks & inline code, adds padding to code blocks
 		--  language: adds language icon to sign column if enabled and icon + name above code blocks
 		--  full:     normal + language
-		style = ***REMOVED***full***REMOVED***,
+		style = "full",
 		-- Determines where language icon is rendered:
 		--  right: right side of code block
 		--  left:  left side of code block
-		position = ***REMOVED***left***REMOVED***,
+		position = "left",
 		-- Amount of padding to add around the language
 		language_pad = 0,
 		-- An array of language names for which background highlighting will be disabled
 		-- Likely because that language has background highlights itself
-		disable_background = { ***REMOVED***diff***REMOVED*** },
+		disable_background = { "diff" },
 		-- Width of the code block background:
 		--  block: width of the code block
 		--  full:  full width of the window
-		width = ***REMOVED***full***REMOVED***,
+		width = "full",
 		-- Amount of padding to add to the left of code blocks
 		left_pad = 0,
 		-- Amount of padding to add to the right of code blocks when width is 'block'
@@ -89,28 +89,28 @@ require(***REMOVED***render-markdown***REMOVED***).setup({
 		-- Determins how the top / bottom of code block are rendered:
 		--  thick: use the same highlight as the code body
 		--  thin:  when lines are empty overlay the above & below icons
-		border = ***REMOVED***thin***REMOVED***,
+		border = "thin",
 		-- Used above code blocks for thin border
-		above = ***REMOVED***▄***REMOVED***,
+		above = "▄",
 		-- Used below code blocks for thin border
-		below = ***REMOVED***▀***REMOVED***,
+		below = "▀",
 		-- Highlight for code blocks
-		highlight = ***REMOVED***RenderMarkdownCode***REMOVED***,
+		highlight = "RenderMarkdownCode",
 		-- Highlight for inline code
-		highlight_inline = ***REMOVED***RenderMarkdownCodeInline***REMOVED***,
+		highlight_inline = "RenderMarkdownCodeInline",
 	},
 	dash = {
 		-- Turn on / off thematic break rendering
 		enabled = true,
 		-- Replaces '---'|'***'|'___'|'* * *' of 'thematic_break'
 		-- The icon gets repeated across the window's width
-		icon = ***REMOVED***─***REMOVED***,
+		icon = "─",
 		-- Width of the generated line:
 		--  <integer>: a hard coded width value
 		--  full:      full width of the window
-		width = ***REMOVED***full***REMOVED***,
+		width = "full",
 		-- Highlight for the whole line generated from the icon
-		highlight = ***REMOVED***RenderMarkdownDash***REMOVED***,
+		highlight = "RenderMarkdownDash",
 	},
 	bullet = {
 		-- Turn on / off list bullet rendering
@@ -119,36 +119,36 @@ require(***REMOVED***render-markdown***REMOVED***).setup({
 		-- How deeply nested the list is determines the 'level'
 		-- The 'level' is used to index into the array using a cycle
 		-- If the item is a 'checkbox' a conceal is used to hide the bullet instead
-		icons = { ***REMOVED***●***REMOVED***, ***REMOVED***○***REMOVED***, ***REMOVED***◆***REMOVED***, ***REMOVED***◇***REMOVED*** },
+		icons = { "●", "○", "◆", "◇" },
 		-- Padding to add to the left of bullet point
 		left_pad = 0,
 		-- Padding to add to the right of bullet point
 		right_pad = 0,
 		-- Highlight for the bullet icon
-		highlight = ***REMOVED***RenderMarkdownBullet***REMOVED***,
+		highlight = "RenderMarkdownBullet",
 	},
 	-- Checkboxes are a special instance of a 'list_item' that start with a 'shortcut_link'
-	-- There are two special states for unchecked & checked de***REMOVED***ned in the markdown grammar
+	-- There are two special states for unchecked & checked defined in the markdown grammar
 	checkbox = {
 		-- Turn on / off checkbox state rendering
 		enabled = true,
-		-- Determines how icons ***REMOVED***ll the available space:
+		-- Determines how icons fill the available space:
 		--  inline:  underlying text is concealed resulting in a left aligned icon
 		--  overlay: result is left padded with spaces to hide any additional text
-		position = ***REMOVED***inline***REMOVED***,
+		position = "inline",
 		unchecked = {
 			-- Replaces '[ ]' of 'task_list_marker_unchecked'
-			icon = ***REMOVED***󰄱 ***REMOVED***,
+			icon = "󰄱 ",
 			-- Highlight for the unchecked icon
-			highlight = ***REMOVED***RenderMarkdownUnchecked***REMOVED***,
+			highlight = "RenderMarkdownUnchecked",
 		},
 		checked = {
 			-- Replaces '[x]' of 'task_list_marker_checked'
-			icon = ***REMOVED***󰱒 ***REMOVED***,
+			icon = "󰱒 ",
 			-- Highligh for the checked icon
-			highlight = ***REMOVED***RenderMarkdownChecked***REMOVED***,
+			highlight = "RenderMarkdownChecked",
 		},
-		-- De***REMOVED***ne custom checkbox states, more involved as they are not part of the markdown grammar
+		-- Define custom checkbox states, more involved as they are not part of the markdown grammar
 		-- As a result this requires neovim >= 0.10.0 since it relies on 'inline' extmarks
 		-- Can specify as many additional states as you like following the 'todo' pattern below
 		--   The key in this case 'todo' is for healthcheck and to allow users to change its values
@@ -156,65 +156,65 @@ require(***REMOVED***render-markdown***REMOVED***).setup({
 		--   'rendered':  Replaces the 'raw' value when rendering
 		--   'highlight': Highlight for the 'rendered' icon
 		custom = {
-			todo = { raw = ***REMOVED***[-]***REMOVED***, rendered = ***REMOVED***󰥔 ***REMOVED***, highlight = ***REMOVED***RenderMarkdownTodo***REMOVED*** },
+			todo = { raw = "[-]", rendered = "󰥔 ", highlight = "RenderMarkdownTodo" },
 		},
 	},
 	quote = {
 		-- Turn on / off block quote & callout rendering
 		enabled = true,
 		-- Replaces '>' of 'block_quote'
-		icon = ***REMOVED***▋***REMOVED***,
+		icon = "▋",
 		-- Whether to repeat icon on wrapped lines. Requires neovim >= 0.10. This will obscure text if
-		-- not con***REMOVED***gured correctly with :h 'showbreak', :h 'breakindent' and :h 'breakindentopt'. A
+		-- not configured correctly with :h 'showbreak', :h 'breakindent' and :h 'breakindentopt'. A
 		-- combination of these that is likely to work is showbreak = '  ' (2 spaces), breakindent = true,
 		-- breakindentopt = '' (empty string). These values are not validated by this plugin. If you want
-		-- to avoid adding these to your main con***REMOVED***guration then set them in win_options for this plugin.
+		-- to avoid adding these to your main configuration then set them in win_options for this plugin.
 		repeat_linebreak = false,
 		-- Highlight for the quote icon
-		highlight = ***REMOVED***RenderMarkdownQuote***REMOVED***,
+		highlight = "RenderMarkdownQuote",
 	},
 	callout = {
-		note = { raw = ***REMOVED***[!NOTE]***REMOVED***, rendered = ***REMOVED***󰋽 Note***REMOVED***, highlight = ***REMOVED***RenderMarkdownInfo***REMOVED*** },
-		tip = { raw = ***REMOVED***[!TIP]***REMOVED***, rendered = ***REMOVED***󰌶 Tip***REMOVED***, highlight = ***REMOVED***RenderMarkdownSuccess***REMOVED*** },
-		important = { raw = ***REMOVED***[!IMPORTANT]***REMOVED***, rendered = ***REMOVED***󰅾 Important***REMOVED***, highlight = ***REMOVED***RenderMarkdownHint***REMOVED*** },
-		warning = { raw = ***REMOVED***[!WARNING]***REMOVED***, rendered = ***REMOVED***󰀪 Warning***REMOVED***, highlight = ***REMOVED***RenderMarkdownWarn***REMOVED*** },
-		caution = { raw = ***REMOVED***[!CAUTION]***REMOVED***, rendered = ***REMOVED***󰳦 Caution***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
+		note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
+		tip = { raw = "[!TIP]", rendered = "󰌶 Tip", highlight = "RenderMarkdownSuccess" },
+		important = { raw = "[!IMPORTANT]", rendered = "󰅾 Important", highlight = "RenderMarkdownHint" },
+		warning = { raw = "[!WARNING]", rendered = "󰀪 Warning", highlight = "RenderMarkdownWarn" },
+		caution = { raw = "[!CAUTION]", rendered = "󰳦 Caution", highlight = "RenderMarkdownError" },
 		-- Obsidian: https://help.obsidian.md/Editing+and+formatting/Callouts
-		abstract = { raw = ***REMOVED***[!ABSTRACT]***REMOVED***, rendered = ***REMOVED***󰨸 Abstract***REMOVED***, highlight = ***REMOVED***RenderMarkdownInfo***REMOVED*** },
-		summary = { raw = ***REMOVED***[!SUMMARY]***REMOVED***, rendered = ***REMOVED***󰨸 Summary***REMOVED***, highlight = ***REMOVED***RenderMarkdownInfo***REMOVED*** },
-		tldr = { raw = ***REMOVED***[!TLDR]***REMOVED***, rendered = ***REMOVED***󰨸 Tldr***REMOVED***, highlight = ***REMOVED***RenderMarkdownInfo***REMOVED*** },
-		info = { raw = ***REMOVED***[!INFO]***REMOVED***, rendered = ***REMOVED***󰋽 Info***REMOVED***, highlight = ***REMOVED***RenderMarkdownInfo***REMOVED*** },
-		todo = { raw = ***REMOVED***[!TODO]***REMOVED***, rendered = ***REMOVED***󰗡 Todo***REMOVED***, highlight = ***REMOVED***RenderMarkdownInfo***REMOVED*** },
-		hint = { raw = ***REMOVED***[!HINT]***REMOVED***, rendered = ***REMOVED***󰌶 Hint***REMOVED***, highlight = ***REMOVED***RenderMarkdownSuccess***REMOVED*** },
-		success = { raw = ***REMOVED***[!SUCCESS]***REMOVED***, rendered = ***REMOVED***󰄬 Success***REMOVED***, highlight = ***REMOVED***RenderMarkdownSuccess***REMOVED*** },
-		check = { raw = ***REMOVED***[!CHECK]***REMOVED***, rendered = ***REMOVED***󰄬 Check***REMOVED***, highlight = ***REMOVED***RenderMarkdownSuccess***REMOVED*** },
-		done = { raw = ***REMOVED***[!DONE]***REMOVED***, rendered = ***REMOVED***󰄬 Done***REMOVED***, highlight = ***REMOVED***RenderMarkdownSuccess***REMOVED*** },
-		question = { raw = ***REMOVED***[!QUESTION]***REMOVED***, rendered = ***REMOVED***󰘥 Question***REMOVED***, highlight = ***REMOVED***RenderMarkdownWarn***REMOVED*** },
-		help = { raw = ***REMOVED***[!HELP]***REMOVED***, rendered = ***REMOVED***󰘥 Help***REMOVED***, highlight = ***REMOVED***RenderMarkdownWarn***REMOVED*** },
-		faq = { raw = ***REMOVED***[!FAQ]***REMOVED***, rendered = ***REMOVED***󰘥 Faq***REMOVED***, highlight = ***REMOVED***RenderMarkdownWarn***REMOVED*** },
-		attention = { raw = ***REMOVED***[!ATTENTION]***REMOVED***, rendered = ***REMOVED***󰀪 Attention***REMOVED***, highlight = ***REMOVED***RenderMarkdownWarn***REMOVED*** },
-		failure = { raw = ***REMOVED***[!FAILURE]***REMOVED***, rendered = ***REMOVED***󰅖 Failure***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
-		fail = { raw = ***REMOVED***[!FAIL]***REMOVED***, rendered = ***REMOVED***󰅖 Fail***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
-		missing = { raw = ***REMOVED***[!MISSING]***REMOVED***, rendered = ***REMOVED***󰅖 Missing***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
-		danger = { raw = ***REMOVED***[!DANGER]***REMOVED***, rendered = ***REMOVED***󱐌 Danger***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
-		error = { raw = ***REMOVED***[!ERROR]***REMOVED***, rendered = ***REMOVED***󱐌 Error***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
-		bug = { raw = ***REMOVED***[!BUG]***REMOVED***, rendered = ***REMOVED***󰨰 Bug***REMOVED***, highlight = ***REMOVED***RenderMarkdownError***REMOVED*** },
-		example = { raw = ***REMOVED***[!EXAMPLE]***REMOVED***, rendered = ***REMOVED***󰉹 Example***REMOVED***, highlight = ***REMOVED***RenderMarkdownHint***REMOVED*** },
-		quote = { raw = ***REMOVED***[!QUOTE]***REMOVED***, rendered = ***REMOVED***󱆨 Quote***REMOVED***, highlight = ***REMOVED***RenderMarkdownQuote***REMOVED*** },
-		cite = { raw = ***REMOVED***[!CITE]***REMOVED***, rendered = ***REMOVED***󱆨 Cite***REMOVED***, highlight = ***REMOVED***RenderMarkdownQuote***REMOVED*** },
+		abstract = { raw = "[!ABSTRACT]", rendered = "󰨸 Abstract", highlight = "RenderMarkdownInfo" },
+		summary = { raw = "[!SUMMARY]", rendered = "󰨸 Summary", highlight = "RenderMarkdownInfo" },
+		tldr = { raw = "[!TLDR]", rendered = "󰨸 Tldr", highlight = "RenderMarkdownInfo" },
+		info = { raw = "[!INFO]", rendered = "󰋽 Info", highlight = "RenderMarkdownInfo" },
+		todo = { raw = "[!TODO]", rendered = "󰗡 Todo", highlight = "RenderMarkdownInfo" },
+		hint = { raw = "[!HINT]", rendered = "󰌶 Hint", highlight = "RenderMarkdownSuccess" },
+		success = { raw = "[!SUCCESS]", rendered = "󰄬 Success", highlight = "RenderMarkdownSuccess" },
+		check = { raw = "[!CHECK]", rendered = "󰄬 Check", highlight = "RenderMarkdownSuccess" },
+		done = { raw = "[!DONE]", rendered = "󰄬 Done", highlight = "RenderMarkdownSuccess" },
+		question = { raw = "[!QUESTION]", rendered = "󰘥 Question", highlight = "RenderMarkdownWarn" },
+		help = { raw = "[!HELP]", rendered = "󰘥 Help", highlight = "RenderMarkdownWarn" },
+		faq = { raw = "[!FAQ]", rendered = "󰘥 Faq", highlight = "RenderMarkdownWarn" },
+		attention = { raw = "[!ATTENTION]", rendered = "󰀪 Attention", highlight = "RenderMarkdownWarn" },
+		failure = { raw = "[!FAILURE]", rendered = "󰅖 Failure", highlight = "RenderMarkdownError" },
+		fail = { raw = "[!FAIL]", rendered = "󰅖 Fail", highlight = "RenderMarkdownError" },
+		missing = { raw = "[!MISSING]", rendered = "󰅖 Missing", highlight = "RenderMarkdownError" },
+		danger = { raw = "[!DANGER]", rendered = "󱐌 Danger", highlight = "RenderMarkdownError" },
+		error = { raw = "[!ERROR]", rendered = "󱐌 Error", highlight = "RenderMarkdownError" },
+		bug = { raw = "[!BUG]", rendered = "󰨰 Bug", highlight = "RenderMarkdownError" },
+		example = { raw = "[!EXAMPLE]", rendered = "󰉹 Example", highlight = "RenderMarkdownHint" },
+		quote = { raw = "[!QUOTE]", rendered = "󱆨 Quote", highlight = "RenderMarkdownQuote" },
+		cite = { raw = "[!CITE]", rendered = "󱆨 Cite", highlight = "RenderMarkdownQuote" },
 	},
 	link = {
 		-- Turn on / off inline link icon rendering
 		enabled = true,
 		-- Inlined with 'image' elements
-		image = ***REMOVED***󰥶 ***REMOVED***,
+		image = "󰥶 ",
 		-- Inlined with 'email_autolink' elements
-		email = ***REMOVED***󰀓 ***REMOVED***,
+		email = "󰀓 ",
 		-- Fallback icon for 'inline_link' elements
-		hyperlink = ***REMOVED***󰌹 ***REMOVED***,
+		hyperlink = "󰌹 ",
 		-- Applies to the fallback inlined icon
-		highlight = ***REMOVED***RenderMarkdownLink***REMOVED***,
-		-- De***REMOVED***ne custom destination patterns so icons can quickly inform you of what a link
+		highlight = "RenderMarkdownLink",
+		-- Define custom destination patterns so icons can quickly inform you of what a link
 		-- contains. Applies to 'inline_link' and wikilink nodes.
 		-- Can specify as many additional values as you like following the 'web' pattern below
 		--   The key in this case 'web' is for healthcheck and to allow users to change its values
@@ -222,14 +222,14 @@ require(***REMOVED***render-markdown***REMOVED***).setup({
 		--   'icon':      Gets inlined before the link text
 		--   'highlight': Highlight for the 'icon'
 		custom = {
-			web = { pattern = ***REMOVED***^http[s]?://***REMOVED***, icon = ***REMOVED***󰖟 ***REMOVED***, highlight = ***REMOVED***RenderMarkdownLink***REMOVED*** },
+			web = { pattern = "^http[s]?://", icon = "󰖟 ", highlight = "RenderMarkdownLink" },
 		},
 	},
 	sign = {
 		-- Turn on / off sign rendering
 		enabled = true,
 		-- Applies to background of sign text
-		highlight = ***REMOVED***RenderMarkdownSign***REMOVED***,
+		highlight = "RenderMarkdownSign",
 	},
 	indent = {
 		-- Turn on / off org-indent-mode

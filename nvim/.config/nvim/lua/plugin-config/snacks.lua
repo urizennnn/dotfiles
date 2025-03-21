@@ -1,5 +1,5 @@
 local opts = {
-	big***REMOVED***le = {
+	bigfile = {
 		enabled = true,
 		setup = function(ctx)
 			vim.b.minianimate_disable = true
@@ -8,108 +8,108 @@ local opts = {
 			end)
 		end,
 	},
-	noti***REMOVED***er = {
+	notifier = {
 		timeout = 3000, -- default timeout in ms
 		width = { min = 40, max = 0.4 },
 		height = { min = 1, max = 0.6 },
 		-- editor margin to keep free. tabline and statusline are taken into account automatically
 		margin = { top = 0, right = 1, bottom = 0 },
-		padding = true, -- add 1 cell of left/right padding to the noti***REMOVED***cation window
-		sort = { ***REMOVED***level***REMOVED***, ***REMOVED***added***REMOVED*** }, -- sort by level and time
+		padding = true, -- add 1 cell of left/right padding to the notification window
+		sort = { "level", "added" }, -- sort by level and time
 		icons = {
-			error = ***REMOVED*** ***REMOVED***,
-			warn = ***REMOVED*** ***REMOVED***,
-			info = ***REMOVED*** ***REMOVED***,
-			debug = ***REMOVED*** ***REMOVED***,
-			trace = ***REMOVED*** ***REMOVED***,
+			error = " ",
+			warn = " ",
+			info = " ",
+			debug = " ",
+			trace = " ",
 		},
-		---@type snacks.noti***REMOVED***er.style
-		style = ***REMOVED***compact***REMOVED***,
-		top_down = true, -- place noti***REMOVED***cations from top to bottom
-		date_format = ***REMOVED***%R***REMOVED***, -- time format for noti***REMOVED***cations
+		---@type snacks.notifier.style
+		style = "compact",
+		top_down = true, -- place notifications from top to bottom
+		date_format = "%R", -- time format for notifications
 		refresh = 50, -- refresh at most every 50ms
 	},
-	quick***REMOVED***le = { enabled = true },
+	quickfile = { enabled = true },
 	statuscolumn = { enabled = true },
 	words = { enabled = true },
 	styles = {
-		noti***REMOVED***cation = {
-			wo = { wrap = true }, -- Wrap noti***REMOVED***cations
+		notification = {
+			wo = { wrap = true }, -- Wrap notifications
 		},
 	},
 }
 
 opts.keys = {
 	{
-		***REMOVED***<leader>un***REMOVED***,
+		"<leader>un",
 		function()
-			Snacks.noti***REMOVED***er.hide()
+			Snacks.notifier.hide()
 		end,
-		desc = ***REMOVED***Dismiss All Noti***REMOVED***cations***REMOVED***,
+		desc = "Dismiss All Notifications",
 	},
 	{
-		***REMOVED***<leader>bd***REMOVED***,
+		"<leader>bd",
 		function()
 			Snacks.bufdelete()
 		end,
-		desc = ***REMOVED***Delete Buffer***REMOVED***,
+		desc = "Delete Buffer",
 	},
 	{
-		***REMOVED***<leader>gb***REMOVED***,
-		desc = ***REMOVED***Git Blame Line***REMOVED***,
+		"<leader>gb",
+		desc = "Git Blame Line",
 	},
 	{
-		***REMOVED***<leader>gB***REMOVED***,
+		"<leader>gB",
 		function()
 			Snacks.gitbrowse()
 		end,
-		desc = ***REMOVED***Git Browse***REMOVED***,
+		desc = "Git Browse",
 	},
 
 	{
-		***REMOVED***<leader>gl***REMOVED***,
+		"<leader>gl",
 		function()
 			Snacks.lazygit.log()
 		end,
-		desc = ***REMOVED***Lazygit Log (cwd)***REMOVED***,
+		desc = "Lazygit Log (cwd)",
 	},
 	{
-		***REMOVED***<leader>R***REMOVED***,
+		"<leader>R",
 		function()
 			Snacks.rename()
 		end,
-		desc = ***REMOVED***Rename File***REMOVED***,
+		desc = "Rename File",
 	},
 
 	{
-		***REMOVED***]]***REMOVED***,
+		"]]",
 		function()
 			Snacks.words.jump(vim.v.count1)
 		end,
-		desc = ***REMOVED***Next Reference***REMOVED***,
-		mode = { ***REMOVED***n***REMOVED***, ***REMOVED***t***REMOVED*** },
+		desc = "Next Reference",
+		mode = { "n", "t" },
 	},
 	{
-		***REMOVED***[[***REMOVED***,
+		"[[",
 		function()
 			Snacks.words.jump(-vim.v.count1)
 		end,
-		desc = ***REMOVED***Prev Reference***REMOVED***,
-		mode = { ***REMOVED***n***REMOVED***, ***REMOVED***t***REMOVED*** },
+		desc = "Prev Reference",
+		mode = { "n", "t" },
 	},
 	{
-		***REMOVED***<leader>N***REMOVED***,
-		desc = ***REMOVED***Neovim News***REMOVED***,
+		"<leader>N",
+		desc = "Neovim News",
 		function()
 			Snacks.win({
-				***REMOVED***le = vim.api.nvim_get_runtime_***REMOVED***le(***REMOVED***doc/news.txt***REMOVED***, false)[1],
+				file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
 				width = 0.6,
 				height = 0.6,
 				wo = {
 					spell = false,
 					wrap = false,
-					signcolumn = ***REMOVED***yes***REMOVED***,
-					statuscolumn = ***REMOVED*** ***REMOVED***,
+					signcolumn = "yes",
+					statuscolumn = " ",
 					conceallevel = 3,
 				},
 			})

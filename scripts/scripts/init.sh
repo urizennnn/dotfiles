@@ -1,15 +1,15 @@
 #!/bin/bash
-echo ***REMOVED***Running init***REMOVED***
+echo "Running init"
 
-if [ -z ***REMOVED***$1***REMOVED*** ]; then
-  echo ***REMOVED***Usage: $0 <remote-repo-url>***REMOVED***
+if [ -z "$1" ]; then
+  echo "Usage: $0 <remote-repo-url>"
   exit 1
-***REMOVED***
+fi
 
 REMOTE_REPO_URL=$1
 BRANCH_NAME=${2:-master}
 
-# Create a .gitignore ***REMOVED***le
+# Create a .gitignore file
 cat <<EOL > .gitignore
 # Ignore node_modules
 node_modules/
@@ -19,7 +19,7 @@ logs/
 *.log
 __pycache__/
 
-# Ignore OS generated ***REMOVED***les
+# Ignore OS generated files
 .DS_Store
 Thumbs.db
 
@@ -34,16 +34,16 @@ build/
 # Ignore dependency directories
 vendor/
 
-# Ignore IDE speci***REMOVED***c ***REMOVED***les
+# Ignore IDE specific files
 .vscode/
 .idea/
 
-# Ignore compiled ***REMOVED***les
+# Ignore compiled files
 *.out
 *.class
 *.o
 
-# Ignore temporary ***REMOVED***les
+# Ignore temporary files
 *.tmp
 *.swp
 *~
@@ -61,7 +61,7 @@ git init
 
 git add .
 
-git commit -m ***REMOVED***Initial commit***REMOVED***
+git commit -m "Initial commit"
 
 git remote add origin $REMOTE_REPO_URL
 git push -u origin $BRANCH_NAME

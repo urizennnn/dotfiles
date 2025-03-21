@@ -1,19 +1,18 @@
 local autosave_enabled = true
 
-vim.api.nvim_create_autocmd({ ***REMOVED***InsertLeave***REMOVED***, ***REMOVED***TextChanged***REMOVED*** }, {
-	group = vim.api.nvim_create_augroup(***REMOVED***AutoSave***REMOVED***, { clear = true }),
-	pattern = ***REMOVED*******REMOVED***,
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+	group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
+	pattern = "*",
 	callback = function()
 		if autosave_enabled then
-			vim.cmd(***REMOVED***silent! wa***REMOVED***)
-			require(***REMOVED***conform***REMOVED***).format({ lsp_fallback = true })
+			vim.cmd("silent! wa")
 		end
 	end,
 })
 
 function ToggleAutoSave()
 	autosave_enabled = not autosave_enabled
-	print(***REMOVED***AutoSave is now ***REMOVED*** .. (autosave_enabled and ***REMOVED***Enabled***REMOVED*** or ***REMOVED***Disabled***REMOVED***))
+	print("AutoSave is now " .. (autosave_enabled and "Enabled" or "Disabled"))
 end
 
-vim.api.nvim_create_user_command(***REMOVED***AutoSave***REMOVED***, ToggleAutoSave, {})
+vim.api.nvim_create_user_command("AutoSave", ToggleAutoSave, {})

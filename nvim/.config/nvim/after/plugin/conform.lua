@@ -1,10 +1,10 @@
-require(***REMOVED***conform***REMOVED***).setup({
+require("conform").setup({
 	formatters_by_ft = {
-		lua = { ***REMOVED***stylua***REMOVED*** },
-		python = { ***REMOVED***isort***REMOVED***, ***REMOVED***black***REMOVED*** },
-		rust = { ***REMOVED***rustfmt***REMOVED***, lsp_format = ***REMOVED***fallback***REMOVED*** },
-		javascript = { ***REMOVED***prettierd***REMOVED***, ***REMOVED***prettier***REMOVED***, stop_after_***REMOVED***rst = true },
-		typescript = { ***REMOVED***prettierd***REMOVED***, ***REMOVED***prettier***REMOVED***, stop_after_***REMOVED***rst = true },
-		go = { ***REMOVED***gofmt***REMOVED***, ***REMOVED***gofumpt***REMOVED*** },
+		lua = { "stylua" },
+		python = { "isort", "black" },
+		rust = { "rustfmt", lsp_format = "fallback" },
+		javascript = { "prettierd", "prettier", stop_after_first = true },
+		typescript = { "prettierd", "prettier", stop_after_first = true },
+		go = { "gofmt", "gofumpt" },
 	},
 })

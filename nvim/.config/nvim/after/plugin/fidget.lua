@@ -1,5 +1,5 @@
-require(***REMOVED******REMOVED***dget***REMOVED***).setup({
+require("fidget").setup({
 	sources = {
-		[***REMOVED***nvim-tree***REMOVED***] = false, -- Disable integration with nvim-tree
+		["nvim-tree"] = false, -- Disable integration with nvim-tree
 	},
 })

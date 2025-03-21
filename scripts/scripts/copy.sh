@@ -1,46 +1,46 @@
-list_***REMOVED***les_with_two_extensions() {
+list_files_with_two_extensions() {
     local dir_path=$1
     local ext1=$2
     local ext2=$3
-    local exclude_dirs=(***REMOVED***${@:4}***REMOVED***)
+    local exclude_dirs=("${@:4}")
 
     # Normalize excluded directories so we can match subpaths
     local exclude_dirs_set=()
-    for dir in ***REMOVED***${exclude_dirs[@]}***REMOVED***; do
-        exclude_dirs_set+=(***REMOVED***$(basename ***REMOVED***$dir***REMOVED*** | sed 's|/$||')***REMOVED***)
+    for dir in "${exclude_dirs[@]}"; do
+        exclude_dirs_set+=("$(basename "$dir" | sed 's|/$||')")
     done
 
-    local ***REMOVED***le_contents=***REMOVED******REMOVED***
-    while IFS= read -r -d $'\0' ***REMOVED***le; do
+    local file_contents=""
+    while IFS= read -r -d $'\0' file; do
         local exclude=false
-        for dir in ***REMOVED***${exclude_dirs_set[@]}***REMOVED***; do
-            if [[ ***REMOVED***$***REMOVED***le***REMOVED*** == */***REMOVED***$dir***REMOVED***/* ]]; then
+        for dir in "${exclude_dirs_set[@]}"; do
+            if [[ "$file" == */"$dir"/* ]]; then
                 exclude=true
                 break
-            ***REMOVED***
+            fi
         done
 
-        if [ ***REMOVED***$exclude***REMOVED*** = false ] && { [[ ***REMOVED***$***REMOVED***le***REMOVED*** == ****REMOVED***$ext1***REMOVED*** ]] || [[ ***REMOVED***$***REMOVED***le***REMOVED*** == ****REMOVED***$ext2***REMOVED*** ]]; }; then
-            ***REMOVED***le_contents+=$'\n'***REMOVED***$(printf ***REMOVED***%s\n***REMOVED*** ***REMOVED***$***REMOVED***le***REMOVED*** | sed 's|^'***REMOVED***$dir_path***REMOVED***'/||')***REMOVED***  
-            ***REMOVED***le_contents+=$'\n'***REMOVED***---------------------------------------------***REMOVED***
-            ***REMOVED***le_contents+=$'\n'***REMOVED***$(cat ***REMOVED***$***REMOVED***le***REMOVED***)***REMOVED***
-            ***REMOVED***le_contents+=$'\n'***REMOVED***---------------------------------------------***REMOVED***
-        ***REMOVED***
-    done < <(***REMOVED***nd ***REMOVED***$dir_path***REMOVED*** -type f -print0)
+        if [ "$exclude" = false ] && { [[ "$file" == *"$ext1" ]] || [[ "$file" == *"$ext2" ]]; }; then
+            file_contents+=$'\n'"$(printf "%s\n" "$file" | sed 's|^'"$dir_path"'/||')"  
+            file_contents+=$'\n'"---------------------------------------------"
+            file_contents+=$'\n'"$(cat "$file")"
+            file_contents+=$'\n'"---------------------------------------------"
+        fi
+    done < <(find "$dir_path" -type f -print0)
 
-    echo ***REMOVED***$***REMOVED***le_contents***REMOVED*** | wl-copy
+    echo "$file_contents" | wl-copy
 }
 
-if [ ***REMOVED***$#***REMOVED*** -lt 3 ]; then
-    echo ***REMOVED***Usage: copy <directory_path> <***REMOVED***le_extension1> <***REMOVED***le_extension2> [excluded_dirs...]***REMOVED***
+if [ "$#" -lt 3 ]; then
+    echo "Usage: copy <directory_path> <file_extension1> <file_extension2> [excluded_dirs...]"
     exit 1
-***REMOVED***
+fi
 
 dir_path=$1
-***REMOVED***le_ext1=$2
-***REMOVED***le_ext2=$3
+file_ext1=$2
+file_ext2=$3
 shift 3
-exclude_dirs=(***REMOVED***$@***REMOVED***)
+exclude_dirs=("$@")
 
-list_***REMOVED***les_with_two_extensions ***REMOVED***$dir_path***REMOVED*** ***REMOVED***$***REMOVED***le_ext1***REMOVED*** ***REMOVED***$***REMOVED***le_ext2***REMOVED*** ***REMOVED***${exclude_dirs[@]}***REMOVED***
+list_files_with_two_extensions "$dir_path" "$file_ext1" "$file_ext2" "${exclude_dirs[@]}"
 

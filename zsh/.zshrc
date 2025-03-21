@@ -1,124 +1,124 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
+export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/.cargo/bin/"
+export PATH="/home/urizen/Documents/rust-analyzer-x86_64-unknown-linux-gnu:$PATH"
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+export KITTY_CONFIG_DIRECTORY=~/.config/kitty
+export PATH=/usr/lib/jvm/java-23-openjdk/bin:$PATH
+export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$HOME/.cache/yay/bin:$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+# Set environment variables
+export ARCHFLAGS="-arch $(uname -m)"
+export MANPATH="/usr/local/man:$MANPATH"
+export LANG=en_US.UTF-8
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+# History settings
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-***REMOVED***
-***REMOVED***
+# Enable command auto-correction
+ENABLE_CORRECTION="true"
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+# Completion settings
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 
-***REMOVED***
+# User-specific configuration
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+# Set preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-alias pacman=***REMOVED***sudo pacman --nocon***REMOVED***rm***REMOVED***
-***REMOVED***
-alias yay=***REMOVED***yay --nocon***REMOVED***rm***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-git con***REMOVED***g --global user.name 'consult-with-josh'
-git con***REMOVED***g --global user.email ''
-***REMOVED***
-***REMOVED***
-alias work-logout=***REMOVED***
-***REMOVED***
-git con***REMOVED***g --global user.name 'urizennnn'
-git con***REMOVED***g --global user.email 'igamerryt@gmail.com'
-***REMOVED***
-***REMOVED***
-alias Git=***REMOVED***lazygit***REMOVED***
-alias ginit=***REMOVED***$HOME/scripts/init.sh***REMOVED***
-alias del=***REMOVED***trash-put***REMOVED***
-alias cht=***REMOVED***$HOME/scripts/cht.sh***REMOVED***
-alias restore=***REMOVED***trash-restore***REMOVED***
-alias gitcfg=***REMOVED***git con***REMOVED***g --list --global***REMOVED***
-alias list=***REMOVED***trash-list***REMOVED***
-alias venv=***REMOVED***$HOME/scripts/venv.sh***REMOVED***
-alias empty=***REMOVED***trash-empty***REMOVED***
-alias zi=***REMOVED***builtin cd -- ***REMOVED***
-alias convert=***REMOVED***$HOME/scripts/convert-audio.sh***REMOVED***
-alias zo=***REMOVED***$HOME/scripts/zoxide_search.sh***REMOVED***
-alias staging=***REMOVED***mongosh 'mongodb+srv://avengers_assemble:yUjHaI59DgQkDvqn@subtrack.jukvj.mongodb.net/sub-staging?retryWrites=true&w=majority'***REMOVED***
-alias sef=***REMOVED***mongosh 'mongodb+srv://sefarvest:AlK7Kl8l8uD85IVN@cluster0.agqhxs8.mongodb.net/Sefarvest?retryWrites=true&w=majority'***REMOVED***
+# Aliases
+alias run="cargo run"
+alias so="source $HOME/.zshrc"
+alias cfz="nvim $HOME/.zshrc"
+alias .="nvim ."
+alias pacman="sudo pacman --noconfirm"
+alias anime="ani-cli"
+alias yay="yay --noconfirm"
+# alias fzf='fzf --preview "bat --color=always {}" | xargs nvim'
+alias b="bat"
+alias clear-ram="sudo $HOME/scripts/clear-ram.sh"
+alias tmuxconf="nvim $HOME/.tmux.conf"
+alias anime="ani-cli"
+alias cls="clear"
+alias get="$HOME/scripts/branch.sh"
+alias copy="$HOME/scripts/copy.sh"
+alias ollama="curl -fsSL https://ollama.com/install.sh | sh"
+alias dpk="ollama run deepseek-r1:7b"
+alias work-login="
+gh auth logout
+git config --global user.name 'consult-with-josh'
+git config --global user.email ''
+gh auth login
+"
+alias work-logout="
+gh auth logout
+git config --global user.name 'urizennnn'
+git config --global user.email 'igamerryt@gmail.com'
+gh auth login
+"
+alias Git="lazygit"
+alias ginit="$HOME/scripts/init.sh"
+alias del="trash-put"
+alias cht="$HOME/scripts/cht.sh"
+alias restore="trash-restore"
+alias gitcfg="git config --list --global"
+alias list="trash-list"
+alias venv="$HOME/scripts/venv.sh"
+alias empty="trash-empty"
+alias zi="builtin cd -- "
+alias convert="$HOME/scripts/convert-audio.sh"
+alias zo="$HOME/scripts/zoxide_search.sh"
+alias staging="mongosh 'mongodb+srv://avengers_assemble:yUjHaI59DgQkDvqn@subtrack.jukvj.mongodb.net/sub-staging?retryWrites=true&w=majority'"
+alias sef="mongosh 'mongodb+srv://sefarvest:AlK7Kl8l8uD85IVN@cluster0.agqhxs8.mongodb.net/Sefarvest?retryWrites=true&w=majority'"
 
-# Initialize Zoxide (to be executed after alias de***REMOVED***nition)
-eval ***REMOVED***$(zoxide init zsh)***REMOVED***
+# Initialize Zoxide (to be executed after alias definition)
+eval "$(zoxide init zsh)"
 
-***REMOVED***
+# Initialize other tools
 
-eval ***REMOVED***$(fzf --zsh)***REMOVED***
-# Plugins con***REMOVED***guration
-***REMOVED***
+eval "$(fzf --zsh)"
+# Plugins configuration
+plugins=(git zoxide fzf zsh-interactive-cd zsh-syntax-highlighting zsh-completions fzf-tab zsh-autosuggestions)
 
-***REMOVED***
-***REMOVED***
+# Add zsh-completions to fpath
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-***REMOVED***
-***REMOVED***
+# Source Oh My Zsh again to apply plugins and settings
+source $ZSH/oh-my-zsh.sh
 
-eval ***REMOVED***$(starship init zsh)***REMOVED***
-alias ls=***REMOVED***eza  --long --no-***REMOVED***lesize --icons=always --no-time --no-permissions --no-user***REMOVED***
-eval ***REMOVED***$(atuin init zsh)***REMOVED***
-***REMOVED***
-export NVM_DIR=***REMOVED***$HOME/.nvm***REMOVED***
-[ -s ***REMOVED***$NVM_DIR/nvm.sh***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/nvm.sh***REMOVED***  # This loads nvm
-[ -s ***REMOVED***$NVM_DIR/bash_completion***REMOVED*** ] && \. ***REMOVED***$NVM_DIR/bash_completion***REMOVED***  # This loads nvm bash_completion
+eval "$(starship init zsh)"
+alias ls="eza  --long --no-filesize --icons=always --no-time --no-permissions --no-user"
+eval "$(atuin init zsh)"
+# NVM initialization
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# eval ***REMOVED***$(op signin)***REMOVED***
-# eval ***REMOVED***$(/usr/bin/anaconda3/bin/conda shell.zsh hook)***REMOVED***
+# eval "$(op signin)"
+# eval "$(/usr/bin/anaconda3/bin/conda shell.zsh hook)"
 
-***REMOVED***
-export PNPM_HOME=***REMOVED***/home/urizen/.local/share/pnpm***REMOVED***
-case ***REMOVED***:$PATH:***REMOVED*** in
-  ****REMOVED***:$PNPM_HOME:***REMOVED****) ;;
-  *) export PATH=***REMOVED***$PNPM_HOME:$PATH***REMOVED*** ;;
-***REMOVED***
-***REMOVED*** end
+# pnpm
+export PNPM_HOME="/home/urizen/.local/share/pnpm"
+case ":$PATH:" in
+  ":$PNPM_HOME:") ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

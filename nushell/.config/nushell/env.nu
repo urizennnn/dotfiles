@@ -1,29 +1,29 @@
 # Ensure dependencies are sourced in the correct order
 
 def zoxide-fzf-search [] {
-    let selection = (zoxide query -ls | fzf --height=20 --reverse --preview ***REMOVED***ls {}***REMOVED***)
+    let selection = (zoxide query -ls | fzf --height=20 --reverse --preview "ls {}")
     if $selection != '' {
         cd $selection
     }
 }
 # Functions
 def my-script [] {
-    ($env.HOME | path join ***REMOVED***scripts/cht.sh***REMOVED*** | sh)
+    ($env.HOME | path join "scripts/cht.sh" | sh)
 }
 
 def convert-audio-script [] {
-    ($env.HOME | path join ***REMOVED***scripts/convert-audio.sh***REMOVED*** | sh)
+    ($env.HOME | path join "scripts/convert-audio.sh" | sh)
 }
 
 def zoxide-search-script [] {
-    ($env.HOME | path join ***REMOVED***scripts/zoxide_search.sh***REMOVED*** | sh)
+    ($env.HOME | path join "scripts/zoxide_search.sh" | sh)
 }
 
 def zoxide-query-complete [] {
     zoxide query -ls | fzf --height=20 --reverse
 }
-def open-zshcon***REMOVED***g [] {
-    nvim ($env.HOME | path join ***REMOVED***.zshrc***REMOVED***)
+def open-zshconfig [] {
+    nvim ($env.HOME | path join ".zshrc")
 }
 
 def switch_shell [] {
@@ -34,19 +34,19 @@ def vps [] {
     ssh urizen@138.197.128.225
 }
 
-***REMOVED***
+# Aliases
 alias cls = clear
 alias vps = vps
 alias switch = switch_shell
-alias cfz = open-zshcon***REMOVED***g
+alias cfz = open-zshconfig
 alias zoi = zoxide-fzf-search
 alias zc = zoxide-query-complete
 alias z = zoxide
 alias v = nvim .
- alias pacman = sudo pacman --nocon***REMOVED***rm
+ alias pacman = sudo pacman --noconfirm
 alias anime = ani-cli
 alias ch = my-script
-alias yay = yay --nocon***REMOVED***rm
+alias yay = yay --noconfirm
 alias b = bat
 alias clear-ram = clear-ram
 alias tmuxconf = tmuxconf
@@ -62,15 +62,15 @@ alias lzd = lazydocker
 alias zo = zoxide-search-script
 
 def clear-ram [] {
-    sudo ($env.HOME | path join ***REMOVED***scripts/clear-ram.sh***REMOVED***)
+    sudo ($env.HOME | path join "scripts/clear-ram.sh")
 }
 
 def tmuxconf [] {
-    nvim ($env.HOME | path join ***REMOVED***.tmux.conf***REMOVED***)
+    nvim ($env.HOME | path join ".tmux.conf")
 }
 
 def ginit [] {
-sh    ($env.HOME | path join ***REMOVED***scripts/init.sh***REMOVED***)
+sh    ($env.HOME | path join "scripts/init.sh")
 }
 
 def del-trash [] {
@@ -96,26 +96,26 @@ def create_left_prompt [] {
         $relative_pwd => ([~ $relative_pwd] | path join)
     }
 
-    let path_color = (if (is-admin) { ansi red_bold } ***REMOVED*** { ansi green_bold })
-    let separator_color = (if (is-admin) { ansi light_red_bold } ***REMOVED*** { ansi light_green_bold })
-    let path_segment = $***REMOVED***($path_color)($dir)(ansi reset)***REMOVED***
+    let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
+    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
+    let path_segment = $"($path_color)($dir)(ansi reset)"
 
-    $path_segment | str replace --all (char path_sep) $***REMOVED***($separator_color)(char path_sep)($path_color)***REMOVED***
+    $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
 }
 
 $env.PROMPT_COMMAND = {|| create_left_prompt }
-$env.PROMPT_INDICATOR = {|| ***REMOVED***> ***REMOVED*** }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| ***REMOVED***: ***REMOVED*** }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| ***REMOVED***> ***REMOVED*** }
-$env.PROMPT_MULTILINE_INDICATOR = {|| ***REMOVED***::: ***REMOVED*** }
-use std ***REMOVED***path add***REMOVED***
+$env.PROMPT_INDICATOR = {|| "> " }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| ": " }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
+$env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
+use std "path add"
 
 
-$env.STARSHIP_CONFIG = ***REMOVED***/home/urizen/.con***REMOVED***g/starship/con***REMOVED***g.toml***REMOVED***
-$env.EDITOR = ***REMOVED***nvim***REMOVED***
+$env.STARSHIP_CONFIG = "/home/urizen/.config/starship/config.toml"
+$env.EDITOR = "nvim"
 
 
 path add /usr/bin/golangci-lint
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
-zoxide init nushell | save -f ~/.con***REMOVED***g/nushell/zoxide.nu
+zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
