@@ -57,6 +57,9 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", { silent = true }) -- Move selected lines u
 
 keymap("n", "GB", "<cmd>GitBlameToggle<return>", { silent = true, noremap = true }) -- Toggle Git Blame
 keymap("n", "open", "<cmd>:GitBlameOpenCommitURL<CR>", { silent = true, noremap = true }) -- Open commit URL
+keymap("n", "git", function()
+	Snacks.lazygit.open()
+end, opts)
 
 -- ===============================
 -- 🟢 TELESCOPE SEARCH
@@ -166,8 +169,6 @@ keymap("v", "<PageDown>", "<Nop>", { noremap = true, silent = true }) -- Disable
 -- 🟢 CLOSE NOTIFICATION POPUP
 -- ===============================
 keymap("n", "nd", "<cmd>NoiceDismiss<CR>", { noremap = true, silent = true })
-
-keymap("n", "git", "<cmd>LazyGit<CR>", opts)
 
 keymap("n", "<leader>cc", "<cmd>Augment chat-toggle<CR>", opts)
 keymap("n", "<leader>c", "<cmd>Augment chat<CR>", opts)
