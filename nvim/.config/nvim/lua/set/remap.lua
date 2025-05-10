@@ -46,8 +46,8 @@ keymap("v", "p", '"_dP', opts) -- Paste without replacing register
 -- 🟢 LINE NAVIGATION
 -- ===============================
 
-keymap("n", "<C-d>", "10j") -- Move down 10 lines
-keymap("n", "<C-u>", "10k") -- Move up 10 lines
+keymap({ "n", "i" }, "<C-d>", "10j") -- Move down 10 lines
+keymap({ "n", "i" }, "<C-u>", "10k") -- Move up 10 lines
 keymap("v", "J", ":m '>+1<CR>gv=gv", { silent = true }) -- Move selected lines down
 keymap("v", "K", ":m '<-2<CR>gv=gv", { silent = true }) -- Move selected lines up
 
@@ -57,6 +57,9 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", { silent = true }) -- Move selected lines u
 
 keymap("n", "GB", "<cmd>GitBlameToggle<return>", { silent = true, noremap = true }) -- Toggle Git Blame
 keymap("n", "open", "<cmd>:GitBlameOpenCommitURL<CR>", { silent = true, noremap = true }) -- Open commit URL
+keymap("n", "gs", function()
+	Snacks.gitbrowse()
+end, { silent = true }) -- Open Git status
 keymap("n", "git", function()
 	Snacks.lazygit.open()
 end, opts)
@@ -173,3 +176,4 @@ keymap("n", "nd", "<cmd>NoiceDismiss<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>cc", "<cmd>Augment chat-toggle<CR>", opts)
 keymap("n", "<leader>c", "<cmd>Augment chat<CR>", opts)
 keymap("n", "<leader>cn", "<cmd>Augment chat-new<CR>", opts)
+keymap("n", "M", "<cmd>Mason<CR>", opts)

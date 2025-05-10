@@ -1,5 +1,5 @@
 require("set")
-vim.g.augment_workspace_folders = { "~/givese-mvp-api", "~/zync" }
+vim.g.augment_workspace_folders = { "/home/urizen/pallax" }
 local snacks = require("plugin-config.snacks")
 
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#808080" })
@@ -130,6 +130,7 @@ require("lazy").setup({
 		},
 	},
 	{ "augmentcode/augment.vim" },
+	{ "akinsho/flutter-tools.nvim", ft = { "dart", "flutter" } },
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",

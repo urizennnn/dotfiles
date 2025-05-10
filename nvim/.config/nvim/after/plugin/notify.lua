@@ -1,6 +1,6 @@
 local notify = require("notify")
 
-notify("Welcome back Fisayo")
+notify("Welcome back Urizen")
 
 vim.notify = notify
 notify.setup({

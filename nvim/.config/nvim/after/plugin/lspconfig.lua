@@ -6,6 +6,13 @@ require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "eslint" },
 })
+require("lspconfig").kotlin_language_server.setup({
+	cmd = { "kotlin-language-server" },
+	init_options = {
+		storagePath = vim.fn.stdpath("cache") .. "/kotlin_language_server",
+	},
+})
+
 require("mason-lspconfig").setup_handlers({
 	["rust_analyzer"] = function() end,
 })

@@ -13,6 +13,7 @@ ${custom.package_manager}\
 $nodejs\
 $rust\
 $python\
+$dart\
 ${custom.home} $cmd_duration $jobs $time\
 $line_break\
 $character"""
@@ -65,11 +66,6 @@ read_only = "🔒 "
 truncation_length = 4
 truncate_to_repo = false
 
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
-
 [git_branch]
 symbol = " "
 format = "[$symbol$branch]($style) "
@@ -110,3 +106,10 @@ format = "[$time]($style)"
 [custom.home]
 when = "test $HOME = $PWD"
 format = "🏠"
+
+[dart]
+symbol = " "
+style = "bold blue"
+format = "[$symbol$version]($style) "
+detect_files = ["pubspec.yaml"]
+
