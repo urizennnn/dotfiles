@@ -1,149 +1,118 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.formatting = true
+---@diagnostic disable: undefined-global
+local fmt_grp = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
+local base_caps = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities(base_caps)
+
+vim.lsp.config("*", {
+	capabilities = capabilities,
+	root_markers = { ".git" },
+})
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "eslint" },
-})
-require("lspconfig").kotlin_language_server.setup({
-	cmd = { "kotlin-language-server" },
-	init_options = {
-		storagePath = vim.fn.stdpath("cache") .. "/kotlin_language_server",
+	ensure_installed = {
+		"lua_ls",
+		"eslint",
+		"rust_analyzer",
+		"ts_ls",
+		"pyright",
+		"gopls",
+		"clangd",
+		"html",
+		"kotlin_language_server",
 	},
 })
 
-require("mason-lspconfig").setup_handlers({
-	["rust_analyzer"] = function() end,
-})
---- autocmd for formatting
+local function attach_fmt(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = fmt_grp, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = fmt_grp,
+			buffer = bufnr,
+			callback = function()
+				require("conform").format({ bufnr = bufnr })
+			end,
+		})
+	end
+end
+
+local servers = {
+	lua_ls = {
+		settings = {
+			Lua = {
+				runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
+				diagnostics = { globals = { "vim" } },
+				workspace = {
+					library = {
+						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+						[vim.fn.stdpath("config") .. "/lua"] = true,
+					},
+					maxPreload = 10000,
+					preloadFileSize = 1000,
+				},
+				telemetry = { enable = false },
+			},
+		},
+	},
+
+	eslint = {
+		on_attach = attach_fmt,
+	},
+
+	rust_analyzer = {},
+
+	ts_ls = {},
+
+	pyright = {
+		settings = { python = { pythonPath = vim.fn.exepath("python") } },
+		on_attach = attach_fmt,
+	},
+
+	gopls = {
+		settings = {
+			gopls = {
+				analyses = { unusedparams = true },
+				staticcheck = true,
+				usePlaceholders = true,
+				completeUnimported = true,
+			},
+		},
+	},
+
+	clangd = {
+		cmd = {
+			"clangd",
+			"--offset-encoding=utf-16",
+			"-j=4",
+			"--background-index",
+			"--clang-tidy",
+			"--completion-style=detailed",
+		},
+		filetypes = { "c", "cpp", "objc", "objcpp" },
+		root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
+	},
+
+	html = {
+		filetypes = { "html" },
+		init_options = {
+			configurationSection = { "html", "css", "javascript" },
+			embeddedLanguages = { css = true, javascript = true },
+			provideFormatter = true,
+		},
+	},
+}
+
+for name, cfg in pairs(servers) do
+	cfg.capabilities = cfg.capabilities or capabilities
+	cfg.on_attach = cfg.on_attach or attach_fmt
+	vim.lsp.config(name, cfg)
+end
+
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = vim.api.nvim_create_augroup("custom_lsp", { clear = false }),
+	group = fmt_grp,
 	pattern = "*",
-	callback = function(_)
+	callback = function()
 		require("conform").format({ lsp_fallback = true })
 	end,
-})
-require("lspconfig").lua_ls.setup({
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-				path = vim.split(package.path, ";"),
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-					[".local/share/nvim/lazy/conform.nvim/lua/"] = true,
-				},
-				maxPreload = 10000,
-				preloadFileSize = 1000,
-			},
-			telemetry = { enable = false },
-		},
-	},
-})
-
-require("lspconfig").ts_ls.setup({})
-require("lspconfig").pyright.setup({
-	capabilities = capabilities,
-	cmd = { "pyright-langserver", "--stdio" },
-	filetypes = { "python" },
-	root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "setup.py", "setup.cfg", "requirements.txt"),
-	single_file_support = true,
-	settings = {
-		python = {
-			pythonPath = vim.fn.exepath("python"),
-		},
-	},
-	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
-			vim.api.nvim_clear_autocmds({
-				group = augroup,
-				buffer = bufnr,
-			})
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*",
-				callback = function(args)
-					require("conform").format({ bufnr = args.buf })
-				end,
-			})
-		end
-	end,
-})
-
-require("lspconfig").clangd.setup({
-	cmd = {
-		"clangd",
-		"--offset-encoding=utf-16",
-		"-j=4",
-		"--background-index",
-		"--clang-tidy",
-		"--fallback-style=llvm",
-		"--all-scopes-completion",
-		"--completion-style=detailed",
-		"--header-insertion=iwyu",
-		"--header-insertion-decorators",
-		"--pch-storage=memory",
-		"--enable-config",
-		"--suggest-missing-includes",
-		"--cross-file-rename",
-	},
-	filetypes = { "c", "cpp", "objc", "objcpp" },
-	root_dir = require("lspconfig.util").root_pattern(
-		"compile_commands.json",
-		".git",
-		".clangd",
-		"compile_flags.txt",
-		".clangd-tidy",
-		".clang-format",
-		"configure.ac"
-	),
-	single_file_support = true,
-})
-require("lspconfig").html.setup({
-	capabilities = capabilities,
-	cmd = { "vscode-html-language-server", "--stdio" },
-	filetypes = { "html" },
-	init_options = {
-		configurationSection = { "html", "css", "javascript" },
-		embeddedLanguages = {
-			css = true,
-			javascript = true,
-		},
-		provideFormatter = true,
-	},
-	single_file_support = true,
-})
-require("lspconfig").gopls.setup({
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod" },
-	root_dir = require("lspconfig.util").root_pattern("go.mod", ".git"),
-	single_file_support = true,
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-			usePlaceholders = true,
-			completeUnimported = true,
-		},
-	},
-})
-
-require("lspconfig").eslint.setup({
-	on_attach = function(_client, bufnr)
-		local function buf_set_option(...)
-			vim.api.nvim_buf_set_option(bufnr, ...)
-		end
-		buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-	end,
-	settings = {
-		format = { enable = true },
-	},
 })

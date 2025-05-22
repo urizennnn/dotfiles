@@ -14,8 +14,8 @@ fi
 ) &
 KEEPALIVE_PID=$!
 
-echo "🚀 running: yay -Syu"
-yay -Syu
+echo "🚀 running: yay -Syu --noconfirm --needed"
+yay -Syu --noconfirm --needed
 
 kill "$KEEPALIVE_PID" 2>/dev/null || true
 

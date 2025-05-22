@@ -1,5 +1,10 @@
 require("set")
-vim.g.augment_workspace_folders = { "/home/urizen/pallax" }
+
+vim.g.augment_workspace_folders = {
+	"/home/urizen/sefarvest-backend",
+	"/home/urizen/exam-mode-BE",
+	"/home/urizen/api.godaesil",
+}
 local snacks = require("plugin-config.snacks")
 
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#808080" })

@@ -3,5 +3,5 @@ require("codesnap").setup({
 	has_breadcrumbs = true,
 	has_line_number = true,
 	bg_theme = "grape",
-	watermark = "FISAYOMI",
+	watermark = "URIZEN",
 })

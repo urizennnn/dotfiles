@@ -49,6 +49,7 @@ alias cfz="nvim $HOME/.zshrc"
 alias .="nvim ."
 alias pacman="sudo pacman --noconfirm"
 alias anime="ani-cli"
+alias sysup="$HOME/scripts/sysup.sh"
 alias yay="yay --noconfirm"
 # alias fzf='fzf --preview "bat --color=always {}" | xargs nvim'
 alias b="bat"
@@ -119,3 +120,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
