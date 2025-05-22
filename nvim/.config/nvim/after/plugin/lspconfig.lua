@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 local fmt_grp = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 
 local base_caps = vim.lsp.protocol.make_client_capabilities()

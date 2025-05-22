@@ -92,6 +92,16 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 	dev = { reload = true },
 	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "LazyVim", words = { "LazyVim" } },
+			},
+		},
+	},
+	{
 		"mistweaverco/kulala.nvim",
 		opts = {
 			curl_path = "curl",
