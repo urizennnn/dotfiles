@@ -1,3 +1,4 @@
+local util = require("lspconfig.util")
 local fmt_grp = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 
 local base_caps = vim.lsp.protocol.make_client_capabilities()
@@ -61,7 +62,22 @@ local servers = {
 
 	rust_analyzer = {},
 
-	ts_ls = {},
+	ts_ls = {
+		default_config = {
+			init_options = { hostInfo = "neovim" },
+			cmd = { "typescript-language-server", "--stdio" },
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+			},
+			root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
+			single_file_support = true,
+		},
+	},
 
 	pyright = {
 		settings = { python = { pythonPath = vim.fn.exepath("python") } },
