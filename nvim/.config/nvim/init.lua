@@ -2,7 +2,6 @@ require("set")
 
 vim.g.augment_workspace_folders = {
 	"/home/urizen/sefarvest-backend",
-	"/home/urizen/exam-mode-BE",
 	"/home/urizen/api.godaesil",
 }
 local snacks = require("plugin-config.snacks")
@@ -317,7 +316,7 @@ require("lazy").setup({
 	},
 	{ "rmagatti/auto-session", config = true },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-	{ "mistricky/codesnap.nvim", build = "make build_generator" },
+	{ "mistricky/codesnap.nvim", build = "make " },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {},
@@ -391,7 +390,60 @@ require("lazy").setup({
 	},
 	{ "cdelledonne/vim-cmake" },
 	{ "mbbill/undotree" },
-	{ "lewis6991/gitsigns.nvim" },
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({
+				signs = {
+					add = { text = "┃" },
+					change = { text = "┃" },
+					delete = { text = "_" },
+					topdelete = { text = "‾" },
+					changedelete = { text = "~" },
+					untracked = { text = "┆" },
+				},
+				signs_staged = {
+					add = { text = "┃" },
+					change = { text = "┃" },
+					delete = { text = "_" },
+					topdelete = { text = "‾" },
+					changedelete = { text = "~" },
+					untracked = { text = "┆" },
+				},
+				signs_staged_enable = true,
+				signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+				numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+				linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+				word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+				watch_gitdir = {
+					follow_files = true,
+				},
+				auto_attach = true,
+				attach_to_untracked = false,
+				current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+				current_line_blame_opts = {
+					virt_text = true,
+					virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+					delay = 1000,
+					ignore_whitespace = false,
+					virt_text_priority = 100,
+					use_focus = true,
+				},
+				current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+				sign_priority = 6,
+				update_debounce = 100,
+				status_formatter = nil, -- Use default
+				max_file_length = 40000, -- Disable if file is longer than this (in lines)
+				preview_config = {
+					-- Options passed to nvim_open_win
+					style = "minimal",
+					relative = "cursor",
+					row = 0,
+					col = 1,
+				},
+			})
+		end,
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "vimEnter",
@@ -603,6 +655,12 @@ require("lazy").setup({
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
+			require("mini.indentscope").setup({
+				draw = {
+					delay = 100,
+				},
+				options = { try_as_border = true, border = "both" },
+			})
 			local statusline = require("mini.statusline")
 			statusline.setup({ use_icons = vim.g.have_nerd_font })
 			statusline.section_location = function()

@@ -1,4 +1,9 @@
 local function prisma_generate_and_reload_lsp()
+	local clients_to_restart = {}
+	for _, client in ipairs(vim.lsp.get_active_clients()) do
+		table.insert(clients_to_restart, client.id)
+	end
+
 	vim.fn.jobstart({ "npx", "prisma", "generate" }, {
 		cwd = vim.fn.getcwd(),
 		stdout_buffered = true,
@@ -14,15 +19,22 @@ local function prisma_generate_and_reload_lsp()
 			end
 		end,
 		on_exit = function()
-			for _, client in pairs(vim.lsp.get_active_clients()) do
-				if client.name then
-					vim.lsp.stop_client(client.id)
-				end
+			for _, id in ipairs(clients_to_restart) do
+				pcall(vim.lsp.stop_client, id, true)
 			end
-			vim.cmd("edit") -- triggers LSP restart on reopened buffer
-			vim.notify("LSPs restarted", vim.log.levels.INFO, { title = "Prisma Generate" })
+			vim.schedule(function()
+				for _, id in ipairs(clients_to_restart) do
+					vim.cmd("LspStart " .. id)
+				end
+				vim.notify("LSPs restarted", vim.log.levels.INFO, { title = "Prisma Generate" })
+			end)
 		end,
 	})
 end
 
-vim.keymap.set("n", "pg", prisma_generate_and_reload_lsp, { desc = "Run `npx prisma generate` and reload LSPs" })
+vim.keymap.set(
+	"n",
+	"pg",
+	prisma_generate_and_reload_lsp,
+	{ desc = "Run `npx prisma generate` then restart active LSPs" }
+)
