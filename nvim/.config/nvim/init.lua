@@ -100,6 +100,8 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ "brenoprata10/nvim-highlight-colors" },
+	{ "norcalli/nvim-colorizer.lua" },
 	{
 		"mistweaverco/kulala.nvim",
 		opts = {
@@ -494,6 +496,24 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "Search Neovim files" })
+		end,
+	},
+	{ "dmmulroy/ts-error-translator.nvim" },
+	-- tailwind-tools.lua
+	{
+		"luckasRanarison/tailwind-tools.nvim",
+		name = "tailwind-tools",
+		build = ":UpdateRemotePlugins",
+		dependencies = {},
+		opts = {}, -- your configuration
+	},
+	{
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+		-- optionally, override the default options:
+		config = function()
+			require("tailwindcss-colorizer-cmp").setup({
+				color_square_width = 2,
+			})
 		end,
 	},
 	{
