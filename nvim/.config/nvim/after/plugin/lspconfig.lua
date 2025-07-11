@@ -33,11 +33,18 @@ local function is_library(fname)
 		end
 	end
 end
+
 vim.lsp.config("*", {
 	capabilities = capabilities,
-	root_markers = { ".git" },
+	root_markers = {
+		".git",
+		"package.json",
+		".eslintrc",
+		".eslintrc.json",
+		".eslintrc.js",
+		".eslintrc.cjs",
+	},
 })
-
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -96,6 +103,7 @@ local servers = {
 
 	eslint = {
 		on_attach = attach_fmt,
+		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	},
 
 	rust_analyzer = {
