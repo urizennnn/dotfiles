@@ -2,6 +2,7 @@ require("set")
 
 vim.g.augment_workspace_folders = {
 	"/home/urizen/sefarvest-backend",
+	"/home/urizen/fonu-api",
 	"/home/urizen/api.godaesil",
 }
 local snacks = require("plugin-config.snacks")

@@ -6,7 +6,7 @@ logs/
 *.log
 __pycache__/
 
-# Ignore OS generated ***REMOVED***les
+# Ignore OS generated files
 .DS_Store
 Thumbs.db
 
@@ -21,16 +21,16 @@ build/
 # Ignore dependency directories
 vendor/
 
-# Ignore IDE speci***REMOVED***c ***REMOVED***les
+# Ignore IDE specific files
 .vscode/
 .idea/
 
-# Ignore compiled ***REMOVED***les
+# Ignore compiled files
 *.out
 *.class
 *.o
 
-# Ignore temporary ***REMOVED***les
+# Ignore temporary files
 *.tmp
 *.swp
 *~
@@ -42,5 +42,3 @@ vendor/
 # Ignore venv
 myenv/
 venv/
-nushell/.con***REMOVED***g/nushell/history.txt
-nushell/.con***REMOVED***g/nushell/history.txt

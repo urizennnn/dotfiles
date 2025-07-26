@@ -2,7 +2,9 @@ vim.opt.cursorline = false
 vim.loader.enable()
 vim.opt.pumheight = 5
 vim.opt.smartcase = true
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+  virtual_text = { current_line = true }
+})
 vim.lsp.inlay_hint.enable(true)
 vim.opt.relativenumber = true
 vim.opt.autoindent = true

@@ -1,6 +1,10 @@
 local util = require("lspconfig.util")
 local fmt_grp = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-
+local root_dir = util.root_pattern("package.json", ".git")
+local function exists(fname)
+	local stat = vim.loop.fs_stat(fname)
+	return stat and stat.type == "file"
+end
 local base_caps = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities(base_caps)
 
@@ -176,7 +180,15 @@ local servers = {
 	ts_ls = {
 		default_config = {
 			init_options = { hostInfo = "neovim" },
-			cmd = { "typescript-language-server", "--stdio" },
+			cmd = (function()
+				local cwd = vim.loop.cwd()
+				local tsls = vim.fn.exepath("typescript-language-server")
+				local base = { "node", "--max-old-space-size=8192", tsls, "--stdio" }
+				if exists(cwd .. "/.pnp.cjs") or exists(cwd .. "/.pnp.loader.mjs") then
+					return vim.list_extend({ "yarn", "pnpify", "--sdk" }, base)
+				end
+				return base
+			end)(),
 			filetypes = {
 				"javascript",
 				"javascriptreact",
@@ -187,7 +199,17 @@ local servers = {
 			},
 			root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
+			flags = {
+				debounce_text_changes = 200,
+			},
 		},
+		on_attach = function(client, bufnr)
+			client.server_capabilities.semanticTokensProvider = nil
+			if client.server_capabilities.inlayHintProvider then
+				client.server_capabilities.inlayHintProvider = nil
+			end
+			attach_fmt(client, bufnr)
+		end,
 	},
 
 	pyright = {
