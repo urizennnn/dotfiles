@@ -1,77 +1,9 @@
 require("set")
-
-vim.g.augment_workspace_folders = {
-	"/home/urizen/sefarvest-backend",
-	"/home/urizen/fonu-api",
-	"/home/urizen/api.godaesil",
-}
+local fzf_opts, fzf_keymap = dofile(vim.fn.stdpath("config") .. "/after/plugin/fzf_lua.lua")
 local snacks = require("plugin-config.snacks")
 
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#808080" })
 vim.lsp.set_log_level("debug")
-
-vim.g.db_ui_use_nvim_notify = 1
-vim.g.lazydev_enabled = true
-vim.g.mkdp_port = 2000
-vim.g.mkdp_echo_preview_url = 1
-vim.g.mkdp_page_title = "「${name}」"
-vim.g.mkdp_filetypes = { "markdown" }
-vim.g.mkdp_theme = "dark"
-vim.g.loaded_netrwPlugin = 1
-
-vim.diagnostic.config({
-	virtual_text = { prefix = "●", spacing = 4 },
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = false,
-})
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.o.updatetime = 250
-
-vim.g.clipboard = {
-	name = "wl-clipboard",
-	copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
-	paste = { ["+"] = "wl-paste --no-newline", ["*"] = "wl-paste --no-newline" },
-	cache_enabled = 0,
-}
-vim.opt.clipboard = "unnamedplus"
-vim.g.have_nerd_font = true
-vim.opt.scrollback = 100000
-vim.opt.number = true
-vim.opt.showmode = true
-
-local macro_group = vim.api.nvim_create_augroup("MacroRecording", { clear = true })
-vim.api.nvim_create_autocmd("RecordingLeave", {
-	group = macro_group,
-	callback = function()
-		print("Macro recording stopped")
-	end,
-})
-
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.timeoutlen = 300
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.inccommand = "split"
-vim.opt.scrolloff = 10
-vim.opt.hlsearch = true
-
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics Quickfix" })
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight on yank",
@@ -103,49 +35,7 @@ require("lazy").setup({
 	},
 	{ "brenoprata10/nvim-highlight-colors" },
 	{ "norcalli/nvim-colorizer.lua" },
-	{
-		"mistweaverco/kulala.nvim",
-		opts = {
-			curl_path = "curl",
-			display_mode = "split",
-			q_to_close_float = false,
-			split_direction = "vertical",
-			default_view = "body",
-			default_env = "dev",
-			debug = false,
-			contenttypes = {
-				["application/json"] = { ft = "json", formatter = { "jq", "." } },
-				["application/xml"] = {
-					ft = "xml",
-					formatter = { "xmllint", "--format", "-" },
-					pathresolver = { "xmllint", "--xpath", "{{path}}", "-" },
-				},
-				["text/html"] = { ft = "html", formatter = { "xmllint", "--format", "--html", "-" }, pathresolver = {} },
-			},
-			show_icons = "on_request",
-			icons = { inlay = { loading = "⏳", done = "✅", error = "❌" }, lualine = "🐼" },
-			additional_curl_options = {},
-			scratchpad_default_contents = {
-				"@MY_TOKEN_NAME=my_token_value",
-				"",
-				"# @name scratchpad",
-				"POST https://httpbin.org/post HTTP/1.1",
-				"accept: application/json",
-				"content-type: application/json",
-				"",
-				"{",
-				'  "foo": "bar"',
-				"}",
-			},
-			winbar = false,
-			default_winbar_panes = { "body", "headers", "headers_body", "verbose" },
-			vscode_rest_client_environmentvars = false,
-			disable_script_print_output = false,
-			environment_scope = "b",
-			certificates = {},
-			urlencode = "always",
-		},
-	},
+	{ "ahmedkhalf/project.nvim" },
 	{
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
@@ -162,13 +52,13 @@ require("lazy").setup({
 			"sharkdp/fd",
 			"junegunn/fzf",
 			"BurntSushi/ripgrep",
-			"sharkdp/bat",
 			"dandavison/delta",
 			"nvim-treestitter/nvim-treesitter-context",
 			"hpjansson/chafa",
 			"atanunq/viu",
 		},
-		opts = {},
+		opts = fzf_opts,
+		keys = fzf_keymap,
 	},
 	{ "akinsho/flutter-tools.nvim", ft = { "dart", "flutter" } },
 	{
@@ -364,7 +254,6 @@ require("lazy").setup({
 		"pwntester/octo.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
 			"ibhagwan/fzf-lua",
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -457,67 +346,15 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"nvim-telescope/telescope.nvim",
-		event = "vimEnter",
-		branch = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				cond = function()
-					return vim.fn.executable("make") == 1
-				end,
-			},
-			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
-		},
-		config = function()
-			require("telescope").setup({
-				extensions = { ["ui-select"] = require("telescope.themes").get_dropdown() },
-			})
-			pcall(require("telescope").load_extension, "fzf")
-			pcall(require("telescope").load_extension, "ui-select")
-			pcall(require("telescope").load_extension, "noice")
-			pcall(require("telescope").load_extension, "lazygit")
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search Help" })
-			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search Keymaps" })
-			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "Search Telescope" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Search current word" })
-			vim.keymap.set("n", "lg", builtin.live_grep, { desc = "Live Grep" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "Search Diagnostics" })
-			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "Resume Telescope" })
-			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = "Recent Files" })
-			vim.keymap.set("n", "re", builtin.buffers, { desc = "Find buffers" })
-			vim.keymap.set("n", "<leader>f", function()
-				require("telescope.builtin").find_files({
-					find_command = { "rg", "--ignore", "--hidden", "--files", "--glob", "!**/.git/*", "--no-ignore" },
-				})
-			end, { noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>/", function()
-				builtin.current_buffer_fuzzy_find(
-					require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
-				)
-			end, { desc = "Fuzzy search in current buffer" })
-			vim.keymap.set("n", "<leader>s/", function()
-				builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
-			end, { desc = "Live grep in open files" })
-			vim.keymap.set("n", "<leader>sn", function()
-				builtin.find_files({ cwd = vim.fn.stdpath("config") })
-			end, { desc = "Search Neovim files" })
-		end,
-	},
 	{ "dmmulroy/ts-error-translator.nvim" },
 	-- tailwind-tools.lua
-	{
-		"luckasRanarison/tailwind-tools.nvim",
-		name = "tailwind-tools",
-		build = ":UpdateRemotePlugins",
-		dependencies = {},
-		opts = {}, -- your configuration
-	},
+	-- {
+	-- 	"luckasRanarison/tailwind-tools.nvim",
+	-- 	name = "tailwind-tools",
+	-- 	build = ":UpdateRemotePlugins",
+	-- 	dependencies = {},
+	-- 	opts = {}, -- your configuration
+	-- },
 	{
 		"roobert/tailwindcss-colorizer-cmp.nvim",
 		-- optionally, override the default options:
@@ -552,16 +389,6 @@ require("lazy").setup({
 					local map = function(keys, func, desc)
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
-					map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
-					map("gr", require("telescope.builtin").lsp_references, "Goto References")
-					map("gI", require("telescope.builtin").lsp_implementations, "Goto Implementation")
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type Definition")
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-					map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
-					map("<leader>rn", vim.lsp.buf.rename, "Rename")
-					map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-					map("K", vim.lsp.buf.hover, "Hover")
-					map("gD", vim.lsp.buf.declaration, "Goto Declaration")
 				end,
 			})
 

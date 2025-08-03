@@ -23,8 +23,8 @@ require("tokyonight").setup({
 	plugins = {
 		all = package.loaded.lazy == nil,
 		auto = true,
-		telescope = true,
 	},
 })
 
 vim.cmd.colorscheme("tokyonight")
+

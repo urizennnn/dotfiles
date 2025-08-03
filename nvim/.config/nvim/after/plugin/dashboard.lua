@@ -26,7 +26,7 @@ require("dashboard").setup({
 		center = {
 			{ action = "ene | startinsert", desc = "New File", icon = " ", key = "n" },
 			{ action = "Lazy", desc = "Lazy", icon = "󰒲 ", key = "l" },
-			{ action = "Telescope oldfiles", desc = "Old files", icon = " ", key = "o" },
+			{ action = "Fzf oldfiles", desc = "Old files", icon = " ", key = "o" },
 			{
 				action = function()
 					vim.api.nvim_input("<cmd>qa<cr>")

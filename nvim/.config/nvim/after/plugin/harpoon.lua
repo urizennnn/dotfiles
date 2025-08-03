@@ -6,53 +6,50 @@ harpoon:setup({
 	},
 })
 
--- basic telescope configuration
-local conf = require("telescope.config").values
-local function toggle_telescope(harpoon_files)
+local fzf = require("fzf-lua")
+local actions = require("fzf-lua.actions")
+
+local function toggle_harpoon_fzf()
+	-- collect the file paths from Harpoon’s list
+	local items = harpoon:list().items
 	local file_paths = {}
-	for _, item in ipairs(harpoon_files.items) do
+	for _, item in ipairs(items) do
 		table.insert(file_paths, item.value)
 	end
 
-	require("telescope.pickers")
-		.new({}, {
-			prompt_title = "Harpoon",
-			finder = require("telescope.finders").new_table({
-				results = file_paths,
-			}),
-			previewer = conf.file_previewer({}),
-			sorter = conf.generic_sorter({}),
-		})
-		:find()
+	-- launch fzf-lua with a custom source and open on selection
+	fzf.fzf({
+		source = file_paths,
+		sink = actions.file_edit,
+		prompt = "Harpoon> ",
+	})
 end
---
-vim.keymap.set("n", "<C-e>", function()
-	toggle_telescope(harpoon:list())
-	-- harpoon.ui:toggle_telescope(harpoon:list())
-end, { desc = "Open harpoon window" })
+
+-- Keymaps
+vim.keymap.set("n", "<C-e>", toggle_harpoon_fzf, { desc = "Open Harpoon fzf window" })
 vim.keymap.set("n", "<leader>a", function()
 	harpoon:list():add()
-end)
+end, { desc = "Harpoon: add file" })
 vim.keymap.set("n", "<Alt>d", function()
 	harpoon:list():remove_at()
-end)
+end, { desc = "Harpoon: remove file" })
 vim.keymap.set("n", "<C-h>", function()
 	harpoon:list():select(1)
-end)
+end, { desc = "Harpoon: go to mark 1" })
 vim.keymap.set("n", "<C-t>", function()
 	harpoon:list():select(2)
-end)
+end, { desc = "Harpoon: go to mark 2" })
 vim.keymap.set("n", "<C-n>", function()
 	harpoon:list():select(3)
-end)
+end, { desc = "Harpoon: go to mark 3" })
 vim.keymap.set("n", "<C-s>", function()
 	harpoon:list():select(4)
-end)
+end, { desc = "Harpoon: go to mark 4" })
 
--- Toggle previous & next buffers stored within Harpoon list
+-- Navigate Harpoon marks forward/backward
 vim.keymap.set("n", "<C-S-P>", function()
 	harpoon:list():prev()
-end)
+end, { desc = "Harpoon: previous mark" })
 vim.keymap.set("n", "<C-S-N>", function()
 	harpoon:list():next()
-end)
+end, { desc = "Harpoon: next mark" })
