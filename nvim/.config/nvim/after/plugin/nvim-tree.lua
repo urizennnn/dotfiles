@@ -7,6 +7,11 @@ vim.cmd([[
 ]])
 
 require("nvim-tree").setup({
+	filesystem_watchers = {
+		enable = true, -- Enables the filesystem watcher
+		debounce_delay = 50, -- Delay in milliseconds for the watcher
+		ignore_dirs = { ".git", "node_modules", ".cache" },
+	},
 	update_focused_file = {
 		enable = true, -- Enables the sync with the current file
 		update_cwd = true, -- Updates the current working directory

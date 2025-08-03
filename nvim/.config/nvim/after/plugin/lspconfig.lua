@@ -1,12 +1,14 @@
 local util = require("lspconfig.util")
 local fmt_grp = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 local root_dir = util.root_pattern("package.json", ".git")
+
 local function exists(fname)
 	local stat = vim.loop.fs_stat(fname)
 	return stat and stat.type == "file"
 end
+
 local base_caps = vim.lsp.protocol.make_client_capabilities()
-local capabilities = require("cmp_nvim_lsp").default_capabilities(base_caps)
+local capabilities = require("blink.cmp").get_lsp_capabilities(base_caps)
 
 local function reload_workspace(bufnr)
 	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "rust_analyzer" })
@@ -40,15 +42,19 @@ end
 
 vim.lsp.config("*", {
 	capabilities = capabilities,
-	root_markers = {
+	settings = { workingDirectory = "${workspaceFolder}" },
+	root_markers = util.root_pattern(
 		".git",
 		"package.json",
+
+		"eslint.config.js",
 		".eslintrc",
 		".eslintrc.json",
 		".eslintrc.js",
-		".eslintrc.cjs",
-	},
+		".eslintrc.cjs"
+	),
 })
+
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -106,10 +112,13 @@ local servers = {
 	},
 
 	eslint = {
-		on_attach = attach_fmt,
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+		settings = {
+			workingDirectories = { mode = "auto" },
+		},
+		on_attach = function(client, bufnr)
+			vim.lsp.buf.format()
+		end,
 	},
-
 	rust_analyzer = {
 		cmd = { "rust-analyzer" },
 		filetypes = { "rust" },
@@ -150,7 +159,6 @@ local servers = {
 							cargo_workspace_root = vim.fs.normalize(result["workspace_root"])
 						end
 					end
-
 					on_dir(cargo_workspace_root or cargo_crate_dir)
 				else
 					vim.schedule(function()
@@ -161,11 +169,7 @@ local servers = {
 				end
 			end)
 		end,
-		capabilities = {
-			experimental = {
-				serverStatusNotification = true,
-			},
-		},
+		capabilities = { experimental = { serverStatusNotification = true } },
 		before_init = function(init_params, config)
 			if config.settings and config.settings["rust-analyzer"] then
 				init_params.initializationOptions = config.settings["rust-analyzer"]
@@ -177,6 +181,7 @@ local servers = {
 			end, { desc = "Reload current cargo workspace" })
 		end,
 	},
+
 	ts_ls = {
 		default_config = {
 			init_options = { hostInfo = "neovim" },
@@ -199,9 +204,7 @@ local servers = {
 			},
 			root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
 			single_file_support = true,
-			flags = {
-				debounce_text_changes = 200,
-			},
+			flags = { debounce_text_changes = 200 },
 		},
 		on_attach = function(client, bufnr)
 			client.server_capabilities.semanticTokensProvider = nil
@@ -212,10 +215,7 @@ local servers = {
 		end,
 	},
 
-	pyright = {
-		settings = { python = { pythonPath = vim.fn.exepath("python") } },
-		on_attach = attach_fmt,
-	},
+	pyright = { settings = { python = { pythonPath = vim.fn.exepath("python") } }, on_attach = attach_fmt },
 
 	gopls = {
 		settings = {
@@ -238,7 +238,7 @@ local servers = {
 			"--completion-style=detailed",
 		},
 		filetypes = { "c", "cpp", "objc", "objcpp" },
-		root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
+		root_dir = util.root_pattern("compile_commands.json", ".git"),
 	},
 
 	html = {

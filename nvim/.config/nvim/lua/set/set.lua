@@ -1,4 +1,5 @@
 vim.opt.cursorline = false
+vim.g.lazyvim_eslint_auto_format = true
 vim.loader.enable()
 vim.opt.pumheight = 5
 vim.opt.smartcase = true

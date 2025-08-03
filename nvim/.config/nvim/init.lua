@@ -146,7 +146,30 @@ require("lazy").setup({
 			urlencode = "always",
 		},
 	},
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
 	{ "augmentcode/augment.vim" },
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"sharkdp/fd",
+			"junegunn/fzf",
+			"BurntSushi/ripgrep",
+			"sharkdp/bat",
+			"dandavison/delta",
+			"nvim-treestitter/nvim-treesitter-context",
+			"hpjansson/chafa",
+			"atanunq/viu",
+		},
+		opts = {},
+	},
 	{ "akinsho/flutter-tools.nvim", ft = { "dart", "flutter" } },
 	{
 		"folke/flash.nvim",
@@ -254,19 +277,6 @@ require("lazy").setup({
 				multiwindow = true,
 			})
 		end,
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-emoji",
-			"L3MON4D3/LuaSnip",
-		},
 	},
 	{
 		"Saecki/crates.nvim",
@@ -523,15 +533,19 @@ require("lazy").setup({
 			require("rescue-lsp").setup()
 		end,
 	},
+	{ "onsails/lspkind.nvim" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
+			"saghen/blink.cmp",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
+			local auto_format = true -- set/override elsewhere if needed
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -550,19 +564,80 @@ require("lazy").setup({
 					map("gD", vim.lsp.buf.declaration, "Goto Declaration")
 				end,
 			})
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
+
 			local servers = {
 				pyright = {},
 				ts_ls = {},
-				lua_ls = { settings = { Lua = { completion = { callSnippet = "Replace" } } } },
+				eslint = {
+					settings = {
+						workingDirectories = { mode = "auto" },
+						format = auto_format,
+					},
+				},
+				lua_ls = {
+					settings = {
+						Lua = {
+							completion = { callSnippet = "Replace" },
+						},
+					},
+				},
 			}
+
 			require("mason").setup()
+
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, { "stylua" })
+
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
 			require("mason-lspconfig").setup({
 				handlers = {
+					eslint = function()
+						if not auto_format then
+							return
+						end
+
+						local function get_client(buf)
+							return LazyVim.lsp.get_clients({ name = "eslint", bufnr = buf })[1]
+						end
+
+						local formatter = LazyVim.lsp.formatter({
+							name = "eslint: lsp",
+							primary = false,
+							priority = 200,
+							filter = "eslint",
+						})
+
+						if not pcall(require, "vim.lsp._dynamic") then
+							formatter.name = "eslint: EslintFixAll"
+							formatter.sources = function(buf)
+								local client = get_client(buf)
+								return client and { "eslint" } or {}
+							end
+							formatter.format = function(buf)
+								local client = get_client(buf)
+								if client then
+									local diag = vim.diagnostic.get(
+										buf,
+										{ namespace = vim.lsp.diagnostic.get_namespace(client.id) }
+									)
+									if #diag > 0 then
+										vim.cmd("EslintFixAll")
+									end
+								end
+							end
+						end
+
+						LazyVim.format.register(formatter)
+
+						local server = servers.eslint or {}
+						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+						require("lspconfig").eslint.setup(server)
+					end,
+
 					function(server_name)
 						local server = servers[server_name] or {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
@@ -605,54 +680,103 @@ require("lazy").setup({
 		lazy = false,
 	},
 	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			{
-				"L3MON4D3/LuaSnip",
-				build = (function()
-					if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-						return
-					end
-					return "make install_jsregexp"
-				end)(),
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+
+		version = "1.*",
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = {
+				preset = "none",
+				["<Up>"] = { "select_prev", "fallback" },
+				["<Down>"] = { "select_next", "fallback" },
+				["<Enter>"] = { "accept", "fallback" },
+				["<C-y>"] = { "accept", "fallback" },
+				["<Esc>"] = { "hide", "fallback" },
+				["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+				["<C-n>"] = { "select_next", "fallback_to_mappings" },
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
 			},
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-		},
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			luasnip.config.setup({})
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+
+			appearance = {
+				nerd_font_variant = "normal",
+			},
+			signature = {
+				window = {
+					border = "rounded",
+					treesitter_highlighting = true,
+					show_documentation = true,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
-				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete({}),
-					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { "i", "s" }),
-				}),
-				sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "path" } },
-			})
-		end,
+				enabled = true,
+			},
+			completion = {
+				ghost_text = {
+					enabled = true,
+					show_with_selection = true,
+					show_without_selection = false,
+					show_with_menu = true,
+					show_without_menu = true,
+				},
+
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 500,
+					window = {
+						border = "rounded",
+					},
+				},
+				menu = {
+					draw = {
+						components = {
+							kind_icon = {
+								text = function(ctx)
+									local icon = ctx.kind_icon
+									if vim.tbl_contains({ "Path" }, ctx.source_name) then
+										local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+										if dev_icon then
+											icon = dev_icon
+										end
+									else
+										icon = require("lspkind").symbolic(ctx.kind, {
+											mode = "symbol",
+										})
+									end
+
+									return icon .. ctx.icon_gap
+								end,
+
+								-- Optionally, use the highlight groups from nvim-web-devicons
+								-- You can also add the same function for `kind.highlight` if you want to
+								-- keep the highlight groups in sync with the icons.
+								highlight = function(ctx)
+									local hl = ctx.kind_hl
+									if vim.tbl_contains({ "Path" }, ctx.source_name) then
+										local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+										if dev_icon then
+											hl = dev_hl
+										end
+									end
+									return hl
+								end,
+							},
+						},
+					},
+				},
+			},
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					lua = { inherit_defaults = true, "lsp", "path" },
+					vim = { inherit_defaults = true, "cmdline" },
+				},
+			},
+
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
 	},
 	{
 		"folke/tokyonight.nvim",
