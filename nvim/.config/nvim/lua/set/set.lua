@@ -1,3 +1,46 @@
+
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+vim.lsp.set_log_level("ERROR") -- Reduce LSP logging
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = opts.border or "rounded"
+	opts.max_width = opts.max_width or 80
+	opts.max_height = opts.max_height or 20
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+	callback = function()
+		vim.opt_local.complete = ".,w,b,u,t"
+		vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+	end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client and client.name == "ts_ls" then
+			-- Enable auto-import code actions
+			client.server_capabilities.codeActionProvider = {
+				codeActionKinds = {
+					"quickfix",
+					"refactor",
+					"refactor.extract",
+					"refactor.inline",
+					"refactor.rewrite",
+					"source",
+					"source.organizeImports",
+				},
+				resolveProvider = true,
+			}
+		end
+	end,
+})
 vim.opt.cursorline = false
 vim.g.lazyvim_eslint_auto_format = true
 vim.loader.enable()
@@ -83,7 +126,81 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
 vim.g.augment_workspace_folders = {
-	"/home/urizen/sefarvest-backend",
+	-- "/home/urizen/sefarvest-backend",
 	"/home/urizen/fonu-api",
-	"/home/urizen/api.godaesil",
+	-- "/home/urizen/fonu-work/fonu-power/"
+	-- "/home/urizen/api.godaesil",
 }
+-- Add this to your LSP configuration for better auto-import behavior
+
+-- Auto-import keybinding for manual triggering
+vim.keymap.set("n", "<leader>ci", function()
+	vim.lsp.buf.code_action({
+		filter = function(action)
+			return action.kind and string.match(action.kind, "source%.addMissingImports")
+		end,
+		apply = true,
+	})
+end, { desc = "Add missing imports" })
+
+-- Auto-import on save for TypeScript/JavaScript files
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+	callback = function(args)
+		local params = vim.lsp.util.make_range_params()
+		params.context = { only = { "source.addMissingImports.ts" } }
+
+		local result = vim.lsp.buf_request_sync(args.buf, "textDocument/codeAction", params, 1000)
+		for cid, res in pairs(result or {}) do
+			for _, r in pairs(res.result or {}) do
+				if r.edit then
+					local enc = vim.lsp.get_client_by_id(cid).offset_encoding or "utf-16"
+					vim.lsp.util.apply_workspace_edit(r.edit, enc)
+				end
+			end
+		end
+	end,
+})
+
+-- Enhanced TypeScript LSP settings for better completion
+local enhanced_ts_settings = {
+	typescript = {
+		updateImportsOnFileMove = { enabled = "always" },
+		suggest = {
+			completeFunctionCalls = true,
+			includeCompletionsForModuleExports = true,
+			includeCompletionsWithInsertText = true,
+		},
+		preferences = {
+			includePackageJsonAutoImports = "on",
+			includeCompletionsForModuleExports = true,
+		},
+		inlayHints = {
+			includeInlayParameterNameHints = "all",
+			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			includeInlayFunctionParameterTypeHints = true,
+			includeInlayVariableTypeHints = false,
+			includeInlayPropertyDeclarationTypeHints = true,
+			includeInlayFunctionLikeReturnTypeHints = true,
+			includeInlayEnumMemberValueHints = true,
+		},
+	},
+	javascript = {
+		updateImportsOnFileMove = { enabled = "always" },
+		suggest = {
+			completeFunctionCalls = true,
+			includeCompletionsForModuleExports = true,
+			includeCompletionsWithInsertText = true,
+		},
+		preferences = {
+			includePackageJsonAutoImports = "on",
+			includeCompletionsForModuleExports = true,
+		},
+	},
+}
+
+-- Update your ts_ls server configuration with these settings
+-- In your servers table:
+-- ts_ls = {
+--     settings = enhanced_ts_settings,
+-- },

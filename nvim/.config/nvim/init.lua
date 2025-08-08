@@ -46,20 +46,25 @@ require("lazy").setup({
 	{ "augmentcode/augment.vim" },
 	{
 		"ibhagwan/fzf-lua",
-		-- optional for icon support
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"sharkdp/fd",
-			"junegunn/fzf",
-			"BurntSushi/ripgrep",
+			"sharkdp/fd", -- blazing-fast file search
+			"junegunn/fzf", -- finder core
+			"BurntSushi/ripgrep", -- grep provider
 			"dandavison/delta",
-			"nvim-treestitter/nvim-treesitter-context",
+			"nvim-treesitter/nvim-treesitter-context", -- ✗ typo fixed
 			"hpjansson/chafa",
 			"atanunq/viu",
 		},
-		opts = fzf_opts,
 		keys = fzf_keymap,
+		opts = fzf_opts,
+		config = function(_, opts)
+			local fzf = require("fzf-lua")
+			fzf.setup(opts) -- respect everything in fzf_opts
+			fzf.register_ui_select() -- explicit call keeps other plugins happy
+		end,
 	},
+
 	{ "akinsho/flutter-tools.nvim", ft = { "dart", "flutter" } },
 	{
 		"folke/flash.nvim",
@@ -509,9 +514,7 @@ require("lazy").setup({
 	{
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
-
 		version = "1.*",
-
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
@@ -527,7 +530,6 @@ require("lazy").setup({
 				["<C-b>"] = { "scroll_documentation_up", "fallback" },
 				["<C-f>"] = { "scroll_documentation_down", "fallback" },
 			},
-
 			appearance = {
 				nerd_font_variant = "normal",
 			},
@@ -540,23 +542,62 @@ require("lazy").setup({
 				enabled = true,
 			},
 			completion = {
+				trigger = {
+					prefetch_on_insert = true,
+					show_on_backspace_in_keyword = true,
+					show_on_backspace_after_accept = true,
+					show_on_insert = true,
+					-- Add these for better auto-import behavior
+					show_in_snippet = true,
+				},
+				-- Add accept configuration for better auto-import
+				accept = {
+					auto_brackets = {
+						enabled = true,
+					},
+					create_undo_point = true,
+				},
+				-- Add list configuration for better performance
+				list = {
+					max_items = 200,
+					selection = {
+						preselect = true,
+						auto_insert = true,
+					},
+					cycle = {
+						from_bottom = true,
+						from_top = true,
+					},
+				},
 				ghost_text = {
-					enabled = true,
+					enabled = false,
 					show_with_selection = true,
 					show_without_selection = false,
 					show_with_menu = true,
 					show_without_menu = true,
 				},
-
 				documentation = {
 					auto_show = true,
-					auto_show_delay_ms = 500,
+					auto_show_delay_ms = 200, -- Reduced from 500ms for faster response
+					treesitter_highlighting = true,
 					window = {
 						border = "rounded",
+						max_width = 80,
+						max_height = 20,
 					},
 				},
 				menu = {
+					-- Add auto_show for immediate menu display
+					auto_show = true,
 					draw = {
+						-- Add treesitter for better syntax highlighting
+						treesitter = { "lsp" },
+						-- Add columns for more information
+						columns = {
+							{ "label", "label_description", gap = 1 },
+							{ "kind_icon", "kind", gap = 1 },
+							{ "source_name" },
+						},
 						components = {
 							kind_icon = {
 								text = function(ctx)
@@ -571,13 +612,8 @@ require("lazy").setup({
 											mode = "symbol",
 										})
 									end
-
 									return icon .. ctx.icon_gap
 								end,
-
-								-- Optionally, use the highlight groups from nvim-web-devicons
-								-- You can also add the same function for `kind.highlight` if you want to
-								-- keep the highlight groups in sync with the icons.
 								highlight = function(ctx)
 									local hl = ctx.kind_hl
 									if vim.tbl_contains({ "Path" }, ctx.source_name) then
@@ -595,13 +631,60 @@ require("lazy").setup({
 			},
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
+				-- Add provider configuration for better control
+				providers = {
+					lsp = {
+						name = "LSP",
+						module = "blink.cmp.sources.lsp",
+						enabled = true,
+						-- Prioritize LSP completions
+						score_offset = 100,
+					},
+					path = {
+						name = "Path",
+						module = "blink.cmp.sources.path",
+						score_offset = 3,
+						opts = {
+							trailing_slash = false,
+							label_trailing_slash = true,
+							get_cwd = function(context)
+								return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+							end,
+							show_hidden_files_by_default = false,
+						},
+					},
+					snippets = {
+						name = "Snippets",
+						module = "blink.cmp.sources.snippets",
+						score_offset = 80, -- High priority for snippets
+					},
+					buffer = {
+						name = "Buffer",
+						module = "blink.cmp.sources.buffer",
+						enabled = true,
+						score_offset = -5,
+						opts = {
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end,
+						},
+					},
+				},
 				per_filetype = {
-					lua = { inherit_defaults = true, "lsp", "path" },
-					vim = { inherit_defaults = true, "cmdline" },
+					lua = { "lsp", "path", "snippets", "buffer" },
+					vim = { "lsp", "cmdline", "path" },
+					-- Add specific config for JS/TS files
+					javascript = { "lsp", "path", "snippets", "buffer" },
+					typescript = { "lsp", "path", "snippets", "buffer" },
+					javascriptreact = { "lsp", "path", "snippets", "buffer" },
+					typescriptreact = { "lsp", "path", "snippets", "buffer" },
 				},
 			},
-
-			fuzzy = { implementation = "prefer_rust_with_warning" },
+			fuzzy = {
+				implementation = "prefer_rust_with_warning",
+				-- Add sorting configuration for better results
+				sorts = { "score", "sort_text", "kind" },
+			},
 		},
 		opts_extend = { "sources.default" },
 	},

@@ -1,5 +1,4 @@
-local opts = {}
-local keymap = {
+local fzf_keymap = {
 	{
 		"<leader>f",
 		function()
@@ -72,4 +71,12 @@ local keymap = {
 	},
 }
 
-return opts, keymap
+local fzf_opts = {
+	ui_select = { enabled = true }, -- internally calls register_ui_select
+
+	files = {
+		fd_opts = "--type f --hidden --follow --exclude .git",
+	},
+}
+
+return fzf_opts, fzf_keymap
