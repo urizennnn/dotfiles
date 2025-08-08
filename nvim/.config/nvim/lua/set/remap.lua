@@ -64,7 +64,6 @@ keymap("n", "git", function()
 	Snacks.lazygit.open()
 end, opts)
 
-
 -- ===============================
 -- 🟢 LIVE SERVER CONTROL
 -- ===============================
@@ -88,7 +87,6 @@ end)
 keymap("n", "<leader>h", function()
 	vim.cmd.RustLsp({ "hover", "actions" }) -- Show hover actions for LSP
 end)
-
 
 -- ===============================
 -- 🟢 DATABASE MANAGEMENT
@@ -167,10 +165,22 @@ keymap("n", "<leader>cc", "<cmd>Augment chat-toggle<CR>", opts)
 keymap("n", "<leader>c", "<cmd>Augment chat<CR>", opts)
 keymap("n", "<leader>cn", "<cmd>Augment chat-new<CR>", opts)
 keymap("n", "M", "<cmd>Mason<CR>", opts)
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics Quickfix" })
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
+keymap("i", "jk", "<Esc>")
+keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+keymap("n", "<leader>q", function()
+	pcall(vim.diagnostic.setqflist, { open = false })
+	vim.cmd("FzfLua quickfix")
+end, { desc = "FZF: Diagnostics → Quickfix", silent = true })
+keymap("n", "<leader>dd", "<cmd>FzfLua diagnostics_document<CR>", { desc = "FZF: Document diagnostics", silent = true })
+keymap(
+	"n",
+	"<leader>wd",
+	"<cmd>FzfLua diagnostics_workspace<CR>",
+	{ desc = "FZF: Workspace diagnostics", silent = true }
+)
+keymap("n", "<leader>t", "<cmd>TodoFzfLua<CR>", { desc = "TODOs (FzfLua)", silent = true })
+

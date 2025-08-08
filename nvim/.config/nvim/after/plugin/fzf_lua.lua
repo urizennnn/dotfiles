@@ -1,3 +1,36 @@
+local fzf_opts = {
+	ui_select = { enabled = true }, -- internally calls register_ui_select
+
+	files = {
+		fd_opts = "--type f --hidden --follow --exclude .git",
+	},
+}
+
+vim.api.nvim_create_autocmd({ "DiagnosticChanged", "BufEnter" }, {
+	group = vim.api.nvim_create_augroup("QfSyncDiagnostics", { clear = true }),
+	callback = function()
+		pcall(vim.diagnostic.setqflist, { open = false })
+	end,
+})
+
+local function do_fzf_setup()
+	local ok, fzf = pcall(require, "fzf-lua")
+	if not ok or not fzf or type(fzf.setup) ~= "function" then
+		return
+	end
+	fzf.setup(fzf_opts)
+end
+
+pcall(do_fzf_setup)
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyLoad",
+	callback = function(ev)
+		if ev and ev.data == "fzf-lua" then
+			do_fzf_setup()
+		end
+	end,
+})
+
 local fzf_keymap = {
 	{
 		"<leader>f",
@@ -68,14 +101,6 @@ local fzf_keymap = {
 			require("fzf-lua").search_history()
 		end,
 		desc = "FZF: Search history",
-	},
-}
-
-local fzf_opts = {
-	ui_select = { enabled = true }, -- internally calls register_ui_select
-
-	files = {
-		fd_opts = "--type f --hidden --follow --exclude .git",
 	},
 }
 
