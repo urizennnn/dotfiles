@@ -352,17 +352,8 @@ require("lazy").setup({
 		end,
 	},
 	{ "dmmulroy/ts-error-translator.nvim" },
-	-- tailwind-tools.lua
-	-- {
-	-- 	"luckasRanarison/tailwind-tools.nvim",
-	-- 	name = "tailwind-tools",
-	-- 	build = ":UpdateRemotePlugins",
-	-- 	dependencies = {},
-	-- 	opts = {}, -- your configuration
-	-- },
 	{
 		"roobert/tailwindcss-colorizer-cmp.nvim",
-		-- optionally, override the default options:
 		config = function()
 			require("tailwindcss-colorizer-cmp").setup({
 				color_square_width = 2,
@@ -385,99 +376,7 @@ require("lazy").setup({
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
-		config = function()
-			local auto_format = true -- set/override elsewhere if needed
-
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
-				callback = function(event)
-					local map = function(keys, func, desc)
-						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-					end
-				end,
-			})
-
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
-
-			local servers = {
-				pyright = {},
-				ts_ls = {},
-				eslint = {
-					settings = {
-						workingDirectories = { mode = "auto" },
-						format = auto_format,
-					},
-				},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = { callSnippet = "Replace" },
-						},
-					},
-				},
-			}
-
-			require("mason").setup()
-
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, { "stylua" })
-
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-			require("mason-lspconfig").setup({
-				handlers = {
-					eslint = function()
-						if not auto_format then
-							return
-						end
-
-						local function get_client(buf)
-							return LazyVim.lsp.get_clients({ name = "eslint", bufnr = buf })[1]
-						end
-
-						local formatter = LazyVim.lsp.formatter({
-							name = "eslint: lsp",
-							primary = false,
-							priority = 200,
-							filter = "eslint",
-						})
-
-						if not pcall(require, "vim.lsp._dynamic") then
-							formatter.name = "eslint: EslintFixAll"
-							formatter.sources = function(buf)
-								local client = get_client(buf)
-								return client and { "eslint" } or {}
-							end
-							formatter.format = function(buf)
-								local client = get_client(buf)
-								if client then
-									local diag = vim.diagnostic.get(
-										buf,
-										{ namespace = vim.lsp.diagnostic.get_namespace(client.id) }
-									)
-									if #diag > 0 then
-										vim.cmd("EslintFixAll")
-									end
-								end
-							end
-						end
-
-						LazyVim.format.register(formatter)
-
-						local server = servers.eslint or {}
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig").eslint.setup(server)
-					end,
-
-					function(server_name)
-						local server = servers[server_name] or {}
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
-		end,
+		config = function() end,
 	},
 	{
 		"stevearc/conform.nvim",

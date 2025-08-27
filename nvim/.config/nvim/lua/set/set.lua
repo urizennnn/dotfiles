@@ -1,4 +1,3 @@
-
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.lsp.set_log_level("ERROR") -- Reduce LSP logging
@@ -12,7 +11,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 	callback = function()
@@ -24,7 +22,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client and client.name == "ts_ls" then
+		if client and client.name == "ts_ls" or client and client.name == "vtsls" then
 			-- Enable auto-import code actions
 			client.server_capabilities.codeActionProvider = {
 				codeActionKinds = {
@@ -199,8 +197,3 @@ local enhanced_ts_settings = {
 	},
 }
 
--- Update your ts_ls server configuration with these settings
--- In your servers table:
--- ts_ls = {
---     settings = enhanced_ts_settings,
--- },
