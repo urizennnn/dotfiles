@@ -1,22 +1,9 @@
+add_newline = true
+
 format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$golang\
-$git_state\
-$git_status\
-$git_metrics\
-$aws\
-$fill\
-${custom.package_manager}\
-$nodejs\
-$rust\
-$python\
-$dart\
-${custom.home} $cmd_duration $jobs $time\
-$line_break\
-$character"""
+$username$hostname$directory$git_branch$golang$git_state$git_status$git_metrics$aws$fill${custom.home} ${custom.package_manager}$nodejs $rust $python $dart $cmd_duration ${custom.daynight} $time
+$character
+"""
 
 [aws]
 format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
@@ -29,13 +16,18 @@ symbol = " "
 style = "bold yellow"
 format = "[$symbol$virtualenv]($style) "
 
+[golang]
+symbol = " "
+style  = "bold cyan"
+format = "[$symbol($version )]($style)"
+
 [rust]
 format = "[$symbol($version )]($style)"
 symbol = " rust"
 style = "bold red"
 
 [nodejs]
-format = "[$symbol($version )]($style)"
+format = "[@ v$version]($style)"
 detect_files = ["package.json", "node_modules"]
 detect_folders = ["node_modules"]
 
@@ -55,7 +47,7 @@ fi
 """
 when = """test -f package.json || test -f yarn.lock || test -f pnpm-lock.yaml || test -f bun.lockb"""
 style = "bold yellow"
-format = "[$output ]($style)"
+format = "[$output]($style) "
 
 [fill]
 symbol = " "
@@ -76,9 +68,6 @@ symbol = "  "
 style = "bold red"
 number_threshold = 1
 format = "[$symbol]($style)"
-
-[golang]
-format = '[ ](bold cyan)'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
@@ -112,4 +101,17 @@ symbol = " "
 style = "bold blue"
 format = "[$symbol$version]($style) "
 detect_files = ["pubspec.yaml"]
+
+[custom.daynight]
+command = """
+hour=$(date +%H)
+if [ "$hour" -ge 18 ] || [ "$hour" -lt 6 ]; then
+  echo "🌙"
+else
+  echo "☀️"
+fi
+"""
+when = "true"
+style = "bold white"
+format = "[$output]($style)"
 
