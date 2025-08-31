@@ -132,7 +132,7 @@ keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
 keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show Diagnostics" })
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-keymap("n", "es", "<cmd>LspEslintFixAll<CR>", { desc = "Fix all eslint errors", silent = true })
+keymap("n", "es", "<cmd>EslintFixAll<CR>", { desc = "Fix all eslint errors", silent = true })
 
 keymap("n", "<leader>t", "<cmd>TodoFzfLua<CR>", { desc = "TODOs (FzfLua)", silent = true })
 
@@ -142,4 +142,22 @@ keymap("n", "<leader>t", "<cmd>TodoFzfLua<CR>", { desc = "TODOs (FzfLua)", silen
 
 keymap("n", "md", "<cmd>RenderMarkdown toggle<CR>") -- Toggle Markdown preview
 
-keymap("n", "grn", vim.lsp.buf.rename, { desc = "Rename" })
+
+-- define your global gr/grn mappings once
+vim.keymap.set("n", "gr", function()
+  local ok, fzf = pcall(require, "fzf-lua")
+  if ok then
+    fzf.lsp_references({ jump = true, ignore_current_line = true })
+  else
+    vim.lsp.buf.references()
+  end
+end, { desc = "LSP References", nowait = false })
+
+vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP Rename", nowait = false })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    pcall(vim.keymap.del, "n", "gr", { buffer = args.buf })
+  end,
+})
+

@@ -1,6 +1,6 @@
 local autosave_enabled = true
 
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
     group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
     pattern = "*",
     callback = function()

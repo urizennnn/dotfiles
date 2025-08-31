@@ -48,14 +48,7 @@ local fzf_keymap = {
         end,
         desc = "FZF: Grep project",
     },
-    {
-        "gr",
-        function()
-            require("fzf-lua").lsp_references()
-        end,
-        desc = "FZF: LSP references",
-        nowait = false,
-    },
+
     {
         "gd",
         function()
@@ -93,6 +86,7 @@ local fzf_keymap = {
     },
 
     { "<leader>sc", false },
+    { "gr",         false },
 }
 
 return {

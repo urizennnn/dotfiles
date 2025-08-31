@@ -27,7 +27,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.scrollback = 100000
 vim.opt.number = true
 vim.opt.showmode = true
-vim.opt.timeoutlen = 600
+vim.opt.timeoutlen = 300
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
@@ -43,9 +43,8 @@ vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
 vim.o.updatetime = 250
 vim.g.clipboard = {
-  name = "wl-clipboard",
-  copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
-  paste = { ["+"] = "wl-paste --no-newline", ["*"] = "wl-paste --no-newline" },
-  cache_enabled = 0,
+    name = "wl-clipboard",
+    copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
+    paste = { ["+"] = "wl-paste --no-newline", ["*"] = "wl-paste --no-newline" },
+    cache_enabled = 0,
 }
-
