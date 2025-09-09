@@ -1,0 +1,23 @@
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = igamerryt@gmail.com
+	name = urizennnn
+        useConfigOnly = true          
+[includeIf "gitdir:~/fonu-work/"]      
+    path = ~/.gitconfig-work
+[pull]
+	rebase = true
+[branch]
+	autoSetupRebase = always
+[rebase]
+	autoStash = true
+	autoSquash = true
+[merge]
+	ff = false
+	commit = false
