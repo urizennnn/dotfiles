@@ -27,7 +27,7 @@ symbol = " rust"
 style = "bold red"
 
 [nodejs]
-format = "[@ v$version]($style)"
+format = "[$version]($style)"
 detect_files = ["package.json", "node_modules"]
 detect_folders = ["node_modules"]
 

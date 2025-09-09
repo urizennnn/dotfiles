@@ -12,6 +12,7 @@ vim.opt.smartindent = true
 vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
 vim.opt.softtabstop = 4
+vim.opt.expandtab = true
 vim.opt.mouse = ""
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -48,3 +49,29 @@ vim.g.clipboard = {
     paste = { ["+"] = "wl-paste --no-newline", ["*"] = "wl-paste --no-newline" },
     cache_enabled = 0,
 }
+
+vim.opt.formatoptions:remove({ "c", "r", "o" })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "yaml",
+        "html",
+        "css",
+        "scss",
+        "vue",
+        "svelte",
+    },
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+    end,
+})
+vim.opt.diffopt:append({ "linematch:60", "algorithm:patience", "indent-heuristic" })
+vim.opt.fillchars:append({ diff = "╱" }) -- thinner diff filler
+

@@ -59,9 +59,10 @@ return {
             return {
                 capabilities = capabilities,
                 servers = {
+                    glint = false,
                     vtsls = {
                         settings = {
-                            vtsls = { autoUseWorkspaceTsdk = true },
+                            vtsls = { autoUseWorkspaceTsdk = false },
                             typescript = { format = { enable = false } },
                             javascript = { format = { enable = false } },
                         },
@@ -117,6 +118,16 @@ return {
                         require("typescript").setup({ server = merged })
                         return true
                     end,
+                    vtsls = function(_, sopts)
+                        local orig_attach = sopts.on_attach
+                        sopts.on_attach = function(client, bufnr)
+                            client.server_capabilities.documentFormattingProvider = false
+                            if orig_attach then
+                                orig_attach(client, bufnr)
+                            end
+                        end
+                        return false
+                    end,
                 },
             }
         end)(),
@@ -125,7 +136,6 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
-                "ts_ls",
                 "vtsls",
                 "eslint",
                 "lua_ls",

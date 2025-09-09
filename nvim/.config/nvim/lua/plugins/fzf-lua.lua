@@ -94,7 +94,7 @@ return {
     event = "VeryLazy",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
-    },
+   },
     keys = fzf_keymap,
     opts = fzf_opts,
     config = function(_, opts)
