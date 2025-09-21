@@ -13,3 +13,5 @@ export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 
 . "/home/urizen/.local/share/bob/env/env.sh"
+. "/home/urizen/.local/share/bob/env/env.sh"
+. "/home/urizen/.local/share/bob/env/env.sh"

@@ -1,7 +1,2 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.keymap.set("n", "grn", vim.lsp.buf.rename, {silent = true, desc = "LSP Rename"})
-
+-- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-
--- Import /lua/*

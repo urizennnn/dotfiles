@@ -1,6 +1,6 @@
 vim.opt.wrap = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.g.lazyvim_eslint_auto_format = false
 vim.loader.enable()
 vim.opt.pumheight = 5
@@ -44,34 +44,33 @@ vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
 vim.o.updatetime = 250
 vim.g.clipboard = {
-    name = "wl-clipboard",
-    copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
-    paste = { ["+"] = "wl-paste --no-newline", ["*"] = "wl-paste --no-newline" },
-    cache_enabled = 0,
+  name = "wl-clipboard",
+  copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
+  paste = { ["+"] = "wl-paste --no-newline", ["*"] = "wl-paste --no-newline" },
+  cache_enabled = 0,
 }
 
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json",
-        "yaml",
-        "html",
-        "css",
-        "scss",
-        "vue",
-        "svelte",
-    },
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-        vim.opt_local.softtabstop = 2
-    end,
+  pattern = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "yaml",
+    "html",
+    "css",
+    "scss",
+    "vue",
+    "svelte",
+  },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+  end,
 })
 vim.opt.diffopt:append({ "linematch:60", "algorithm:patience", "indent-heuristic" })
 vim.opt.fillchars:append({ diff = "╱" }) -- thinner diff filler
-

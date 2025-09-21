@@ -31,14 +31,14 @@ return {
   { "folke/trouble.nvim", enabled = false },
 
   -- override nvim-cmp and add cmp-emoji
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   dependencies = { "hrsh7th/cmp-emoji" },
-  --   ---@param opts cmp.ConfigSchema
-  --   opts = function(_, opts)
-  --     table.insert(opts.sources, { name = "emoji" })
-  --   end,
-  -- },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "hrsh7th/cmp-emoji" },
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = "emoji" })
+    end,
+  },
 
   -- change some telescope options and a keymap to browse plugin files
   {
@@ -76,7 +76,7 @@ return {
     },
   },
 
-  -- add ts_ls and setup with typescript.nvim instead of lspconfig
+  -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -93,14 +93,15 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        -- ts_ls = {},
+        -- tsserver will be automatically installed with mason and loaded with lspconfig
+        tsserver = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
         -- example to setup with typescript.nvim
-        ts_ls = function(_, opts)
+        tsserver = function(_, opts)
           require("typescript").setup({ server = opts })
           return true
         end,
