@@ -39,6 +39,7 @@ local function create_floating_terminal(opts)
     state.floating.buf = buf
   end
 
+    ---TODO:
   local win = vim.api.nvim_open_win(buf, true, {
     relative = "editor",
     width = width,
@@ -67,7 +68,7 @@ vim.keymap.set({ "n", "t" }, "<leader>sc", toggle_tem, { noremap = true, silent 
 
 local function prisma_generate_and_reload_lsp()
   local clients_to_restart = {}
-  for _, client in ipairs(vim.lsp.get_active_clients()) do
+  for _, client in ipairs(vim.lsp.get_clients()) do
     table.insert(clients_to_restart, client.id)
   end
 

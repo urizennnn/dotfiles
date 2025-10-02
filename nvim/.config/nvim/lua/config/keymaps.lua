@@ -3,12 +3,48 @@ local keymap = vim.keymap.set
 
 vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = false })
 
+local function toggle_snacks_explorer()
+  local ok, snacks = pcall(require, 'snacks')
+  if not ok then
+    vim.notify('Snacks explorer is not available', vim.log.levels.WARN)
+    return
+  end
+  local existing = snacks.picker.get({ source = 'explorer' })[1]
+  if existing and not existing.closed then
+    existing:close()
+    return
+  end
+  local picker = snacks.explorer.open()
+  if picker then
+    picker:focus('list', { show = true })
+  end
+end
+
+local function focus_snacks_explorer()
+  local ok, snacks = pcall(require, 'snacks')
+  if not ok then
+    return
+  end
+  local existing = snacks.picker.get({ source = 'explorer' })[1]
+  if existing and not existing.closed then
+    existing:focus('list', { show = true })
+    return
+  end
+  local picker = snacks.explorer.open()
+  if picker then
+    picker:focus('list', { show = true })
+  end
+end
+
 -- ===============================
 -- 🟢 BUFFER AND FILE MANAGEMENT
 -- ===============================
 
 keymap("n", "<leader>x", "<cmd> :bdelete <cr>") -- Close the current buffer
 keymap("n", "<leader>n", "<cmd> bn <cr>") -- Move to the next buffer
+keymap("n", "<leader>f", function()
+  require("snacks").picker.files()
+end, { desc = "Find files" }) -- Open Snacks file picker
 keymap("n", "W", "<cmd> w<CR>") -- Save the current file
 keymap("n", "wq", "<cmd> wq<CR>") -- Save and close the file
 keymap("n", "Q", "<cmd> quitall<CR>") -- Quit Neovim, closing all buffers
@@ -129,17 +165,20 @@ keymap("n", "<leader>t", "<cmd>TodoFzfLua<CR>", { desc = "TODOs (FzfLua)", silen
 keymap("n", "md", "<cmd>RenderMarkdown toggle<CR>") -- Toggle Markdown preview
 
 keymap("n", "re", "<cmd>lua require('snacks').picker.buffers()<CR>", { desc = "Open recent buffers" })
-keymap({ "n", "t" }, "<C-n>", "<C-_>", { remap = true, silent = true })
 
-keymap("n", "<leader>", function()
-  require("snacks").picker.explorer({ cwd = vim.uv.cwd() })
-end, { desc = "Explorer Snacks (cwd)" })
+keymap("n", "<leader>", toggle_snacks_explorer, { desc = "Toggle Snacks explorer", silent = true })
+keymap("n", "<C-.>", focus_snacks_explorer, { desc = "Focus Snacks explorer", silent = true })
+-- keymap("n", "<leader>", function()
+--   require("snacks").picker.explorer({ cwd = vim.uv.cwd() })
+-- end, { desc = "Explorer Snacks (cwd)" })
 keymap({ "n", "x" }, "mg", LazyVim.pick("grep"), { desc = "Grep word/selection (Root Dir)" })
-
-keymap("n", "<leader>f", function()
-  require("snacks").picker.files()
+keymap("n", "nm", function()
+  ---@type snacks.Config
+  require("snacks").explorer.open()
 end)
+
 
 keymap("n", "pr", "<Cmd>Octo pr list<CR>")
 keymap("n", "<leader>O", "<cmd>Octo<CR>")
 
+keymap("n", "grn", vim.lsp.buf.rename, { silent = true, desc = "LSP Rename" })
