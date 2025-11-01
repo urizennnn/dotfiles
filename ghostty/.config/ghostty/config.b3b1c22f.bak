@@ -22,4 +22,3 @@ window-padding-y = 6
 auto-update =download
 desktop-notifications = true
 gtk-wide-tabs = false
-keybind = shift+enter=text:\x1b\r

@@ -1,5 +1,5 @@
 return {
-  "folke/sidekick.nvim",
+   "folke/sidekick.nvim",
   lazy = false,
   opts = {
     cli = {
@@ -32,7 +32,7 @@ return {
       "<leader>as",
       function() require("sidekick.cli").select() end,
       -- Or to select only installed tools:
-      -- require("sidekick.cli").select({ filter = { installed = true } })
+      -- require("sidekick.cli").select({ filter = { installed = true } }),
       desc = "Sidekick Select CLI",
     },
     {
@@ -56,7 +56,7 @@ return {
     -- Example of a keybinding to open Claude directly
     {
       "<leader>ac",
-      function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
+      function() require("sidekick.cli").toggle({ name = "codex", focus = true }) end,
       desc = "Sidekick Claude Toggle",
       mode = { "n", "v" },
     },
