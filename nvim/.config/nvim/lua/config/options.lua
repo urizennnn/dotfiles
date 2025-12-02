@@ -42,7 +42,7 @@ vim.opt.hlsearch = true
 vim.o.timeout = true
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
-vim.o.updatetime = 250
+vim.o.updatetime = 800
 vim.g.clipboard = {
   name = "wl-clipboard",
   copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },

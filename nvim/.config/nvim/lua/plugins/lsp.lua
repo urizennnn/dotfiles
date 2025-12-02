@@ -31,7 +31,7 @@ return {
         },
       },
       inlay_hints = {
-        enabled = true,
+        enabled = false,
         exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
       },
       -- Enable this to enable the builtin LSP code lenses on Neovim.
@@ -41,7 +41,7 @@ return {
         enabled = false,
       },
       folds = {
-        enabled = true,
+        enabled = false,
       },
       capabilities = {
         workspace = {
@@ -89,6 +89,25 @@ return {
                 paramName = "Disable",
                 semicolon = "Disable",
                 arrayIndex = "Disable",
+              },
+            },
+          },
+        },
+        vtsls = {
+          settings = {
+            typescript = {
+              inlayHints = { enabled = false },
+              suggest = { completeFunctionCalls = false },
+              updateImportsOnFileMove = { enabled = "never" },
+              preferences = {
+                includePackageJsonAutoImports = "off",
+              },
+            },
+            javascript = {
+              inlayHints = { enabled = false },
+              suggest = { completeFunctionCalls = false },
+              preferences = {
+                includePackageJsonAutoImports = "off",
               },
             },
           },

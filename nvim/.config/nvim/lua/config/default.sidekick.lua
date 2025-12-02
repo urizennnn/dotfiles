@@ -11,10 +11,10 @@ local defaults = {
     enabled = function(buf)
       return vim.g.sidekick_nes ~= false and vim.b.sidekick_nes ~= false
     end,
-    debounce = 100,
+    debounce = 300,
     trigger = {
       -- events that trigger sidekick next edit suggestions
-      events = { "InsertLeave", "TextChanged", "User SidekickNesDone" },
+      events = { "InsertLeave", "User SidekickNesDone" },
     },
     clear = {
       -- events that clear the current next edit suggestion
