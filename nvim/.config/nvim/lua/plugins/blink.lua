@@ -3,7 +3,25 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lsp = {
+            min_keyword_length = 0,
+            score_offset = 0,
+          },
+        },
+      },
+      completion = {
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        list = {
+          selection = "auto_insert",
+        },
+      },
       keymap = {
         ["<Tab>"] = {
           "snippet_forward",
