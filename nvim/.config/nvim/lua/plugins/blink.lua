@@ -19,7 +19,9 @@ return {
           },
         },
         list = {
-          selection = "auto_insert",
+          selection = function(ctx)
+            return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect'
+          end,
         },
       },
       keymap = {
