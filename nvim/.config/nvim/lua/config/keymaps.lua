@@ -4,35 +4,35 @@ local keymap = vim.keymap.set
 vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = false })
 
 local function toggle_snacks_explorer()
-  local ok, snacks = pcall(require, 'snacks')
+  local ok, snacks = pcall(require, "snacks")
   if not ok then
-    vim.notify('Snacks explorer is not available', vim.log.levels.WARN)
+    vim.notify("Snacks explorer is not available", vim.log.levels.WARN)
     return
   end
-  local existing = snacks.picker.get({ source = 'explorer' })[1]
+  local existing = snacks.picker.get({ source = "explorer" })[1]
   if existing and not existing.closed then
     existing:close()
     return
   end
   local picker = snacks.explorer.open()
   if picker then
-    picker:focus('list', { show = true })
+    picker:focus("list", { show = true })
   end
 end
 
 local function focus_snacks_explorer()
-  local ok, snacks = pcall(require, 'snacks')
+  local ok, snacks = pcall(require, "snacks")
   if not ok then
     return
   end
-  local existing = snacks.picker.get({ source = 'explorer' })[1]
+  local existing = snacks.picker.get({ source = "explorer" })[1]
   if existing and not existing.closed then
-    existing:focus('list', { show = true })
+    existing:focus("list", { show = true })
     return
   end
   local picker = snacks.explorer.open()
   if picker then
-    picker:focus('list', { show = true })
+    picker:focus("list", { show = true })
   end
 end
 
@@ -177,8 +177,32 @@ keymap("n", "nm", function()
   require("snacks").explorer.open()
 end)
 
-
 keymap("n", "pr", "<Cmd>Octo pr list<CR>")
 keymap("n", "<leader>O", "<cmd>Octo<CR>")
 
-keymap("n", "grn", vim.lsp.buf.rename, { silent = true, desc = "LSP Rename" })
+keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+keymap("n", "gd", function()
+  local clients = vim.lsp.get_clients()
+  if #clients == 0 then
+    vim.notify("No LSP client attached to current buffer", vim.log.levels.WARN)
+    return
+  end
+  vim.lsp.buf.definition()
+end, { desc = "LSP Go to Definition" })
+
+keymap("n", "gr", function()
+  local clients = vim.lsp.get_clients()
+  if #clients == 0 then
+    vim.notify("No LSP client attached to current buffer", vim.log.levels.WARN)
+    return
+  end
+  vim.lsp.buf.references()
+end, { desc = "LSP Show References" })
+keymap("n", "grn", function()
+  local clients = vim.lsp.get_clients()
+  if #clients == 0 then
+    vim.notify("No LSP client attached to current buffer", vim.log.levels.WARN)
+    return
+  end
+  vim.lsp.buf.rename()
+end, { silent = true, desc = "LSP Rename" })
