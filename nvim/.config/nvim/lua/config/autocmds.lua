@@ -106,3 +106,15 @@ vim.keymap.set(
   prisma_generate_and_reload_lsp,
   { desc = "Run `npx prisma generate` then restart active LSPs" }
 )
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufEnter", "BufWinEnter", "InsertLeave", "BufWritePost" }, {
+  group = vim.api.nvim_create_augroup("EnvFileDiagnostics", { clear = true }),
+  pattern = { ".env", ".env.*", "*.env", "*.env.*" },
+  callback = function(args)
+    vim.schedule(function()
+      if vim.api.nvim_buf_is_valid(args.buf) then
+        vim.diagnostic.disable(args.buf)
+      end
+    end)
+  end,
+})

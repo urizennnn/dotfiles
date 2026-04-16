@@ -42,3 +42,6 @@ vendor/
 # Ignore venv
 myenv/
 venv/
+/nvim/.config/nvim/.codex
+/nvim/.config/nvim/.nvimlog
+/nvim/.config/nvim/dump.rdb

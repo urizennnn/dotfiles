@@ -24,6 +24,7 @@ return {
         vim.keymap.set("n", "<leader>hs", gs.stage_hunk, { buffer = buf, desc = "Stage hunk" })
         vim.keymap.set("n", "<leader>hu", gs.undo_stage_hunk, { buffer = buf, desc = "Unstage hunk" })
         vim.keymap.set("n", "<leader>hb", gs.blame_line, { buffer = buf, desc = "Blame line" })
+        vim.keymap.set("n", "GB", gs.blame_line, { buffer = buf, desc = "Blame line" })
       end,
     },
   },
