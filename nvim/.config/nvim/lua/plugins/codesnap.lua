@@ -12,6 +12,7 @@ return {
       bg_color = "#535c68",
       bg_theme = "grape",
       watermark = "URIZEN",
+      save_path = os.getenv("HOME") .. "/Pictures/CodeSnap",
     })
   end,
 }
